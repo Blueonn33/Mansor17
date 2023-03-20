@@ -24,20 +24,15 @@ export class NavMenu extends Component {
 
   render() {
     return (
-      <header>
-        <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" container light>
-          <NavbarBrand tag={Link} to="/">Mansor</NavbarBrand>
+      <header id="navigation-content">
+        <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white" light>
+          <img className="logo-img" src='/Images/Logo.png' height="90" width="100" alt="a grey round that gets darker"></img>
+          <NavbarBrand tag={Link} to="/" id="brand">MANSOR</NavbarBrand>
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
             <ul className="navbar-nav flex-grow">
               <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/counter">Counter</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
+                <NavLink tag={Link} className="text-white" to="/taskGroups">Groups</NavLink>
               </NavItem>
               <LoginMenu>
               </LoginMenu>
