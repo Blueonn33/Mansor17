@@ -39,7 +39,7 @@ export default class TasksComponent extends Component {
     async loadTaskItems(taskGroupId){
         let splittedURL = window.location.pathname.split('/')
         taskGroupId = splittedURL[splittedURL.length - 1]
-        let url = `https://localhost:7286/api/taskItems/${taskGroupId}`;
+        let url = `https://localhost:7043/api/taskItems/${taskGroupId}`;
         fetch(url)
             .then((res) => res.json())
             .then((res) => this.setState({ tasks: res }))
