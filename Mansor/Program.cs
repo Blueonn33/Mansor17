@@ -1,5 +1,4 @@
 using Mansor.Data;
-using Mansor.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;

@@ -118,7 +118,7 @@ export class LandingPage extends Component {
                         <button id="btn-close" onClick={() => this.closeImg("modal-notes", "notesImg")}>Close</button>
                 </div>
                     <div className="calendar-demo">
-                    <h1 className="calendarText">Try our calendar</h1>
+                        <h1 className="calendarText">Try our calendar</h1>
                         <div className="calendar-content">
                             <p>It is simple to use</p>
                             <p>You can specify the initial view of the calendar</p>
