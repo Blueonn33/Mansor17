@@ -1,8 +1,14 @@
 ﻿#container {
     display: flex;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-bottom: 20vh;
-    margin-right: 10%;
+    margin-right: 25%;
+}
+
+.dx-calendar {
+    margin-top: -32.7%;
+    margin-right: -60%;
+    width: 450px;
 }
 
 .calendar-container {
@@ -41,7 +47,7 @@
     font-style: italic;
 }
 
-.dx-checkbox-text{
+.dx-checkbox-text {
     color: white;
 }
 
@@ -54,37 +60,12 @@
     padding: 20px;
     background-color: rgba(191, 191, 191, 0.15);
     color: white;
+    margin-right: -31%;
+    margin-top: -4%;
+    margin-left: 20%;
 }
 
 .options {
     margin-top: 10px;
-    color: white;
-}
-
-.backBtn {
-    font-family: sans-serif;
-    background-color: #424242;
-    border: 3px #b3b3b3 solid;
-    color: white;
-    border-radius: 10px;
-    font-size: 15px;
-    padding: 2px 10px 2px 10px;
-    margin-top: -1%;
-    margin-left: 17%;
-    height: max-content;
-}
-
-.backBtn:hover {
-    background-color: #b3b3b3;
-    border: 3px white solid;
-    color: white;
-}
-
-.backBtnText {
-    color: white;
-    text-decoration: none;
-}
-
-.backBtnText:hover {
     color: white;
 }

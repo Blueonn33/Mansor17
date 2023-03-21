@@ -130,7 +130,9 @@ export class LandingPage extends Component {
                             </ul>
                             <p>The current date is in bold so you don't forget what day it is</p>
                         </div>
-                        <Calendar className="calendar" />
+                        <div className="calendarContainer">
+                            <Calendar className="calendar" />
+                        </div>
                     </div>
                 </div>
         );
