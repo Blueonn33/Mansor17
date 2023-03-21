@@ -54,12 +54,13 @@
 }
 
 .menu-bar{
-    margin-left: 8%;
+    margin-left: 1%;
 }
 
 #bar {
     width: 100px;
     height: 60px;
+    margin-left: 13%;
 }
 
 .bar {
