@@ -177,6 +177,7 @@ button {
     background-color: #b3b3b3;
     padding: 2%;
     width: 100%;
+    /*margin-bottom: 30vh;*/
 }
 .calendarText {
     margin-left: -0.6%;
@@ -195,7 +196,7 @@ button {
     font-size: 15px;
     margin-bottom: 15px;
 }
-.calendar{
+.calendar {
     margin-top: -22%;
 }
 ::-webkit-scrollbar {
