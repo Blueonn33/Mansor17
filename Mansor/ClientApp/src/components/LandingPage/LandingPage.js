@@ -28,20 +28,19 @@ export class LandingPage extends Component {
                             <article className="main-content">
                                 <header>
                                     <p>
-                                        MANSOR is used to add and allocate tasks,
-                                        creating a school timetable, and there are many other functionalities,
-                                        which would help in better time planning.
+                                        MANSOR се използва за добавяне и разпределяне на задачи,
+                                        създаване на училищнa програма и има много други функционалности,
+                                        които биха помогнали за по-добро планиране на времето.
                                     </p>
                                     <p>
-                                        The site is the best helper for a student.
-                                        Task allocation will help our users to be more organized
-                                        and have time for the things they love to do.
+                                        Сайтът е най-добрият помощник за един ученик.
+                                        Разпределението на задачите ще помогне на нашите потребители да бъдат
+                                        по-организирани и така ще имат време за нещата, които обичат да правят.
                                     </p>
                                     <p>
-                                        A variety of functionalities that are easy and pleasant to use.
-                                        Simplicity and clean design are the basis of MANSOR.
-                                </p>
-                               
+                                        Разнообразие от приятни и лесни за използване функционалности.
+                                        Опростеността и изчистеният дизайн са в основата на MANSOR.
+                                    </p>
                                 </header>
                             </article>
                         </div>
@@ -49,13 +48,13 @@ export class LandingPage extends Component {
                     <ul className="functionalities d-flex mb-3">
                         <li className="option p-2 flex-fill" id="task"
                             onClick={() => this.showImg("modal-tasks", "tasksImg", "modal-table", "modal-notes")}>
-                        Tasks</li>
+                            Задачи</li>
                         <li className="option p-2 flex-fill" id="shedule"
                         onClick={() => this.showImg("modal-table", "tableImg", "modal-tasks", "modal-notes")}>
-                            School timetable</li>
+                            Учебна програма</li>
                         <li className="option p-2 flex-fill" id="notes"
                         onClick={() => this.showImg("modal-notes", "notesImg", "modal-table", "modal-tasks")}>
-                            Notes</li>
+                            Бележки</li>
                     </ul>
                      <div id="modal-tasks">
                         <div className="tasksImg">
@@ -65,19 +64,19 @@ export class LandingPage extends Component {
                         </div>
                         <div className="body-content">
                             <div className="tasks-content">
-                                <h2 id="h2-tasks">Tasks</h2>
-                                <p>Write tasks that you can divide into three categories: </p>
+                                <h2 id="h2-tasks">Задачи</h2>
+                                <p>Напишете задачи, които можете да разделите в три основни категории: </p>
                                 <ul id="list">
-                                    <li>- Daily - tasks that must be completed within one day.</li>
-                                    <li>- Important - tasks with a high priority of execution.</li>
-                                    <li>- Planned - tasks with a set deadline.</li>
+                                    <li>- Дневни - задачи, които трябва да се изпълнят в рамките на ден.</li>
+                                    <li>- Важни - задачи, които имат висок приоритет на изпълнение.</li>
+                                    <li>- Планирани - задачи, които имат зададен срок за изпълнение.</li>
                                 </ul>
                                 <p>
-                                    Need more categories?
-                                    Through the 'Add' button you can add a category of your choice.
+                                    Не знаете как да добавите категория?
+                                    Чрез бутона 'Добави' можете да добавяте най-различни категории.
                                 </p>
                         </div>
-                        <button id="btn-close" onClick={() => this.closeImg("modal-tasks","tasksImg")}>Close</button>
+                        <button id="btn-close" onClick={() => this.closeImg("modal-tasks","tasksImg")}>Затвори</button>
                         </div>
                     </div>
                     <div id="modal-table">
@@ -88,15 +87,15 @@ export class LandingPage extends Component {
                         </div>
                         <div class="body-content">
                             <div class="table-content">
-                                <h2 id="h2-table">School timetable</h2>
-                                <p>Add school subjects to the timetable.</p>
-                                <p>The program is divided into five columns - one for each day of the week.</p>
+                                <h2 id="h2-table">Учебна програма</h2>
+                                <p>Добавете учебни предмети към учебната програма.</p>
+                                <p>Програмата е разделена на 5 реда - по 1 за всеки учебен ден.</p>
                                 <p>
-                                    Through the 'Add' button you can add a subject to the program.
+                                    Чрез бутона 'Добави' можете да добавите предмет към учебната програма.
                                 </p>
                             </div>
                         </div>
-                        <button id="btn-close" onClick={() => this.closeImg("modal-table", "tableImg")}>Close</button>
+                        <button id="btn-close" onClick={() => this.closeImg("modal-table", "tableImg")}>Затвори</button>
                     </div>
                     <div id="modal-notes">
                     <div>
@@ -106,29 +105,28 @@ export class LandingPage extends Component {
                         </div>
                         <div className="body-content">
                             <div className="notes-content">
-                                <h2 id="h2-notes">Notes</h2>
-                                <p>Add a note about a subject.</p>
-                                <p>You can enter a subject as a title.</p>
+                                <h2 id="h2-notes">Бележки</h2>
+                                <p>Добавете бележка, когато желаете да напишете повече текст.</p>
+                                <p>Сложете заглавие на бележката, за да се подсещате за какво е.</p>
                                 <p>
-                                    In a few sentences, write something important about the relevant subject.
+                                   След това с няколко изречения запишете задачата си.
                                 </p>
-                                <p>Setting a deadline is also imperative</p>
                             </div>
                         </div>
-                        <button id="btn-close" onClick={() => this.closeImg("modal-notes", "notesImg")}>Close</button>
+                        <button id="btn-close" onClick={() => this.closeImg("modal-notes", "notesImg")}>Затвори</button>
                 </div>
                     <div className="calendar-demo">
-                        <h1 className="calendarText">Try our calendar</h1>
+                        <h1 className="calendarText">Изпробвайте нашия календар</h1>
                         <div className="calendar-content">
-                            <p>It is simple to use</p>
-                            <p>You can specify the initial view of the calendar</p>
+                            <p>Лесен е за използване</p>
+                            <p>Можете да зададете първоначалния изглед на календара</p>
                              <ul className="initialView">
-                                <li>- Month</li>
-                                <li>- Year</li>
-                                <li>- Decade</li>
-                                <li>- Century</li>
+                                <li>- Месец</li>
+                                <li>- Година</li>
+                                <li>- Десетилетие</li>
+                                <li>- Век</li>
                             </ul>
-                            <p>The current date is in bold so you don't forget what day it is</p>
+                            <p>Текущият ден е с удебелен шрифт</p>
                         </div>
                         <div className="calendarContainer">
                             <Calendar className="calendar" />

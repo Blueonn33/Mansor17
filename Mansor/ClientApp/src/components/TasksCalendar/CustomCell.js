@@ -7,7 +7,7 @@ export function isWeekend(date) {
 
 function getCellCssClass({ date, view }) {
     let cssClass = '';
-    const holidays = [[1, 0], [4, 6], [25, 11]];
+    const holidays = [[1, 0], [3, 2], [25, 11]];
 
     if (view === 'month') {
         if (!date) {
