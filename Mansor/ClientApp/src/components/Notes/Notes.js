@@ -29,7 +29,7 @@ export default class Notes extends Component {
                 <div className='notesContainer'>
                     <div className='notesContent'>
                         <div className='notesListHeaderWrapper d-flex'>
-                            <h4 className='notesListHeader'>Notes</h4>
+                            <h4 className='notesListHeader'>Бележки</h4>
                         </div>
                         <div className='createNewNoteButtonWrapper'>
                             <AddNote />

@@ -12,7 +12,7 @@ export class AddNote extends Component {
                     <div className="container">
                         <div className='noteButtonWrapper ml-auto'>
                             <button className='noteButton'>
-                                <a href={`https://localhost:44414/addNote`} className='noteButtonText'>Add</a>
+                                <a href={`https://localhost:44414/addNote`} className='noteButtonText'>Добави</a>
                             </button>
                         </div>
                     </div>

@@ -72,10 +72,10 @@ export class AddTaskItem extends Component {
                         <input type="text" id="input-item"
                             onChange={(e) => this.setState({ 'value': e.target.value })}
                         />
-                        <span className="addBtn" onClick={this.createTaskItem}>Add</span>
+                        <span className="addBtn" onClick={this.createTaskItem}>Добави</span>
                     </div>
                 </div>
-                <div id="snackbar">Еnter text in the input field</div>
+                <div id="snackbar">Въведете текст в полето</div>
             </div>
         );
     }

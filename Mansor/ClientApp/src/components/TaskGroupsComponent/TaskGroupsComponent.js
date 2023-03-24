@@ -34,13 +34,13 @@ export default class TaskGroupsComponent extends Component {
                     <hr id="line"></hr>
                     <div className="offcanvas-body text-white">
                         <button className='calendarBtn'>
-                            <a href={`https://localhost:44414/calendar`} className='calendarBtnText'>Calendar</a>
+                            <a href={`https://localhost:44414/calendar`} className='calendarBtnText'>Календар</a>
                         </button> 
                         <button className='calendarBtn'>
-                            <a href={`https://localhost:44414/notes`} className='calendarBtnText'>Notes</a>
+                            <a href={`https://localhost:44414/notes`} className='calendarBtnText'>Бележки</a>
                         </button> 
                         <button className='timeTableBtn'>
-                            <a href={`https://localhost:44414/timeTable`} className='timeTableBtnText'>Time Table</a>
+                            <a href={`https://localhost:44414/timeTable`} className='timeTableBtnText'>Програма</a>
                         </button> 
                         <hr id="line"></hr>
                     </div>
@@ -49,7 +49,7 @@ export default class TaskGroupsComponent extends Component {
                 <div className='taskGroupsContainer'>
                     <div className='taskGroupsContent'>
                         <div className='taskGroupsListHeaderWrapper d-flex'>
-                            <h4 className='taskGroupsListHeader'>Groups</h4>
+                            <h4 className='taskGroupsListHeader'>Групи</h4>
                         </div>
                         <div className="menu-bar">
                             <button className="bar" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas">

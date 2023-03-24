@@ -11,7 +11,7 @@ export default class TaskGroupsContainer extends Component {
                 </div>
                 <div className='useTaskGroupButtonWrapper ml-auto'>
                     <button className='useButton'>
-                        <a href={`https://localhost:44414/taskItems/${this.props.taskGroupData.id}`} className='useButtonText'>Use</a>
+                        <a href={`https://localhost:44414/taskItems/${this.props.taskGroupData.id}`} className='useButtonText'>Използвай</a>
                     </button>
                 </div>
             </div>

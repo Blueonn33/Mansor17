@@ -13,10 +13,16 @@ export class NotesComponent extends Component {
             content: '',
             errorMessageTitle: '',
             errorMessageContent: '',
-            textColor: '',
+            textColorTitle: '',
+            textColorContent: '',
         }
         this.createNote = this.createNote.bind(this);
         this.handleChange = this.handleChange.bind(this);
+    }
+    createdNote() {
+        var msg = document.getElementById("snackbar");
+        msg.className = "show";
+        setTimeout(function () { msg.className = msg.className.replace("show", ""); }, 3000);
     }
     async createNote(event) {
         event.preventDefault();
@@ -25,11 +31,10 @@ export class NotesComponent extends Component {
         var contentInput = this.state.content;
 
         const errors = {
-            success: "Successfully added a new note.",
-            minLength: "Title must be at least 3 characters.",
-            minLengthContent: "Content must be at least 3 characters.",
-            maxLength: "Title must be less than 100 characters.",
-            existingNote: "This note is already existing."
+            minLength: "Заглавието е твърде кратко.",
+            minLengthContent: "Съдържанието е твърде кратко.",
+            maxLength: "Заглавието е твърде дълго.",
+            existingNote: "Бележката вече съществува."
         }
         const color = {
             error: "red",
@@ -38,16 +43,18 @@ export class NotesComponent extends Component {
         if (titleInput.length < 3) {
 
             this.setState({ errorMessageTitle: errors.minLength });
-            this.setState({ textColor: color.error });
+            this.setState({ textColorTitle: color.error });
         }
-        if (contentInput.length < 3) {
+        else if (titleInput.length > 50) {
+            this.setState({ errorMessageTitle: errors.maxLength });
+            this.setState({ textColorTitle: color.error });
+        }
+        else if (contentInput.length < 3) {
 
             this.setState({ errorMessageContent: errors.minLengthContent });
-            this.setState({ textColor: color.error });
-        }
-        else if (titleInput.length > 100) {
-            this.setState({ errorMessageTitle: errors.maxLength });
-            this.setState({ textColor: color.error });
+            this.setState({ errorMessageTitle: '' });
+            this.setState({ textColorContent: color.error });
+            this.setState({ textColorTitle: color.success });
         }
         else {
             await fetch(endpoints.createNote(), {
@@ -64,12 +71,15 @@ export class NotesComponent extends Component {
                 .then((response) => {
                     if (!response.ok) {
                         this.setState({ errorMessageTitle: errors.existingNote });
-                        this.setState({ textColor: color.error });
+                        this.setState({ textColorTitle: color.error });
+                        this.setState({ textColorContent: color.error });
                     }
                     else {
-                        this.setState({ errorMessageTitle: errors.success });
-                        this.setState({ errorMessageContent: errors.success });
-                        this.setState({ textColor: color.success });
+                        this.createdNote();
+                        this.setState({ textColorTitle: color.success });
+                        this.setState({ textColorContent: color.success });
+                        this.setState({ errorMessageContent: '' });
+                        this.setState({ errorMessageTitle: '' });
                     }
                 })
                 .catch(error => {
@@ -95,33 +105,42 @@ export class NotesComponent extends Component {
         return (
             <div>
                 <form id="noteForm" onSubmit={this.createNote}>
-                    <h2 id="note-txt">AddNote</h2>
+                    <h2 id="note-txt">Добави бележка</h2>
                     <hr id="line"></hr>
                     <div className="inputs">
-                        <label>Title:
+                        <label>Заглавие:
                             <input type="text" id="note-title" className="form-control"
                                 onChange={(e) => this.setState({ 'title': e.target.value })}
-                                style={{ borderBottomColor: this.state.textColor }}
+                                style={{ borderBottomColor: this.state.textColorTitle }}
                             />
                         </label>
                     </div>
                     <div className="inputs">
-                        <label>Content:
+                        <label>Съдържание:
                             <textarea type="text" id="note-content" className="form-control"
                                 onChange={(e) => this.setState({ 'content': e.target.value })}
-                                style={{ borderBottomColor: this.state.textColor }}
+                                style={{ borderBottomColor: this.state.textColorContent }}
                             />
                         </label>
                     </div>
+                    <div className="errorNote">
+                        <span style={{ color: this.state.textColorTitle }}>
+                            {this.state.errorMessageTitle}</span>
+                    </div>
+                    <div className="errorNote">
+                        <span style={{ color: this.state.textColorContent }}>
+                            {this.state.errorMessageContent}</span>
+                    </div>
                     <div>
-                        <button id="btn-noteForm">Add</button>
+                        <button id="btn-noteForm">Добави</button>
                     </div>
                     <div>
                         <button id="btn-cancel">
-                            <a href={`https://localhost:44414/notes`} id="cancel-text">Cancel</a>
+                            <a href={`https://localhost:44414/notes`} id="cancel-text">Назад</a>
                         </button>
                     </div>
                 </form>
+                <div id="snackbar">Успешно добавихте бележка</div>
             </div>
         );
     }

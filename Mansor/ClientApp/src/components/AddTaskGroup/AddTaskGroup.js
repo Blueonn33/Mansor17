@@ -81,7 +81,7 @@ export class AddTaskGroup extends Component {
             <div className="container">
                 <div className="container" id="modal">
                     <button type="button" id="createTaskGroup" data-bs-toggle="modal" data-bs-target="#addTaskGroupModal">
-                        Add
+                        Добави
                     </button>
                 </div>
                 <div className="modal fade" id="addTaskGroupModal" role="dialog">
@@ -90,7 +90,7 @@ export class AddTaskGroup extends Component {
                             <div className="modal-header border-0">
                                 <button type="button" className="close" data-bs-dismiss="modal">&times;</button>
                                 <div className="title">
-                                    <h4 className="modal-title" id="title">New Group</h4>
+                                    <h4 className="modal-title" id="title">Нова група</h4>
                                     <hr id="line"></hr>
                                 </div>
 
@@ -98,7 +98,7 @@ export class AddTaskGroup extends Component {
                             <div className="modal-body">
                                 <div id="myForm">
                                     <form onSubmit={this.createTaskGroup}>
-                                        <label htmlFor="taskGroupNameField" id="label-text">Name:</label>
+                                        <label htmlFor="taskGroupNameField" id="label-text">Име:</label>
                                         <input type="text" name="taskGroupNameField" className="form-control" id="name"
                                             onChange={(e) => this.setState({ 'value': e.target.value })}
                                             style={{ borderBottomColor: this.state.textColor }}
@@ -108,8 +108,8 @@ export class AddTaskGroup extends Component {
                                                 <p style={{ color: this.state.textColor}}>
                                                     {this.state.errorMessage}</p>
                                             </div>
-                                            <Link to='/taskGroups' id='close' onClick={() => { this.this.close() }}>Cancel</Link>
-                                            <button type="submit" id="submit" method="post" className="btn" name="addTaskGroup">Add</button>
+                                            <Link to='/taskGroups' id='close' onClick={() => { this.this.close() }}>Назад</Link>
+                                            <button type="submit" id="submit" method="post" className="btn" name="addTaskGroup">Добави</button>
                                         </div>
                                     </form>
                                 </div>
