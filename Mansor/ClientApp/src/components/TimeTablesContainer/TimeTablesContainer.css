@@ -1,0 +1,32 @@
+﻿.daysContainer {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27.24px;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 1rem;
+}
+
+.daysContainer .dayNameWrapper {
+    /*margin-left: 1.125rem;*/
+    position: relative;
+    /*padding: 12px 8px 12px 40px;*/
+    list-style-type: none;
+    font-size: 18px;
+    transition: 0.2s;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-bottom: -30px;
+    font-size: 20px;
+    margin-right: 5px;
+    height: min-content;
+    width: 150px;
+}
+.daysContainer .dayNameWrapper .timeTableDay {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-top: 0.3rem;
+}
+

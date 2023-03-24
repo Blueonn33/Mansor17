@@ -8,6 +8,7 @@ import TasksComponent from "./components/TasksComponent/TasksComponent";
 import Notes from "./components/Notes/Notes";
 import { NotesComponent } from "./components/NotesComponent/NotesComponent";
 import { TasksCalendar } from "./components/TasksCalendar/TasksCalendar";
+import TimeTablesComponent from "./components/TimeTablesComponent/TimeTablesComponent";
 
 const AppRoutes = [
     {
@@ -33,6 +34,10 @@ const AppRoutes = [
     {
         path: '/calendar',
         element: <TasksCalendar />
+    },
+    {
+        path: '/timeTable',
+        element: <TimeTablesComponent />
     },
   {
     path: '/counter',

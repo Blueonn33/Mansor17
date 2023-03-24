@@ -10,4 +10,5 @@ export const endpoints = {
     loadNotes: () => `${apiBaseUrl}/api/notes`,
     createNote: () => `${apiBaseUrl}/api/create/note`,
     loadDays: () => `${apiBaseUrl}/api/days`,
+    createDay: () => `${apiBaseUrl}/api/create/timeTableDay`,
 }
