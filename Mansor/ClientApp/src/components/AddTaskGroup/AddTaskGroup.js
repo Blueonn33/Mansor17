@@ -20,10 +20,10 @@ export class AddTaskGroup extends Component {
         var input = this.state.value;
 
         const errors = {
-            success: "Successfully added a new group.",
-            minLength: "Name must be at least 3 characters.",
-            maxLength: "Name must be less than 100 characters.",
-            existingTaskGroup: "This group is already existing."
+            success: "Добавихте успешно нова група.",
+            minLength: "Името е твърде кратко.",
+            maxLength: "Името е твърде дълго.",
+            existingTaskGroup: "Групата вече съществува."
         }
         const color = {
             error: "red",
@@ -34,7 +34,7 @@ export class AddTaskGroup extends Component {
             this.setState({ errorMessage: errors.minLength });
             this.setState({ textColor: color.error });
         }
-        else if (input.length > 100) {
+        else if (input.length > 50) {
             this.setState({ errorMessage: errors.maxLength });
             this.setState({ textColor: color.error });
         }

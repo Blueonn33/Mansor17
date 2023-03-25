@@ -4,14 +4,96 @@
     ViewData["Title"] = "Register";
 }
 
-<h1>@ViewData["Title"]</h1>
+<head><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"></head>
+<style>
+	body {
+		background-color: #424242;
+	}
+	form {
+	    width: 600px;
+		height: 500px;
+		border-radius: 20px;
+		background-color: #B3B3B3;
+		margin-top: -12%;
+	}
+	label {
+		margin-right: 20px;
+		color: black;
+	}
+	.inputs {
+		padding: 25px;
+		padding-right: 25px;
+		font-size: 18px;
+	}
+	.input {
+		border-radius: 10px;
+		background-color: #d9d9d9;
+		width: 370px;
+		height: 33px;
+		margin-right: 5%;
+		margin-top: 1%;
+		margin-bottom: 2%;
+	}
+	#title {
+		padding: 6px;
+		font-weight: 600;
+		margin-left: 33%;
+		color: white;
+		margin-bottom: -5px;
+	}
+	#line {
+		height: 5px;
+		border-width: 0;
+		color: black;
+		background-color: black;
+		margin-top: 3%;
+	}
+	#register-submit {
+	    font-size: 20px;
+		background-color: #b3b3b3;
+		border: none;
+		color: white;
+		margin-right: 7%;
+	}
+	#register-submit:hover{
+		text-decoration-line: underline;
+	}
+	#back-btn {
+		font-size: 20px;
+		border: none;
+		background-color: #b3b3b3;
+		color: black;
+	}
+	#back-btn:hover{
+		text-decoration-line: underline;
+	}
+	input:invalid {
+		border-bottom: 4px solid red;
+	}
+	input:focus {
+		outline: none;
+		border-bottom: 4px solid white;
+	}
+	@@font-face {
+		font-family: 'Open Sans';
+		src: url("@Url.Content("~/css/OpenSans.woff")") format('woff');
+	}
+	.Font_OpenSans {
+		font-family: 'Open Sans'
+	}
+</style>
 
-<div class="row">
+@*<div class="row">
     <div class="col-md-4">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
-            <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <input asp-for="Input.Name" class="form-control" aria-required="true" />
+                <label asp-for="Input.Name"></label>
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
             <div class="form-floating">
                 <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
                 <label asp-for="Input.Email"></label>
@@ -32,16 +114,10 @@
     </div>
     <div class="col-md-6 col-md-offset-2">
         <section>
-            <h3>Use another service to register.</h3>
-            <hr />
             @{
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
                 {
                     <div>
-                        <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
-                        </p>
                     </div>
                 }
                 else
@@ -60,7 +136,58 @@
             }
         </section>
     </div>
-</div>
+</div>*@
+
+<section class="Font_OpenSans" style="">
+	<div class="ps-lg-5 pe-lg-5">
+		<div class="m-sm-5 ps-sm-5 pe-sm-5 pt-sm-1">
+			<div class="m-md-5  ps-ms-5 pe-ms-5 pt-3">
+				<form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+					<h2 id="title">Регистрация</h2>
+					<hr id="line" />
+					<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+					<div class="inputs">
+						<div class="form-group row">
+							<label for="staticName" class="col-sm-2 col-form-label ">Име:</label>
+							<div class="form-floating col-sm-9">
+								<input asp-for="Input.Name" class="input pe-0" aria-required="true" />
+								<span asp-validation-for="Input.Name" class="text-danger"></span>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="staticEmail" class="col-sm-2 col-form-label ">Email:</label>
+							<div class="form-floating col-sm-9">
+								<input asp-for="Input.Email" class="input pe-0" autocomplete="username" aria-required="true" />
+								<span asp-validation-for="Input.Email" class="text-danger"></span>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="inputPassword" class="col-sm-2 col-form-label">Password:</label>
+							<div class="form-floating col-sm-9">
+								<input asp-for="Input.Password" class="input" autocomplete="current-password"
+									   aria-required="true" />
+								<span asp-validation-for="Input.Password" class="text-danger"></span>
+							</div>
+							<label for="inputPassword" class="col-sm-2 col-form-label">Password:</label>
+							<div class="form-floating col-sm-9">
+								<input asp-for="Input.ConfirmPassword" class="input" autocomplete="current-password"
+									   aria-required="true" />
+								<span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="row ps-4 pe-4">
+						<div class="gap-3 d-md-flex justify-content-md-end ps-4 pe-4">
+							<a href="https://localhost:44414/" id="back-btn" class="btn btn-lg btn-primary pt-0 pb-0">Назад</a>
+							<button id="register-submit" type="submit" class="btn btn-lg btn-primary  pt-0 pe-4 ps-4 ">Регистрация</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
