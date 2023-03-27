@@ -3,6 +3,7 @@ import { endpoints } from '../../endpoints';
 import '../TasksComponent/TasksComponent.css';
 import { AddTaskItem } from '../AddTaskItem/AddTaskItem';
 import TasksContainer from '../TasksContainer/TasksContainer';
+import { EditTaskGroup } from '../EditTaskGroup/EditTaskGroup';
 
 export default class TasksComponent extends Component {
 
@@ -36,6 +37,24 @@ export default class TasksComponent extends Component {
             )
     }
 
+    deleteTaskGroup = async (taskGroupId) => {
+        let splittedURL = window.location.pathname.split('/')
+        taskGroupId = splittedURL[splittedURL.length - 1]
+        await fetch(endpoints.deleteTaskGroup(taskGroupId), {
+            method: 'DELETE'
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                console.log('Resource deleted successfully');
+            })
+            .catch(error => {
+                console.error('There was a problem deleting the resource:', error);
+            });
+        window.location.pathname = '/taskGroups'
+    }
+
     async loadTaskItems(taskGroupId){
         let splittedURL = window.location.pathname.split('/')
         taskGroupId = splittedURL[splittedURL.length - 1]
@@ -43,6 +62,12 @@ export default class TasksComponent extends Component {
         fetch(url)
             .then((res) => res.json())
             .then((res) => this.setState({ tasks: res }))
+            //.then(async (res) => {
+            //    let taskItemData = await res.json()
+            //    this.setState({ 'taskItemData': taskItemData })
+            //    this.setState({ 'currentTaskItemValue': taskItemData.value })
+            //}
+            //)
             .catch(error => console.error(error));
     }
 
@@ -51,9 +76,15 @@ export default class TasksComponent extends Component {
             <div className='taskItemsListWrapper d-flex justify-content-center align-items-center'>
                 <div className='taskItemsContainer'>
                     <div className='taskItemsContent'>
+                        <div className='deleteTaskGroupButtonWrapper ml-auto'>
+                            <button className='deleteButton' onClick={this.deleteTaskGroup}>Изтрий</button>
+                             <button className='editButton'>Редактирай</button>
+                            {/*<EditTaskGroup/>*/}
+                        </div>
                         <div className='taskItemsListHeaderWrapper d-flex'>
                             <h4 className='taskItemsListHeader'>{this.state.taskGroupHeaderName}</h4>
                         </div>
+                        
                         <div className='createNewTaskItemButtonWrapper'>
                             <AddTaskItem onTaskItemAdded={this.loadTaskItems} />
                         </div>

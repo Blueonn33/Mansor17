@@ -1,5 +1,7 @@
 ﻿import React, { Component } from 'react'
 import '../TaskGroupsContainer/TaskGroupsContainer.css';
+import { FaTrashAlt } from "react-icons/fa";
+import { endpoints } from '../../endpoints';
 
 export default class TaskGroupsContainer extends Component {
 

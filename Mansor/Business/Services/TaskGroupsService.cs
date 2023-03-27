@@ -68,5 +68,9 @@ namespace Mansor.Business.Services
         public async Task<TaskGroup?> GetTaskGroupByIdAsync(int id) => await _taskGroupsRepository.FindAsync(id);
 
         public async Task UpdateTaskGroupAsync(TaskGroup taskGroup) => await _taskGroupsRepository.UpdateAsync(taskGroup);
+        public Task DeleteAsync(TaskGroup taskGroup)
+        {
+            return _taskGroupsRepository.DeleteAsync(taskGroup);
+        }
     }
 }

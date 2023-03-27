@@ -12,7 +12,10 @@ public class TimeTableDaysService : ITimeTableDaysService
     {
         _timeTableDaysRepository = timeTableDaysRepository;
     }
-
+    public Task<TimeTableDay?> GetDayById(int id)
+    {
+        return _timeTableDaysRepository.FindDay(id);
+    }
     public async Task<IEnumerable<TimeTableDay>> GetDaysAsync() => await _timeTableDaysRepository.GetAllDays();
 
     public async Task<TimeTableDay?> GetDayByIdAsync(int id) => await _timeTableDaysRepository.FindAsync(id);

@@ -4,56 +4,22 @@ import '../TasksContainer/TaskContainer.css';
 
 export default class TasksContainer extends Component {
 
-    //async completeTaskItem(taskItemId) {
-    //    console.log(this.state.value);
-    //    var input = this.state.value;
-
-    //    if (input === '') {
-    //        this.invalidInput();
-    //    }
-    //    else {
-    //        await fetch(endpoints.completeTaskItem(), {
-    //            method: 'POST',
-    //            headers: {
-    //                'Content-type': 'application/json',
-    //            },
-    //            body: JSON.stringify({
-    //                value: input,
-    //                taskGroupId: taskGroupId,
-    //            })
-    //        })
-    //            .then((response) => {
-    //                if (!response.ok) {
-    //                    console.log("invalid input")
-
-    //                }
-    //                else {
-    //                    this.props.onTaskItemAdded(this.props.value);
-    //                }
-    //            })
-    //            .catch(error => {
-    //                console.error(error);
-    //            });
-    //    }
-    //}
-
-    completeTaskItem = async (taskItemId) => {
-        await fetch(endpoints.completeTaskItem(taskItemId), {
-            method: 'DELETE',
-            headers: {
-                'Content-type': 'application/json',
-            },
-            body: JSON.stringify({
-                isCompleted: true
-            })
+    completeTask(taskItemId) {
+        fetch(endpoints.completeTask(taskItemId), {
+            method: 'DELETE'
         })
-            .then((res) => {
-                console.log(res)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                console.log('Resource deleted successfully');
             })
-            .catch((err) => {
-                console.log(err)
-            })
+            .catch(error => {
+                console.error('There was a problem deleting the resource:', error);
+            });
+        window.location.reload();
     }
+
 
     render() {
         return (
@@ -62,7 +28,7 @@ export default class TasksContainer extends Component {
                     <span className='taskItemName pageText'> {this.props.taskItemData.value} </span>
                 </div>
                 <div className='useTaskItemButtonWrapper ml-auto'>
-                    <button className='useButton' onClick={() => this.completeTaskItem(this.props.taskItemData.id)}>
+                    <button className='useButton' onClick={() => this.completeTask(this.props.taskItemData.id)}>
                     </button>
                 </div>
             </div>

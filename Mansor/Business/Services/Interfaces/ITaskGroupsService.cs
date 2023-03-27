@@ -17,5 +17,6 @@ namespace Mansor.Business.Services.Interfaces
         Task AddTaskGroupAsync(TaskGroup taskGroup);
         Task<TaskGroup?> GetTaskGroupByIdAsync(int id);
         Task UpdateTaskGroupAsync(TaskGroup taskGroup);
+        Task DeleteAsync(TaskGroup taskGroup);
     }
 }

@@ -1,29 +1,45 @@
 ﻿import React, { Component } from 'react';
-import './AddTaskGroup.css';
+import './EditTaskGroup.css';
 import { endpoints } from "../../endpoints";
 import { Link } from "react-router-dom";
 
-export class AddTaskGroup extends Component {
+export class EditTaskGroup extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: '',
+            //value: '',
             errorMessage: '',
             textColor: '',
+            currentTaskGroupName: '',
+            taskGroupData: undefined,
+            taskGroupHeaderName: ''
         }
-        this.createTaskGroup = this.createTaskGroup.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.editTaskGroup = this.editTaskGroup.bind(this);
     }
-    async createTaskGroup(event){
+
+    getTaskGroupName = async (taskGroupId) => {
+        let splittedURL = window.location.pathname.split('/')
+        taskGroupId = splittedURL[splittedURL.length - 1]
+        await fetch(endpoints.getTaskGroupName(taskGroupId))
+            .then(async (res) => {
+                let taskGroupData = await res.json()
+                this.setState({ 'taskGroupData': taskGroupData })
+                this.setState({ 'currentTaskGroupName': taskGroupData.name })
+                this.setState({ 'taskGroupHeaderName': taskGroupData.name })
+            }
+            )
+    }
+
+    editTaskGroup(event){
+        console.log(this.state.currentTaskGroupName);
         event.preventDefault();
-        console.log(this.state.value);
-        var input = this.state.value;
+        var input = this.state.currentTaskGroupName;
 
         const errors = {
-            success: "Добавихте успешно нова група.",
+            success: "Променихте успешно името.",
             minLength: "Името е твърде кратко.",
             maxLength: "Името е твърде дълго.",
-            existingTaskGroup: "Групата вече съществува."
+            existingTaskGroup: "Името е като предишното."
         }
         const color = {
             error: "red",
@@ -39,77 +55,82 @@ export class AddTaskGroup extends Component {
             this.setState({ textColor: color.error });
         }
         else {
-            await fetch(endpoints.createTaskGroup(), {
-                method: 'POST',
-                headers: {
-                    'Content-type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: input,
-                    userId: "3b6f5e57-edde-4dac-84bd-fcf320be8dad"
-                })
+            let splittedURL = window.location.pathname.split('/')
+            let taskGroupId = splittedURL[splittedURL.length - 1]
+            this.state.taskGroupData.name = this.state.currentTaskGroupName
+            fetch(endpoints.editTaskGroup(taskGroupId), {
+                method: 'PATCH',
+                //body: JSON.stringify({ "Name": this.state.currentTaskGroupName })
             })
-                .then((response) => {
-                    if (!response.ok) {
+                .then((res) => {
+                    this.getTaskGroupName(taskGroupId)
+                    if (!res.ok) {
                         this.setState({ errorMessage: errors.existingTaskGroup });
                         this.setState({ textColor: color.error });
                     }
                     else {
                         this.setState({ errorMessage: errors.success });
                         this.setState({ textColor: color.success });
-                        this.props.onTaskGroupAdded(this.props.value);
                     }
                 })
+                //.then((response) => {
+                //    if (!response.ok) {
+                //        this.setState({ errorMessage: errors.existingTaskGroup });
+                //        this.setState({ textColor: color.error });
+                //    }
+                //    else {
+                //        this.setState({ errorMessage: errors.success });
+                //        this.setState({ textColor: color.success });
+                //    }
+                //})
                 .catch(error => {
                     console.error(error);
                 });
         }
     }
-    handleChange(event) {
-        this.setState({ value: event.target.value });
-    }
     componentDidMount() {
         this.render();
+        this.getTaskGroupName();
     }
     close() {
-        this.setState({ 'value': '' });
         this.setState({ errorMessage: '' });
         this.setState({ textColor: 'gray' })
+        window.location.pathname = '/taskGroups'
     }
     render() {
         return (
             <div className="container">
                 <div className="container" id="modal">
-                    <button type="button" id="createTaskGroup" data-bs-toggle="modal" data-bs-target="#addTaskGroupModal">
-                        Добави
+                    <button type="button" id="editTaskGroup" data-bs-toggle="modal" data-bs-target="#editTaskGroupModal">
+                        Редактирай
                     </button>
                 </div>
-                <div className="modal fade" id="addTaskGroupModal" role="dialog">
+                <div className="modal fade" id="editTaskGroupModal" role="dialog">
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header border-0">
                                 <button type="button" className="close" data-bs-dismiss="modal">&times;</button>
                                 <div className="title">
-                                    <h4 className="modal-title" id="title">Нова група</h4>
+                                    <h4 className="modal-title" id="title">Преименувай</h4>
                                     <hr id="line"></hr>
                                 </div>
-
                             </div>
                             <div className="modal-body">
                                 <div id="myForm">
-                                    <form onSubmit={this.createTaskGroup}>
+                                    <form onSubmit={this.editTaskGroup}>
                                         <label htmlFor="taskGroupNameField" id="label-text">Име:</label>
                                         <input type="text" name="taskGroupNameField" className="form-control" id="name"
-                                            onChange={(e) => this.setState({ 'value': e.target.value })}
+                                            value={this.state.currentTaskGroupName}
+                                            onChange={(e) => this.setState({ 'currentTaskGroupName': e.target.value })}
                                             style={{ borderBottomColor: this.state.textColor }}
                                         />
                                         <div className="modal-footer border-0">
                                             <div id="errorTaskGroup">
-                                                <p style={{ color: this.state.textColor}}>
+                                                <p style={{ color: this.state.textColor }}>
                                                     {this.state.errorMessage}</p>
                                             </div>
                                             <Link to='/taskGroups' id='close' onClick={this.close}>Назад</Link>
-                                            <button type="submit" id="submit" method="post" className="btn" name="addTaskGroup">Добави</button>
+                                            <button type="submit" id="submit" method="post" className="btn" name="editTaskGroup">Промени</button>
                                         </div>
                                     </form>
                                 </div>

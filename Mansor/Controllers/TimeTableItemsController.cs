@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using Mansor.Business.Services.Interfaces;
+    using Mansor.Models;
 
     [ApiController]
     public class TimeTableItemController : ControllerBase
@@ -28,16 +29,16 @@
             return Ok(records);
         }
 
-        //[HttpPost]
-        //[Route("api/create/timeTableDaysRecords/{timeTableDayId}")]
-        //public async Task<IActionResult> CreateTimeTableItems([FromRoute] int timeTableDayId, [FromBody] TimeTableItemRequestModel timeTableItemsRequestModel)
-        //{
-        //    var timeTableDay = await _timeTableDaysService.GetTimeTableDayById(timeTableDayId);
-        //    var timeTableItem = timeTableItemsRequestModel.TimeTableItems(timeTableDay);
+        [HttpPost]
+        [Route("api/create/subject/{timeTableDayId}")]
+        public async Task<IActionResult> CreateSubjects([FromRoute] int timeTableDayId, [FromBody] TimeTableItemRequestModel timeTableItemsRequestModel)
+        {
+            var timeTableDay = await _timeTableDaysService.GetDayById(timeTableDayId);
+            var timeTableItem = timeTableItemsRequestModel.ToCreateTimeTableItem(timeTableDay);
 
-        //    var result = await _timeTableItemsService.CreateTimeTableItem(timeTableItem);
+            var result = await _timeTableItemsService.CreateTimeTableItem(timeTableItem);
 
-        //    return Ok(result);
-        //}
+            return Ok(result);
+        }
     }
 }

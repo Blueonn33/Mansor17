@@ -52,13 +52,13 @@ namespace Mansor.Controllers
         }
 
         [HttpDelete]
-        [Route("api/delete/taskItem/{taskItemId}")]
+        [Route("api/delete/taskItem/{Id}")]
         public async Task<IActionResult> DeleteTaskItem([FromRoute] int id)
         {
             var targetItem = await _taskItemsService.GetTaskItemById(id);
             if (targetItem == null)
             {
-                return NotFound("Task is completed");
+                return NotFound("Task doesn't exist");
             }
             if (targetItem.IsCompleted)
             {
