@@ -57,13 +57,10 @@ ul {
 
 /* Style the header */
 .task-input {
-    /*background-color: #D4B170;*/
     padding: 30px 40px;
-    /*color: white;*/
     text-align: center;
     width: 1000px;
     margin-left: 10%;
-    /*margin-bottom: 20vh;*/
     display: block;
 }
 
@@ -76,7 +73,7 @@ ul {
     float: left;
     font-size: 16px;
     border-radius: 10px;
-    margin-top: 7%;
+    margin-top: -4.7%;
     background-color: #B3B3B3;
 }
 

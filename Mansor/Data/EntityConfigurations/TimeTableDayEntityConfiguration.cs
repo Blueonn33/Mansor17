@@ -16,6 +16,10 @@ namespace Mansor.Data.EntityConfigurations
             builder.HasOne(td => td.User)
                 .WithMany(u => u.TimeTableDays)
                 .HasForeignKey(u => u.UserId);
+
+            builder.HasMany(td => td.TimeTableItems)
+                 .WithOne(ti => ti.TimeTableDay)
+                 .HasForeignKey(ti => ti.TimeTableDayId);
         }
     }
 }

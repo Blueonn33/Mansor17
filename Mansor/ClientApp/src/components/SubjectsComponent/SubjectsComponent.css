@@ -1,0 +1,26 @@
+﻿.subjectsContainer{
+    height: max-content;
+    background-color: red;
+    width: max-content;
+}
+.subjectsContainer {
+    background-color: #424242 !important;
+    color: white;
+}
+
+.subjectsContainers {
+    font-size: 20px;
+    margin-right: 10px;
+    margin-left: 23px;
+    margin-top: 5px;
+}
+
+.createNewSubjectButtonWrapper {
+    margin-top: -2.8rem;
+    margin-bottom: 0.8125rem;
+    margin-left: 1rem;
+}
+
+.subjectsContainers {
+    padding-bottom: 20vh;
+}

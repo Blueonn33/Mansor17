@@ -70,6 +70,16 @@
     height: max-content;
 }
 
+.trash {
+    background-color: #424242;
+    border: none;
+    margin-top: -2px;
+}
+
+#trash{
+    color: #D9D9D9;
+}
+
 #offcanvas {
     background-color: #424242;
 }

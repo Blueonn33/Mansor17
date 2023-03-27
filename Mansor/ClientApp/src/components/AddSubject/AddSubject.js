@@ -1,6 +1,6 @@
 ﻿import React, { Component } from 'react';
 import { endpoints } from '../../endpoints';
-import './Addsubject.css';
+import './AddSubject.css';
 
 export class AddSubject extends Component {
     constructor(props) {
@@ -36,6 +36,8 @@ export class AddSubject extends Component {
             this.invalidInput();
         }
         else {
+            let splittedURL = window.location.pathname.split('/')
+            timeTableDayId = splittedURL[splittedURL.length - 1]
             await fetch(endpoints.createSubject(timeTableDayId), {
                 method: 'POST',
                 headers: {
@@ -44,7 +46,7 @@ export class AddSubject extends Component {
                 body: JSON.stringify({
                     value: input,
                     timeTableDayId: timeTableDayId,
-                    isCompleted: false
+                    isDeleted: false
                 })
             })
                 .then((response) => {
@@ -53,7 +55,7 @@ export class AddSubject extends Component {
 
                     }
                     else {
-                        this.props.onsubjectAdded(this.props.value);
+                        this.props.onSubjectAdded(this.props.value);
                     }
                 })
                 .catch(error => {
@@ -67,10 +69,10 @@ export class AddSubject extends Component {
             <div>
                 <div className="container">
                     <div className="container">
-                        <input type="text" id="input-item"
+                        <input type="text" id="input-subject"
                             onChange={(e) => this.setState({ 'value': e.target.value })}
                         />
-                        <span className="addBtn" onClick={this.createsubject}>Add</span>
+                        <button type="button" className="addSubject" onClick={this.createSubject}>Add</button>
                     </div>
                 </div>
                 <div id="snackbar">Еnter text in the input field</div>

@@ -10,7 +10,7 @@ export class Footer extends Component {
         return (
             <footer id='footer'>
                 <div className="row" id="dev">
-                    <h5 id="credits">Created by: Martin Marinov</h5>
+                    <h5 id="credits">Създаден от: Мартин Маринов</h5>
                 </div>
                 <div id="main-content" className="row">
                     <div>

@@ -46,7 +46,45 @@ namespace Mansor.Controllers
 
             await _taskGroupsService.AddTaskGroupAsync(createTaskGroup);
             return Ok(createTaskGroup);
+        }
 
+        [HttpDelete]
+        [Route("api/delete/taskGroup/{id}")]
+
+        public async Task<IActionResult> DeleteTaskGroup([FromRoute] int id)
+        {
+            var targetTaskGroup = await _taskGroupsService.GetTaskGroupByIdAsync(id);
+            if (targetTaskGroup == null)
+            {
+                return NotFound("TaskGroup doesn't exist");
+            }
+            await _taskGroupsService.DeleteAsync(targetTaskGroup);
+
+            return Ok(targetTaskGroup);
+        }
+        [HttpPatch]
+        [Route("api/edit/taskGroup/{id}")]
+        public async Task<IActionResult> EditTaskGroupName([FromRoute] int id, [FromBody] TaskGroup taskGroup)
+        {
+            var targetTaskGroup = await _taskGroupsService.GetTaskGroupByIdAsync(id);
+            if (targetTaskGroup == null)
+            {
+                return NotFound();
+            }
+
+            if (targetTaskGroup.Name == null || targetTaskGroup.Name == string.Empty)
+            {
+                return BadRequest();
+            }
+            if (targetTaskGroup.Name == taskGroup.Name)
+            {
+                return BadRequest();
+            }
+
+            targetTaskGroup.Name = taskGroup.Name;
+            await _taskGroupsService.UpdateTaskGroupAsync(targetTaskGroup);
+
+            return Ok(targetTaskGroup);
         }
     }
 }

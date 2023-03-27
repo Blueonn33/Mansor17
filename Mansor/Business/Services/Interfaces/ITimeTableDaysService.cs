@@ -9,6 +9,7 @@ namespace Mansor.Business.Services.Interfaces
 {
     public interface ITimeTableDaysService
     {
+        Task<TimeTableDay?> GetDayById(int id);
         Task<IEnumerable<TimeTableDay>> GetDaysAsync();
         Task<TimeTableDay?> GetDayByIdAsync(int id);
         Task<TimeTableDay?> GetDayByTaskIdAsync(Task<int?> id);

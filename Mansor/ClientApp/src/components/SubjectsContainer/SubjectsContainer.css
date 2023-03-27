@@ -1,16 +1,18 @@
-﻿.daysContainer {
+﻿.timeTableItemsContainer {
     font-weight: 400;
     font-size: 20px;
     line-height: 27.24px;
-    margin-left: 2rem;
+    /*margin-left: 2rem;*/
     margin-right: 2rem;
     margin-top: 1rem;
 }
 
-.daysContainer .dayNameWrapper {
+.timeTableItemsContainer .timeTableItemNameWrapper {
+    margin-top: 3%;
     /*margin-left: 1.125rem;*/
+    cursor: pointer;
     position: relative;
-    /*padding: 12px 8px 12px 40px;*/
+    padding: 3px;
     list-style-type: none;
     font-size: 18px;
     transition: 0.2s;
@@ -18,23 +20,24 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    color: white;
     margin-bottom: -30px;
     font-size: 20px;
     margin-right: 5px;
+    border: 3px solid #424242;
+    width: max-content;
     height: min-content;
-    width: 150px;
+    margin-top: 15px;
 }
-.daysContainer .dayNameWrapper .timeTableDay {
+
+.timeTableItemsContainer .timeTableItemNameWrapper:hover {
+    cursor: default;
+    background-color: #b3b3b3;
+}
+
+.timeTableItemsContainer .timeTableItemsNameWrapper .timeTableItem {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     margin-top: 0.3rem;
-}
-.showButtonText {
-    color: white;
-    text-decoration-line: none;
-}
-.showButtonText:hover {
-    color: white;
-    text-decoration-line: underline;
 }
 
