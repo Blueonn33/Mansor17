@@ -9,11 +9,32 @@
     }
 }
 
-<h1>Manage your account</h1>
+<head><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="bootstrap.css">
+</head>
+<style>
+	body {
+		background-color: #424242;
+        color: #b3b3b3;
+	}
+    button {
+		background-color: #424242;
+        color: white;
+	}
+	@@font-face {
+		font-family: 'Open Sans';
+		src: url("@Url.Content("~/css/OpenSans.woff")") format('woff');
+	}
+	.Font_OpenSans {
+		font-family: 'Open Sans'
+	}
+</style>
 
 <div>
-    <h2>Change your account settings</h2>
-    <hr />
+    <h2>Променете настройките на профила си</h2>
     <div class="row">
         <div class="col-md-3">
             <partial name="_ManageNav" />

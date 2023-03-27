@@ -1,6 +1,9 @@
 ﻿using Mansor.Business.Services.Interfaces;
+using Mansor.Data;
 using Mansor.Data.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace Mansor.Controllers
 {
@@ -8,17 +11,25 @@ namespace Mansor.Controllers
     public class TaskGroupsController : ControllerBase
     {
         private readonly ITaskGroupsService _taskGroupsService;
+        private readonly IUsersService _usersService;
+        private readonly UserManager<User> _userManager;
 
-        public TaskGroupsController(ITaskGroupsService taskGroupsService)
+        public TaskGroupsController(ITaskGroupsService taskGroupsService, IUsersService usersService, 
+            UserManager<User> userManager)
         {
             _taskGroupsService = taskGroupsService;
+            _usersService = usersService;
+            _userManager = userManager;
         }
         [HttpGet]
         [Route("api/taskGroups")]
         public async Task<IEnumerable<TaskGroup>> GetAllTaskGroups()
         {
+            var userId = _usersService.GetCurrentUserId().Result;
+            var taskGroups = await _taskGroupsService.GetTaskGroupsByUserId(userId);
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
-            return await _taskGroupsService.GetTaskGroupsAsync();
+            //return await _taskGroupsService.GetTaskGroupsAsync();
+            return taskGroups;
         }
 
         [HttpGet]
