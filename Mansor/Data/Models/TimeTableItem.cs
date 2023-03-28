@@ -9,7 +9,7 @@ namespace Mansor.Data.Models
             Value = Guid.NewGuid().ToString();
         }
 
-        public TimeTableItem(TimeTableDay timeTableDay, string value, bool deleted = false) : this()
+        public TimeTableItem(TimeTableDay? timeTableDay, string value, bool deleted = false) : this()
         {
             _timeTableDay = timeTableDay;
             Value = value ?? throw new ArgumentNullException(nameof(value));
@@ -17,12 +17,8 @@ namespace Mansor.Data.Models
         }
         public int Id { get; set; }
         public int TimeTableDayId { get; set; }
-        private TimeTableDay? _timeTableDay;
-        public TimeTableDay TimeTableDay
-        {
-            get => _timeTableDay ?? throw new InvalidOperationException("Uninitialized property: " + nameof(TimeTableDay));
-            set => _timeTableDay = value;
-        }
+        public TimeTableDay? _timeTableDay;
+        public TimeTableDay TimeTableDay;
         public string Value { get; set; }
         public bool IsDeleted { get; set; }
     }
