@@ -17,15 +17,17 @@ a {
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #b3b3b3;
+    border: none;
+    text-align: center;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #b3b3b3;
+    border: none;
+    text-align: center;
 }
 
 .btn-link.nav-link:focus {
