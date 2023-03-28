@@ -69,5 +69,12 @@
         {
             return _userRepository.GetUserByEmail(email);
         }
+
+        public async Task<User?> GetUserDataByUserId(string userId)
+        {
+            var userInfo = await _userRepository.FindAsync(userId);
+
+            return userInfo == null ? null : userInfo;
+        }
     }
 }

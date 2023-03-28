@@ -40,5 +40,20 @@
 
             return Ok(result);
         }
+
+        [HttpDelete]
+        [Route("api/delete/subject/{id}")]
+
+        public async Task<IActionResult> DeleteSubject([FromRoute] int id)
+        {
+            var targetSubject = await _timeTableItemsService.GetSubjectByIdAsync(id);
+            if (targetSubject == null)
+            {
+                return NotFound("Subject doesn't exist");
+            }
+            await _timeTableItemsService.DeleteAsync(targetSubject);
+
+            return Ok(targetSubject);
+        }
     }
 }

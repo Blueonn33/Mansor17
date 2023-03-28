@@ -31,5 +31,10 @@
         {
             return await _timeTableItemsRepository.GetAllTimeTablesItems(userId);
         }
+        public async Task<TimeTableItem?> GetSubjectByIdAsync(int id) => await _timeTableItemsRepository.FindAsync(id);
+        public Task DeleteAsync(TimeTableItem timeTableItem)
+        {
+            return _timeTableItemsRepository.DeleteAsync(timeTableItem);
+        }
     }
 }

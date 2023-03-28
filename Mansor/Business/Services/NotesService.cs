@@ -44,5 +44,9 @@ namespace Mansor.Business.Services
 
         public async Task<Note?> GetNoteByIdAsync(int id) => await _notesRepository.FindAsync(id);
 
+        public Task DeleteAsync(Note note)
+        {
+            return _notesRepository.DeleteAsync(note);
+        }
     }
 }
