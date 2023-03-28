@@ -41,3 +41,21 @@
     margin-top: 0.3rem;
 }
 
+.deleteSubjectButtonWrapper {
+    margin-left: auto;
+    margin-top: 1.2rem;
+    background-color: #424242;
+}
+
+.deleteSubjectButton {
+    background-color: #424242;
+    border: none;
+    color: white;
+    text-decoration-line: none;
+}
+
+.deleteSubjectButton:hover {
+    color: white;
+    text-decoration-line: underline;
+}
+

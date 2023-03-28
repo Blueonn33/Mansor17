@@ -1,12 +1,12 @@
 ﻿.taskGroupsContainer {
-    top: 8rem;
+    top: 2rem;
     width: 1080px;
     height: max-content;
     background-color: #424242 !important;
     color: white;
 }
 .taskGroupsContainers {
-    margin-top: 100px;
+    margin-top: 10px;
     font-size: 20px;
     margin-right: 10px;
     text-align: left;
@@ -54,21 +54,24 @@
 }
 
 .menu-bar{
-    margin-left: 6%;
+    margin-top: 1%;
+    margin-left: 2%;
 }
 
 #bar {
     width: 100px;
     height: 60px;
-    margin-left: 13%;
+    color: black;
 }
-
-.bar {
+#bar:hover{
+    cursor: pointer;
+}
+/*.bar {
     background-color: #424242;
     border: none;
     width: max-content;
     height: max-content;
-}
+}*/
 
 .trash {
     background-color: #424242;

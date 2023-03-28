@@ -36,6 +36,20 @@
             return await _usersService.GetUserAsync();
         }
 
+        [HttpGet]
+        [Route("api/user/getName/{userId}")]
+        public async Task<IActionResult> GetUserDataByUserId([FromRoute] string? userId)
+        {
+            if (userId == null)
+            {
+                return BadRequest("UserId must be not null!");
+            }
+
+            var userInfo = await _usersService.GetUserDataByUserId(userId);
+
+            return userInfo == null ? BadRequest("User not found!") : Ok(userInfo);
+        }
+
         [HttpDelete]
         [Route("api/delete/{id}")]
         public async Task<IActionResult> DeleteUser([FromRoute] string id)
@@ -43,7 +57,7 @@
             var targetUser = await _usersService.GetUserByIdAsync(id);
             if (targetUser == null)
             {
-                return NotFound("User doesn't exists");
+                return NotFound("User doesn't exist");
             }
             if (targetUser.IsDeleted)
             {

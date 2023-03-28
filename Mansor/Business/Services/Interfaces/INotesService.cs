@@ -11,5 +11,6 @@ namespace Mansor.Business.Services.Interfaces
         Task<Note?> GetNoteByTitleAsync(string title);
         Task AddNoteAsync(Note note);
         Task<Note?> GetNoteByIdAsync(int id);
+        Task DeleteAsync(Note note);
     }
 }

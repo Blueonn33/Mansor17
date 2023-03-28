@@ -12,5 +12,7 @@
         Task<IEnumerable<TimeTableItem>> GetAllTimeTableItems(int timeTableDayId);
         Task<IEnumerable<string>> GetAllTimeTablesItemsAsync(string userId);
         Task<TimeTableItem> CreateTimeTableItem(TimeTableItem timeTableItem);
+        Task<TimeTableItem?> GetSubjectByIdAsync(int id);
+        Task DeleteAsync(TimeTableItem timeTableItem);
     }
 }

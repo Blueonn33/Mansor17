@@ -52,9 +52,9 @@ export default class TaskGroupsComponent extends Component {
                             <h4 className='taskGroupsListHeader'>Групи</h4>
                         </div>
                         <div className="menu-bar">
-                            <button className="bar" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas">
-                                <FaBars id="bar" />
-                            </button>
+                            {/*<button className="bar" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas">*/}
+                            <FaBars id="bar" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" />
+                            {/*</button>*/}
                         </div>
                         <div className='createNewTaskGroupButtonWrapper'>
                             <AddTaskGroup onTaskGroupAdded={this.loadTaskGroups} />

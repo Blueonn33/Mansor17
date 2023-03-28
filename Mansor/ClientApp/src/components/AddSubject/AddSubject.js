@@ -72,10 +72,10 @@ export class AddSubject extends Component {
                         <input type="text" id="input-subject"
                             onChange={(e) => this.setState({ 'value': e.target.value })}
                         />
-                        <button type="button" className="addSubject" onClick={this.createSubject}>Add</button>
+                        <button type="button" className="addSubject" onClick={this.createSubject}>Добави</button>
                     </div>
                 </div>
-                <div id="snackbar">Еnter text in the input field</div>
+                <div id="snackbar">Въведете текст в полето</div>
             </div>
         );
     }

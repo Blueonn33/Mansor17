@@ -47,7 +47,21 @@ namespace Mansor.Controllers
 
             await _notesService.AddNoteAsync(createNote);
             return Ok(createNote);
+        }
 
+        [HttpDelete]
+        [Route("api/delete/note/{id}")]
+
+        public async Task<IActionResult> DeleteNote([FromRoute] int id)
+        {
+            var targetNote = await _notesService.GetNoteByIdAsync(id);
+            if (targetNote == null)
+            {
+                return NotFound("Note doesn't exist");
+            }
+            await _notesService.DeleteAsync(targetNote);
+
+            return Ok(targetNote);
         }
     }
 }
