@@ -11,7 +11,7 @@ export default class TimeTablesContainer extends Component {
                     <span className='dayName pageText'> {this.props.timeTableDayData.name} </span>
                 </div>
                 <div className='useDayButtonWrapper ml-auto'>
-                    <a href={`https://localhost:44414/subjects/${this.props.timeTableDayData.id}`} className='showButtonText'>Програма</a>
+                    <a href={`https://localhost:44414/subjects/${this.props.timeTableDayData.id}`} className='showButtonText'>Добави</a>
                 </div>
             </div>
         )

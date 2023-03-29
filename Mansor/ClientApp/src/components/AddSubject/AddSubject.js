@@ -68,6 +68,9 @@ export class AddSubject extends Component {
         return (
             <div>
                 <div className="container">
+                    <button className='subjectsBackBtn'>
+                        <a href={`https://localhost:44414/timeTable`} className='subjectsBackBtnText'>Назад</a>
+                    </button> 
                     <div className="container">
                         <input type="text" id="input-subject"
                             onChange={(e) => this.setState({ 'value': e.target.value })}
