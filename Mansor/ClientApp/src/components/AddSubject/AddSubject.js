@@ -6,16 +6,12 @@ export class AddSubject extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: '',
+            subject: '',
+            duration: '',
             timeTableDayId: '',
             isDeleted: ''
         }
         this.createSubject = this.createSubject.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-    }
-
-    handleChange(event) {
-        this.setState({ value: event.target.value });
     }
 
     invalidInput() {
@@ -29,10 +25,15 @@ export class AddSubject extends Component {
     }
 
     async createSubject(timeTableDayId) {
-        console.log(this.state.value);
-        var input = this.state.value;
+        console.log(this.state.duration);
+        console.log(this.state.subject);
+        var subjectInput = this.state.subject;
+        var durationInput = this.state.duration;
 
-        if (input === '') {
+        if (subjectInput === '') {
+            this.invalidInput();
+        }
+        else if (durationInput === '') {
             this.invalidInput();
         }
         else {
@@ -44,7 +45,8 @@ export class AddSubject extends Component {
                     'Content-type': 'application/json',
                 },
                 body: JSON.stringify({
-                    value: input,
+                    value: subjectInput,
+                    duration: durationInput,
                     timeTableDayId: timeTableDayId,
                     isDeleted: false
                 })
@@ -52,7 +54,6 @@ export class AddSubject extends Component {
                 .then((response) => {
                     if (!response.ok) {
                         console.log("invalid input")
-
                     }
                     else {
                         this.props.onSubjectAdded(this.props.value);
@@ -68,9 +69,15 @@ export class AddSubject extends Component {
         return (
             <div>
                 <div className="container">
+                    <button className='subjectsBackBtn'>
+                        <a href={`https://localhost:44414/timeTable`} className='subjectsBackBtnText'>Назад</a>
+                    </button> 
                     <div className="container">
                         <input type="text" id="input-subject"
-                            onChange={(e) => this.setState({ 'value': e.target.value })}
+                            onChange={(e) => this.setState({ 'subject': e.target.value })}
+                        />
+                        <input type="text" id="input-subject"
+                            onChange={(e) => this.setState({ 'duration': e.target.value })}
                         />
                         <button type="button" className="addSubject" onClick={this.createSubject}>Добави</button>
                     </div>

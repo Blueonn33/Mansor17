@@ -5,6 +5,7 @@ namespace Mansor.Models
     public class TimeTableItemRequestModel
     {
         public string Value { get; set; }
+        public string Duration { get; set; }
         public int TimeTableDayId { get; set; }
         public bool IsDeleted { get; set; }
 
@@ -13,6 +14,7 @@ namespace Mansor.Models
             return new TimeTableItem()
             {
                 Value = Value,
+                Duration = Duration,
                 IsDeleted = IsDeleted,
                 TimeTableDayId = timeTableDay.Id,
                 TimeTableDay = timeTableDay

@@ -17,7 +17,6 @@ export class NotesComponent extends Component {
             textColorContent: '',
         }
         this.createNote = this.createNote.bind(this);
-        this.handleChange = this.handleChange.bind(this);
     }
     createdNote() {
         var msg = document.getElementById("snackbar");
@@ -86,9 +85,6 @@ export class NotesComponent extends Component {
                     console.error(error);
                 });
         }
-    }
-    handleChange(event) {
-        this.setState({ value: event.target.value });
     }
     componentDidMount() {
         this.render();
