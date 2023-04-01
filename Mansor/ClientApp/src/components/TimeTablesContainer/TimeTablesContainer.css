@@ -1,6 +1,6 @@
 ﻿.daysContainer {
     font-weight: 400;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 27.24px;
     margin-left: 2rem;
     margin-right: 2rem;
@@ -29,7 +29,12 @@
     padding-bottom: 0.5rem;
     margin-top: 0.3rem;
 }
+.dayName{
+    font-size: 23px;
+    font-weight: 500;
+}
 .showButtonText {
+    margin-left: 30px;
     color: white;
     text-decoration-line: none;
 }

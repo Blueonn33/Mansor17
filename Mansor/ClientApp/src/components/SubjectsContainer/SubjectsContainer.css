@@ -5,34 +5,35 @@
     /*margin-left: 2rem;*/
     margin-right: 2rem;
     margin-top: 1rem;
+    background-color: #737373;
 }
 
-.timeTableItemsContainer .timeTableItemNameWrapper {
-    margin-top: 3%;
-    /*margin-left: 1.125rem;*/
-    cursor: pointer;
-    position: relative;
-    padding: 3px;
-    list-style-type: none;
-    font-size: 18px;
-    transition: 0.2s;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    color: white;
-    margin-bottom: -30px;
-    font-size: 20px;
-    margin-right: 5px;
-    border: 3px solid #424242;
-    width: max-content;
-    height: min-content;
-    margin-top: 15px;
-}
+    .timeTableItemsContainer .timeTableItemNameWrapper {
+        cursor: pointer;
+        position: relative;
+        padding: 3px;
+        list-style-type: none;
+        font-size: 18px;
+        transition: 0.2s;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        color: black;
+        margin-bottom: -30px;
+        font-size: 20px;
+        margin-right: 5px;
+        border: 3px solid #424242;
+        width: 800px;
+        height: max-content;
+        background-color: #b3b3b3;
+        /*margin-top: 15px;*/
+    }
 
 .timeTableItemsContainer .timeTableItemNameWrapper:hover {
     cursor: default;
-    background-color: #b3b3b3;
+    background-color: #737373;
+    color: white;
 }
 
 .timeTableItemsContainer .timeTableItemsNameWrapper .timeTableItem {
@@ -41,13 +42,26 @@
     margin-top: 0.3rem;
 }
 
+.subjectName {
+/*    border-right: 6px solid white;
+    padding-right: 530px;*/
+}
+
+.durationName {
+    border-left: 6px solid white;
+    padding-left: 20px;
+    /*margin-left: 40%;*/
+    float: right;
+}
+
 .deleteSubjectButtonWrapper {
     margin-left: auto;
-    margin-top: 1.2rem;
+    margin-top: 1.5rem;
     background-color: #424242;
 }
 
 .deleteSubjectButton {
+    font-size: 20px;
     background-color: #424242;
     border: none;
     color: white;

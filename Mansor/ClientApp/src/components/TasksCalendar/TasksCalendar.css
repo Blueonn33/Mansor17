@@ -1,4 +1,9 @@
-﻿#container {
+﻿.menu-bar-calendar{
+    margin-top: -2.5%;
+    margin-left: 5%;
+}
+
+#container {
     display: flex;
     margin-top: 5%;
     margin-bottom: 20vh;
@@ -7,7 +12,7 @@
 
 .dx-calendar {
     margin-top: -32.7%;
-    margin-right: -60%;
+    margin-right: -25%;
     width: 450px;
 }
 
@@ -62,7 +67,7 @@
     color: white;
     margin-right: -31%;
     margin-top: -4%;
-    margin-left: 20%;
+    margin-left: 10%;
 }
 
 .options {
