@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Mansor.Business.Services.Interfaces;
-    using Mansor.Data.Models;
     using Mansor.Data.Repositories.Interfaces;
     using System.Security.Claims;
     using Microsoft.AspNetCore.Http;

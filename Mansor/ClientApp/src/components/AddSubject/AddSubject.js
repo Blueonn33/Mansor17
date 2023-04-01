@@ -72,11 +72,15 @@ export class AddSubject extends Component {
                     <button className='subjectsBackBtn'>
                         <a href={`https://localhost:44414/timeTable`} className='subjectsBackBtnText'>Назад</a>
                     </button> 
+                    <div className='subjectsText'>
+                        <span className='enterSubject'>Предмет</span>
+                        <span className='enterDuration'>Продължителност</span>
+                    </div>
                     <div className="container">
                         <input type="text" id="input-subject"
                             onChange={(e) => this.setState({ 'subject': e.target.value })}
                         />
-                        <input type="text" id="input-subject"
+                        <input type="text" id="input-subject" placeholder="8:00 - 8:45"
                             onChange={(e) => this.setState({ 'duration': e.target.value })}
                         />
                         <button type="button" className="addSubject" onClick={this.createSubject}>Добави</button>

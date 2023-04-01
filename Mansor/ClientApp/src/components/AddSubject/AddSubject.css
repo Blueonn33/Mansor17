@@ -6,6 +6,22 @@
     margin-bottom: 20vh;
 }
 
+.subjectsText{
+    margin-top: 5%;
+}
+
+.enterSubject{
+    margin-left: 2%;
+    margin-right: 32%;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.enterDuration {
+    font-weight: 500;
+    font-size: 25px;
+}
+
 #input-subject {
     margin: 0;
     border: none;
@@ -15,7 +31,7 @@
     float: left;
     font-size: 16px;
     border-radius: 10px;
-    margin-top: 10%;
+    margin-top: 2%;
     background-color: #B3B3B3;
     margin-right: 5px;
 }
@@ -29,7 +45,7 @@
     transition: 0.3s;
     border-radius: 0;
     border-radius: 10px;
-    margin-top: 9.8%;
+    margin-top: 2%;
     background-color: #B3B3B3;
     color: white;
     border: none;

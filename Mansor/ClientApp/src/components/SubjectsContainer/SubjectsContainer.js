@@ -23,8 +23,8 @@ export default class SubjectsContainer extends Component {
         return (
             <div className='timeTableItemsContainer d-flex' key={this.props.timeTableItemData.id}>
                 <div className='timeTableItemNameWrapper'>
-                    <span className='timeTableItemName pageText'> {this.props.timeTableItemData.value} </span>
-                    <span className='timeTableItemName pageText'> {this.props.timeTableItemData.duration} </span>
+                    <span className='subjectName pageText'> {this.props.timeTableItemData.value} </span>
+                    <span className='durationName pageText'> {this.props.timeTableItemData.duration} </span>
                 </div>
                 <div className='deleteSubjectButtonWrapper ml-auto'>
                     <button className='deleteSubjectButton' onClick={() => this.deleteSubject(this.props.timeTableItemData.id)}>

@@ -27,6 +27,7 @@
     border: 3px solid #424242;
     width: 1080px;
     height: min-content;
+    /*margin-top: -3%;*/
 }
 .noteContentWrapper {
     width: 1000px;

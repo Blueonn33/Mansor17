@@ -5,17 +5,17 @@ import DateBox from 'devextreme-react/date-box';
 import Calendar from 'devextreme-react/calendar';
 import CustomCell, { isWeekend } from './CustomCell.js';
 import './TasksCalendar.css';
+import { FaBars, FaListAlt, FaRegStickyNote, FaTable } from "react-icons/fa";
 
 const zoomLevels = ['month', 'year', 'decade', 'century'];
-const weekNumberRules = ['auto', 'firstDay', 'firstFourDays', 'fullWeek'];
 const weekDays = [
-    { id: 0, text: 'Sunday' },
-    { id: 1, text: 'Monday' },
-    { id: 2, text: 'Tuesday' },
-    { id: 3, text: 'Wednesday' },
-    { id: 4, text: 'Thursday' },
-    { id: 5, text: 'Friday' },
-    { id: 6, text: 'Saturday' },
+    { id: 0, text: 'Неделя' },
+    { id: 1, text: 'Понеделник' },
+    { id: 2, text: 'Вторник' },
+    { id: 3, text: 'Сряда' },
+    { id: 4, text: 'Четвъртък' },
+    { id: 5, text: 'Петък' },
+    { id: 6, text: 'Събота' },
 ];
 
 export function TasksCalendar() {
@@ -23,7 +23,6 @@ export function TasksCalendar() {
     const [maxDateValue, setMaxDateValue] = React.useState(null);
     const [weekendDisabled, setWeekendDisabled] = React.useState(null);
     const [firstDay, setFirstDay] = React.useState(0);
-    const [weekNumberRule, setWeekNumberRule] = React.useState('auto');
     const [showWeekNumbers, setShowWeekNumbers] = React.useState(false);
     const [currentValue, setCurrentValue] = React.useState(new Date());
     const [useCellTemplate, setUseCellTemplate] = React.useState(null);
@@ -62,10 +61,6 @@ export function TasksCalendar() {
         setFirstDay(value);
     }, [setFirstDay]);
 
-    const onWeekNumberRuleChange = React.useCallback(({ value }) => {
-        setWeekNumberRule(value);
-    }, [setWeekNumberRule]);
-
     const onShowWeekNumbersChange = React.useCallback(({ value }) => {
         setShowWeekNumbers(value);
     }, [setShowWeekNumbers]);
@@ -84,6 +79,37 @@ export function TasksCalendar() {
 
     return (
         <div id="container">
+            <div className="offcanvas offcanvas-start" id="offcanvas">
+                <div className="offcanvas-header">
+                    <h3 className="offcanvas-title text-white">Мартин Маринов</h3>
+                    <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+                </div>
+                <hr id="line"></hr>
+                <div className="offcanvas-body text-white">
+                    <FaListAlt className="groupsIcon" />
+                    <button className='groupsBtn'>
+                        <a href={`https://localhost:44414/taskGroups`} className='groupsBtnText'>Групи</a>
+                    </button>
+                    <hr id="line"></hr>
+                </div>
+                <div className="offcanvas-body text-white">
+                    <FaRegStickyNote className="notesIcon" />
+                    <button className='notesBtn'>
+                        <a href={`https://localhost:44414/notes`} className='notesBtnText'>Бележки</a>
+                    </button>
+                    <hr id="line"></hr>
+                </div>
+                <div className="offcanvas-body text-white">
+                    <FaTable className='timeTableIcon' />
+                    <button className='timeTableBtn'>
+                        <a href={`https://localhost:44414/timeTable`} className='timeTableBtnText'>Програма</a>
+                    </button>
+                    <hr id="line"></hr>
+                </div>
+            </div>
+            <div className="menu-bar-calendar">
+                <FaBars id="bar" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" />
+            </div>
             <div className="calendar-container">
                 <Calendar
                     value={currentValue}
@@ -93,7 +119,6 @@ export function TasksCalendar() {
                     max={maxDateValue}
                     disabledDates={weekendDisabled ? isDateDisabled : null}
                     firstDayOfWeek={firstDay}
-                    weekNumberRule={weekNumberRule}
                     showWeekNumbers={showWeekNumbers}
                     disabled={disabled}
                     zoomLevel={zoomLevel}
@@ -101,51 +126,51 @@ export function TasksCalendar() {
                 />
             </div>
             <div className="optionsList">
-                <div className="caption">Options</div>
+                <div className="caption">Настройки</div>
                 <div className="options">
                     <CheckBox
                         defaultValue={false}
-                        text="Set minimum date"
+                        text="Минимална дата"
                         onValueChanged={onMinDateChange}
                     />
                 </div>
                 <div className="options">
                     <CheckBox
                         defaultValue={false}
-                        text="Set maximum date"
+                        text="Максимална дата"
                         onValueChanged={onMaxDateChange}
                     />
                 </div>
                 <div className="options">
                     <CheckBox
                         defaultValue={false}
-                        text="Disable weekends"
+                        text="Без уикенд"
                         onValueChanged={onDisableWeekendChange}
                     />
                 </div>
                 <div className="options">
                     <CheckBox
                         defaultValue={false}
-                        text="Show week numbers"
+                        text="Показване на седмицата"
                         onValueChanged={onShowWeekNumbersChange}
                     />
                 </div>
                 <div className="options">
                     <CheckBox
                         defaultValue={false}
-                        text="Use custom cell template"
+                        text="Специално оформление"
                         onValueChanged={onUseCellTemplateChange}
                     />
                 </div>
                 <div className="options">
                     <CheckBox
                         value={disabled}
-                        text="Disable the calendar"
+                        text="Без календар"
                         onValueChanged={onDisabledChange}
                     />
                 </div>
                 <div className="options">
-                    <span>First day of week</span>
+                    <span>Първи ден за седмицата</span>
                     <SelectBox
                         dataSource={weekDays}
                         displayExpr="text"
@@ -155,15 +180,7 @@ export function TasksCalendar() {
                     />
                 </div>
                 <div className="options">
-                    <span>Week number rule</span>
-                    <SelectBox
-                        dataSource={weekNumberRules}
-                        value={weekNumberRule}
-                        onValueChanged={onWeekNumberRuleChange}
-                    />
-                </div>
-                <div className="options">
-                    <span>Zoom level</span>
+                    <span>Първоначален изглед</span>
                     <SelectBox
                         dataSource={zoomLevels}
                         value={zoomLevel}
@@ -171,7 +188,7 @@ export function TasksCalendar() {
                     />
                 </div>
                 <div className="options">
-                    <span>Selected date</span>
+                    <span>Избиране на дата</span>
                     <DateBox
                         id="selected-date"
                         value={currentValue}
