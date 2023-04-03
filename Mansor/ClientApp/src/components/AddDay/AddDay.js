@@ -50,6 +50,7 @@ export class AddDay extends Component {
                     }
                     else {
                         this.props.onDayAdded(this.props.value);
+                        this.state.value = '';
                     }
                 })
                 .catch(error => {
@@ -64,6 +65,7 @@ export class AddDay extends Component {
                 <div className="container">
                     <div className="container">
                         <input type="text" id="input-day"
+                            value={this.state.value}
                             onChange={(e) => this.setState({ 'value': e.target.value })}
                         />
                         <span className="addNoteBtn" onClick={this.createDay}>Добави</span>

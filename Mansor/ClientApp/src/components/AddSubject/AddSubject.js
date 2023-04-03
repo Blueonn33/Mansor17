@@ -57,6 +57,8 @@ export class AddSubject extends Component {
                     }
                     else {
                         this.props.onSubjectAdded(this.props.value);
+                        this.state.subject = '';
+                        this.state.duration = '';
                     }
                 })
                 .catch(error => {
@@ -78,9 +80,11 @@ export class AddSubject extends Component {
                     </div>
                     <div className="container">
                         <input type="text" id="input-subject"
+                            value={this.state.subject}
                             onChange={(e) => this.setState({ 'subject': e.target.value })}
                         />
                         <input type="text" id="input-subject" placeholder="8:00 - 8:45"
+                            value={this.state.duration}
                             onChange={(e) => this.setState({ 'duration': e.target.value })}
                         />
                         <button type="button" className="addSubject" onClick={this.createSubject}>Добави</button>

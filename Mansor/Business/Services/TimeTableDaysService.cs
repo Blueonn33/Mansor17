@@ -28,5 +28,8 @@ public class TimeTableDaysService : ITimeTableDaysService
     }
 
     public async Task<TimeTableDay?> GetDayByTaskIdAsync(Task<int?> id) => await _timeTableDaysRepository.FindAsync(id);
-
+    public Task DeleteAsync(TimeTableDay timeTableDay)
+    {
+        return _timeTableDaysRepository.DeleteAsync(timeTableDay);
+    }
 }

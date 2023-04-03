@@ -16,6 +16,7 @@ namespace Mansor.Business.Services.Interfaces
 
         Task AddDayAsync(TimeTableDay TimeTableDay);
         Task<TimeTableDay?> GetDayByNameAsync(string name);
+        Task DeleteAsync(TimeTableDay TimeTableDay);
         //Task<TimeTableDay?> GetAllDaysByUserId(string userId);
     }
 }
