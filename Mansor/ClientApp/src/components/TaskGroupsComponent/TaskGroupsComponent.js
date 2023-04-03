@@ -4,6 +4,7 @@ import { AddTaskGroup } from '../AddTaskGroup/AddTaskGroup';
 import '../TaskGroupsComponent/TaskGroupsComponent.css';
 import TaskGroupsContainer from '../TaskGroupsContainer/TaskGroupsContainer';
 import { FaBars, FaCalendarDay, FaRegStickyNote, FaTable } from "react-icons/fa";
+import authService from '../api-authorization/AuthorizeService';
 
 export default class TaskGroupsComponent extends Component {
 
@@ -12,48 +13,30 @@ export default class TaskGroupsComponent extends Component {
         this.state = {
             taskGroups: [],
             users: null,
-            token: localStorage.getItem('token')
+            userId: ''
         }
         this.loadTaskGroups = this.loadTaskGroups.bind(this);
     }
     async componentDidMount() {
         this.loadTaskGroups();
-        this.getUsers();
-        //if (this.state.token) {
-        //    fetch(endpoints.getUser(), {
-        //        headers: {
-        //            'Authorization': `Bearer ${this.state.token}`
-        //        }
-        //    })
-        //        .then(response => response.json())
-        //        .then(data => {
-        //            this.setState({ user: data });
-        //        })
-        //        .catch(error => console.log(error));
-        //}
+        const user = await authService.getUser();
+        this.state.userId = user.id;
     }
     async loadTaskGroups() {
         let url = endpoints.loadTaskGroups();
+        console.log(this.state.userId);
         fetch(url)
             .then((res) => res.json())
             .then((res) => this.setState({ taskGroups: res }))
             .catch(error => console.error(error));
     }
-    async getUsers() {
-        let url = endpoints.getUsers();
-        fetch(url)
-            .then((res) => res.json())
-            .then((res) => this.setState({ users: res }))
-            .catch(error => console.error(error));
-    }
 
     render() {
-        //const { users } = this.state;
         return (
             <div className='taskGroupsListWrapper d-flex justify-content-center align-items-center'>
                 <div className="offcanvas offcanvas-start" id="offcanvas">
                     <div className="offcanvas-header">
-                        <h3 className="offcanvas-title text-white">Мартин Маринов</h3>
+                        <h3 className="offcanvas-title text-white">{this.state.userId}</h3>
                         <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
                     </div>
                     <hr id="line"></hr>

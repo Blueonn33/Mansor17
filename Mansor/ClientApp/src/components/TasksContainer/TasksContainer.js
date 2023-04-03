@@ -20,7 +20,6 @@ export default class TasksContainer extends Component {
         window.location.reload();
     }
 
-
     render() {
         return (
             <div className='taskItemsContainer d-flex' key={this.props.taskItemData.id}>

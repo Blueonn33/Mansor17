@@ -37,9 +37,18 @@
     margin-left: 30px;
     color: white;
     text-decoration-line: none;
+    font-weight: 500;
 }
 .showButtonText:hover {
     color: white;
     text-decoration-line: underline;
 }
-
+.deleteDay{
+    color: black;
+    background-color: #424242;
+    border: none;
+    margin-left: 30px;
+}
+.deleteDay:hover {
+    text-decoration-line: underline;
+}

@@ -62,5 +62,20 @@ namespace Mansor.Controllers
             await _timeTableDaysService.AddDayAsync(createDay);
             return Ok(createDay);
         }
+
+        [HttpDelete]
+        [Route("api/delete/timeTableDay/{id}")]
+
+        public async Task<IActionResult> DeleteDay([FromRoute] int id)
+        {
+            var targetTimeTableDay = await _timeTableDaysService.GetDayByIdAsync(id);
+            if (targetTimeTableDay == null)
+            {
+                return NotFound("Day doesn't exist");
+            }
+            await _timeTableDaysService.DeleteAsync(targetTimeTableDay);
+
+            return Ok(targetTimeTableDay);
+        }
     }
 }
