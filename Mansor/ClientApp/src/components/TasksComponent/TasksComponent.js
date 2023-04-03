@@ -11,6 +11,7 @@ export default class TasksComponent extends Component {
         super(props)
         this.state = {
             tasks: [],
+            taskGroupId: '',
             currentTaskGroupName: '',
             taskGroupData: undefined,
             taskGroupHeaderName: '',
@@ -27,6 +28,7 @@ export default class TasksComponent extends Component {
     getTaskGroupName = async (taskGroupId) => {
         let splittedURL = window.location.pathname.split('/')
         taskGroupId = splittedURL[splittedURL.length - 1]
+        this.state.taskGroupId = taskGroupId
         await fetch(endpoints.getTaskGroupName(taskGroupId))
             .then(async (res) => {
                 let taskGroupData = await res.json()
@@ -78,13 +80,13 @@ export default class TasksComponent extends Component {
                     <div className='taskItemsContent'>
                         <div className='deleteTaskGroupButtonWrapper ml-auto'>
                             <button className='deleteButton' onClick={this.deleteTaskGroup}>Изтрий</button>
-                             <button className='editButton'>Редактирай</button>
-                            {/*<EditTaskGroup/>*/}
+                            <button className='editButton'>
+                                <a href={`https://localhost:44414/editTaskGroup/${this.state.taskGroupId}`} id="edit-text">Редактирай</a>
+                            </button>
                         </div>
                         <div className='taskItemsListHeaderWrapper d-flex'>
                             <h4 className='taskItemsListHeader'>{this.state.taskGroupHeaderName}</h4>
                         </div>
-                        
                         <div className='createNewTaskItemButtonWrapper'>
                             <AddTaskItem onTaskItemAdded={this.loadTaskItems} />
                         </div>

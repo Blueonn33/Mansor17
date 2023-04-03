@@ -7,6 +7,13 @@
 }
 
 <partial name="_StatusMessage" for="StatusMessage" />
+
+<head>
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="bootstrap.css">
+<link rel="shortcut icon" href="%PUBLIC_URL%/favicon-mansor.ico">
+</head>
+
 <h3>@ViewData["Title"]</h3>
 @{
     var consentFeature = HttpContext.Features.Get<ITrackingConsentFeature>();

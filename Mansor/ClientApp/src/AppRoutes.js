@@ -10,6 +10,7 @@ import { NotesComponent } from "./components/NotesComponent/NotesComponent";
 import { TasksCalendar } from "./components/TasksCalendar/TasksCalendar";
 import TimeTablesComponent from "./components/TimeTablesComponent/TimeTablesComponent";
 import SubjectsComponent from './components/SubjectsComponent/SubjectsComponent';
+import { EditTaskGroupName } from './components/EditTaskGroupName/EditTaskGroupName';
 
 const AppRoutes = [
     {
@@ -19,6 +20,10 @@ const AppRoutes = [
     {
         path: '/taskGroups',
         element: <TaskGroupsComponent />
+    },
+    {
+        path: '/editTaskGroup/:id',
+        element: <EditTaskGroupName />
     },
     {
         path: '/taskItems/:id',
