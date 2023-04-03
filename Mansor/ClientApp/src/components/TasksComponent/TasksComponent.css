@@ -1,7 +1,6 @@
 ﻿.taskItemsContainer {
     top: 8rem;
     width: 1060px;
-    height: max-content;
     background-color: #424242 !important;
     color: white;
     word-break: break-all;
@@ -18,12 +17,12 @@
     background-color: #424242;
     color: white;
     margin-top: 140px;
-    height: max-content;
     margin-left: 4%;
+    height: max-content;
 }
 
 .taskItemsListHeader {
-    margin-top: -10.3rem;
+    margin-top: -12.3rem;
     font-weight: 700;
     font-size: 50px;
 }
@@ -88,4 +87,11 @@
 .editButton:hover {
     background-color: #b3b3b3;
     border: 3px white solid;
+}
+#edit-text{
+    color: white;
+    text-decoration-line: none;
+}
+#edit-text:hover{
+    color: white;
 }

@@ -33,6 +33,10 @@
   </ItemGroup>
 
   <ItemGroup>
+	<Content Include="Areas\Identity\favicon-mansor.ico" />
+  </ItemGroup>
+	
+  <ItemGroup>
     <Folder Include="Business\" />
   </ItemGroup>
 

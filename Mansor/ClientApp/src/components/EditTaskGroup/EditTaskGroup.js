@@ -12,10 +12,21 @@ export class EditTaskGroup extends Component {
             textColor: '',
             currentTaskGroupName: '',
             taskGroupData: undefined,
-            taskGroupHeaderName: ''
+            taskGroupHeaderName: '',
+            name: props.object.name
         }
         this.editTaskGroup = this.editTaskGroup.bind(this);
     }
+
+    handleChange = (event) => {
+        this.setState({ name: event.target.value });
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        this.props.onChangeName(this.state.name);
+    }
+
 
     getTaskGroupName = async (taskGroupId) => {
         let splittedURL = window.location.pathname.split('/')
@@ -117,11 +128,10 @@ export class EditTaskGroup extends Component {
                             </div>
                             <div className="modal-body">
                                 <div id="myForm">
-                                    <form onSubmit={this.editTaskGroup}>
+                                    <form onSubmit={this.handleSubmit}>
                                         <label htmlFor="taskGroupNameField" id="label-text">Име:</label>
                                         <input type="text" name="taskGroupNameField" className="form-control" id="name"
-                                            value={this.state.currentTaskGroupName}
-                                            onChange={(e) => this.setState({ 'currentTaskGroupName': e.target.value })}
+                                            value={this.state.name} onChange={this.handleChange}
                                             style={{ borderBottomColor: this.state.textColor }}
                                         />
                                         <div className="modal-footer border-0">

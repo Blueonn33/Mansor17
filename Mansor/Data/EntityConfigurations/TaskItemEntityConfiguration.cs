@@ -4,7 +4,7 @@ using Mansor.Data.Models;
 
 namespace Mansor.Data.EntityConfigurations
 {
-    internal class TaskItemEntityConfiguration : IEntityTypeConfiguration<TaskItem>
+    public class TaskItemEntityConfiguration : IEntityTypeConfiguration<TaskItem>
     {
         public void Configure(EntityTypeBuilder<TaskItem> builder)
         {

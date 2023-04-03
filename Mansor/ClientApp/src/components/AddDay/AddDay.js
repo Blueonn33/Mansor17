@@ -66,7 +66,7 @@ export class AddDay extends Component {
                         <input type="text" id="input-day"
                             onChange={(e) => this.setState({ 'value': e.target.value })}
                         />
-                        <span className="addBtn" onClick={this.createDay}>Добави</span>
+                        <span className="addNoteBtn" onClick={this.createDay}>Добави</span>
                     </div>
                 </div>
                 <div id="snackbar">Въведете текст в полето</div>

@@ -89,22 +89,6 @@
     text-decoration-line: underline;
 }
 
-#close {
-    width: 160px;
-    height: 47px;
-    font-size: 20px;
-    margin-left: 44%;
-    border: none;
-    background-color: #b3b3b3;
-    margin-right: -20%;
-    text-decoration-line: none;
-    color: black !important;
-}
-
-#close:hover {
-    text-decoration-line: underline;
-}
-
 #label-text {
     margin-top: -350px;
     margin-left: 10px;
