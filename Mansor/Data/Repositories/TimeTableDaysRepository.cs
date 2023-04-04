@@ -12,6 +12,10 @@ namespace Mansor.Data.Repositories
         {
         }
 
+        public async Task<IEnumerable<TimeTableDay>> GetDaysByUserId(string? Id)
+        {
+            return await Entities.Include(t => t.User).Where(t => t.UserId == Id).ToListAsync();
+        }
         public async Task<int> GetCountAsync() => await Entities.CountAsync();
 
         public async Task<IEnumerable<TimeTableDay>> GetAllDays() => await Entities.ToListAsync();

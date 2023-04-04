@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
 import { endpoints } from '../../endpoints';
 import './AddTaskItem.css';
+import authService from '../api-authorization/AuthorizeService';
 
 export class AddTaskItem extends Component {
     constructor(props) {
@@ -36,12 +37,14 @@ export class AddTaskItem extends Component {
             this.invalidInput();
         }
         else {
+            const token = await authService.getAccessToken();
             let splittedURL = window.location.pathname.split('/')
             taskGroupId = splittedURL[splittedURL.length - 1]
             await fetch(endpoints.createTaskItem(taskGroupId), {
                 method: 'POST',
                 headers: {
-                    'Content-type': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     value: input,

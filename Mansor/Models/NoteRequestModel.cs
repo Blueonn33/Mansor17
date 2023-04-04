@@ -8,13 +8,13 @@
         public string Title { get; set; }
         public string Content { get; set; }
 
-        public Note ToCreateNote(User user)
+        public Note ToCreateNote(string userId)
         {
             return new Note()
             {
                 Title = Title,
                 Content = Content,
-                User = user,
+                UserId = userId,
             };
         }
     }

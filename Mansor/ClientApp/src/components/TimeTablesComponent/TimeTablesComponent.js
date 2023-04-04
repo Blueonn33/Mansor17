@@ -4,6 +4,7 @@ import { AddDay } from '../AddDay/AddDay';
 import '../TimeTablesComponent/TimeTablesComponent.css';
 import TimeTablesContainer from '../TimeTablesContainer/TimeTablesContainer';
 import { FaBars, FaCalendarDay, FaListAlt, FaListUl, FaRegStickyNote, FaTable } from "react-icons/fa";
+import authService from '../api-authorization/AuthorizeService';
 
 export default class TimeTablesComponent extends Component {
 
@@ -17,8 +18,10 @@ export default class TimeTablesComponent extends Component {
     }
 
     async loadDays() {
-        let url = endpoints.loadDays();
-        fetch(url)
+        const token = await authService.getAccessToken();
+        await fetch(endpoints.loadDays(), {
+            headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
+        })
             .then((res) => res.json())
             .then((res) => this.setState({ timeTableDays: res }))
             .catch(error => console.error(error));

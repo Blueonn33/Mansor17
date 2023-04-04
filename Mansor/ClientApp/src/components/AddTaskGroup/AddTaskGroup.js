@@ -2,6 +2,7 @@
 import './AddTaskGroup.css';
 import { endpoints } from "../../endpoints";
 import { Link } from "react-router-dom";
+import authService from '../api-authorization/AuthorizeService';
 
 export class AddTaskGroup extends Component {
     constructor(props) {
@@ -39,14 +40,15 @@ export class AddTaskGroup extends Component {
             this.setState({ textColor: color.error });
         }
         else {
+            const token = await authService.getAccessToken();
             await fetch(endpoints.createTaskGroup(), {
                 method: 'POST',
                 headers: {
-                    'Content-type': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
-                    name: input,
-                    userId: "aac65a12-bd76-4544-9bd5-762f542e79a1"
+                    name: input
                 })
             })
                 .then((response) => {

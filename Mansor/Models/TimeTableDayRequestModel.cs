@@ -6,12 +6,12 @@
     {
         public string Name { get; set; }
 
-        public TimeTableDay ToCreateTimeTableDay(User user)
+        public TimeTableDay ToCreateDay(string userId)
         {
             return new TimeTableDay()
             {
                 Name = Name,
-                User = user,
+                UserId = userId,
             };
         }
     }

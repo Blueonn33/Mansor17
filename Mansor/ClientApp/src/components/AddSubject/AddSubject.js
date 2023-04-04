@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
 import { endpoints } from '../../endpoints';
 import './AddSubject.css';
+import authService from '../api-authorization/AuthorizeService';
 
 export class AddSubject extends Component {
     constructor(props) {
@@ -37,12 +38,14 @@ export class AddSubject extends Component {
             this.invalidInput();
         }
         else {
+            const token = await authService.getAccessToken();
             let splittedURL = window.location.pathname.split('/')
             timeTableDayId = splittedURL[splittedURL.length - 1]
             await fetch(endpoints.createSubject(timeTableDayId), {
                 method: 'POST',
                 headers: {
-                    'Content-type': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     value: subjectInput,

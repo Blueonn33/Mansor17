@@ -3,6 +3,7 @@ import { endpoints } from '../../endpoints';
 import { AddSubject } from '../AddSubject/AddSubject';
 import SubjectsContainer from '../SubjectsContainer/SubjectsContainer';
 import '../SubjectsComponent/SubjectsComponent.css';
+import authService from '../api-authorization/AuthorizeService';
 
 export default class SubjectsComponent extends Component {
 
@@ -15,10 +16,12 @@ export default class SubjectsComponent extends Component {
         this.loadSubjects();
     }
     async loadSubjects(timeTableDayId) {
+        const token = await authService.getAccessToken();
         let splittedURL = window.location.pathname.split('/')
         timeTableDayId = splittedURL[splittedURL.length - 1]
-        let url = endpoints.loadSubjects(timeTableDayId);
-        fetch(url)
+        await fetch(endpoints.loadSubjects(timeTableDayId), {
+            headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
+        })
             .then((res) => res.json())
             .then((res) => this.setState({ timeTableItems: res }))
             .catch(error => console.error(error));

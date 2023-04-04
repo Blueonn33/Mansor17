@@ -1,12 +1,15 @@
 ﻿import React, { Component } from 'react'
 import { endpoints } from '../../endpoints';
 import '../TimeTablesContainer/TimeTablesContainer.css';
+import authService from '../api-authorization/AuthorizeService';
 
 export default class TimeTablesContainer extends Component {
 
-    deleteDay(timeTableDayId) {
-        fetch(endpoints.deleteDay(timeTableDayId), {
-            method: 'DELETE'
+    async deleteDay(timeTableDayId) {
+        const token = await authService.getAccessToken();
+        await fetch(endpoints.deleteDay(timeTableDayId), {
+            method: 'DELETE',
+            headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
         })
             .then(response => {
                 if (!response.ok) {
