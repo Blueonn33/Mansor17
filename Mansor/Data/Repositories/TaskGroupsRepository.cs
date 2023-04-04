@@ -13,9 +13,9 @@ namespace Mansor.Data.Repositories.Interfaces
         public TaskGroupsRepository(ApplicationDbContext context) : base(context)
         {
         }
-        public async Task<IEnumerable<TaskGroup>> GetTaskGroupsByUserId(string userId)
+        public async Task<IEnumerable<TaskGroup>> GetTaskGroupsByUserId(string? Id)
         {
-            return await Entities.Include(t => t.User).Where(t => t.UserId == userId).ToListAsync();
+            return await Entities.Include(t => t.User).Where(t => t.UserId == Id).ToListAsync();
         }
 
         public async Task<TaskGroup?> FindTaskGroup(int id)

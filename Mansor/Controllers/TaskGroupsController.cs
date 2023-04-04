@@ -1,6 +1,7 @@
 ﻿using Mansor.Business.Services.Interfaces;
 using Mansor.Data;
 using Mansor.Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Mansor.Controllers
 {
     [ApiController]
+    [Authorize]
     public class TaskGroupsController : ControllerBase
     {
         private readonly ITaskGroupsService _taskGroupsService;
@@ -21,15 +23,29 @@ namespace Mansor.Controllers
             _usersService = usersService;
             _userManager = userManager;
         }
+        //[HttpGet]
+        //[Route("api/taskGroups")]
+        //public async Task<IEnumerable<TaskGroup>> GetAllTaskGroups()
+        //{
+        //    //var userId = _usersService.GetCurrentUserId().Result;
+        //    //var taskGroups = await _taskGroupsService.GetTaskGroupsByUserId(userId);
+        //    Response.Headers.Add("Access-Control-Allow-Origin", "*");
+        //    return await _taskGroupsService.GetTaskGroupsAsync();
+        //    //return taskGroups;
+        //}
+
         [HttpGet]
         [Route("api/taskGroups")]
-        public async Task<IEnumerable<TaskGroup>> GetAllTaskGroups()
+        public async Task<IActionResult> GetAllTaskGroups()
         {
-            //var userId = _usersService.GetCurrentUserId().Result;
-            //var taskGroups = await _taskGroupsService.GetTaskGroupsByUserId(userId);
-            Response.Headers.Add("Access-Control-Allow-Origin", "*");
-            return await _taskGroupsService.GetTaskGroupsAsync();
-            //return taskGroups;
+            var userId = _usersService.GetCurrentUserId().Result;
+            var taskGroups = await _taskGroupsService.GetTaskGroupsByUserId(userId);
+
+            if (!taskGroups.Any())
+            {
+                return BadRequest("No existing task groups!");
+            }
+            return Ok(taskGroups);
         }
 
         [HttpGet]

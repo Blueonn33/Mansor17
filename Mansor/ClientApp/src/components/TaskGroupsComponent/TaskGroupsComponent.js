@@ -19,13 +19,12 @@ export default class TaskGroupsComponent extends Component {
     }
     async componentDidMount() {
         this.loadTaskGroups();
-        const user = await authService.getUser();
-        this.state.userId = user.id;
     }
     async loadTaskGroups() {
-        let url = endpoints.loadTaskGroups();
-        console.log(this.state.userId);
-        fetch(url)
+        const token = await authService.getAccessToken();
+        await fetch(endpoints.loadTaskGroups(), {
+            headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
+        })
             .then((res) => res.json())
             .then((res) => this.setState({ taskGroups: res }))
             .catch(error => console.error(error));
@@ -36,7 +35,7 @@ export default class TaskGroupsComponent extends Component {
             <div className='taskGroupsListWrapper d-flex justify-content-center align-items-center'>
                 <div className="offcanvas offcanvas-start" id="offcanvas">
                     <div className="offcanvas-header">
-                        <h3 className="offcanvas-title text-white">{this.state.userId}</h3>
+                        <h3 className="offcanvas-title text-white">Мартин Маринов</h3>
                         <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
                     </div>
                     <hr id="line"></hr>

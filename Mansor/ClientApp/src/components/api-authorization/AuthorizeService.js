@@ -1,4 +1,5 @@
 import { UserManager, WebStorageStateStore } from 'oidc-client';
+import { endpoints } from '../../endpoints';
 import { ApplicationPaths, ApplicationName } from './ApiAuthorizationConstants';
 
 export class AuthorizeService {

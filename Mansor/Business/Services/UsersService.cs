@@ -14,9 +14,10 @@
         private readonly IUsersRepository _userRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UsersService(IUsersRepository userRepository)
+        public UsersService(IUsersRepository userRepository, IHttpContextAccessor httpContextAccessor)
         {
             _userRepository = userRepository;
+            _httpContextAccessor = httpContextAccessor;
         }
         public async Task<IEnumerable<User>> GetUserAsync()
         {
