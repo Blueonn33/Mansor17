@@ -125,9 +125,9 @@ li a {
 #tasksImg, #tableImg, #notesImg {
     border: 10px solid #D9D9D9;
     height: 300px;
-    width: 450px;
+    width: max-content;
     display: none;
-    margin-left: -50px;
+    margin-left: -150px;
 }
 
 #modal-tasks, #modal-table, #modal-notes {

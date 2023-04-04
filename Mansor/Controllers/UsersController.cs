@@ -1,5 +1,6 @@
 ﻿namespace Mansor.Controllers
 {
+    using Microsoft.AspNetCore.Components.Authorization;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
@@ -13,20 +14,34 @@
     using Mansor.Data.Repositories.Interfaces;
     using static Duende.IdentityServer.Models.IdentityResources;
     using Mansor.Data;
+    using System.Security.Claims;
 
     [ApiController]
     [Authorize]
     public class UserController : ControllerBase
     {
+        private readonly AuthenticationStateProvider _authenticationStateProvider;
         private readonly IUsersService _usersService;
         private readonly IEmailService _emailService;
         private readonly UserManager<User> _userManager;
 
-        public UserController(IUsersService userService, IEmailService emailService, UserManager<User> userManager)
+        public UserController(IUsersService userService, IEmailService emailService, UserManager<User> userManager,
+            AuthenticationStateProvider authenticationStateProvider)
         {
             _usersService = userService;
             _emailService = emailService;
             _userManager = userManager;
+            _authenticationStateProvider = authenticationStateProvider;
+        }
+
+        [HttpGet]
+        [Route("api/user")]
+        public async Task<IActionResult> GetUserIdAsync()
+        {
+            var authState = await _authenticationStateProvider.GetAuthenticationStateAsync();
+            var userId = authState.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            return Ok(userId);
         }
 
         [HttpGet]

@@ -60,23 +60,24 @@ export class LandingPage extends Component {
                         <div className="tasksImg">
                             <a target="_blank" href='/Images/Tasks.png'>
                                 <img id="tasksImg" src='/Images/Tasks.png' alt="Time table" href='/Images/Timetable.png' />
-                        </a>
+                            </a>
                         </div>
                         <div className="body-content">
                             <div className="tasks-content">
                                 <h2 id="h2-tasks">Задачи</h2>
-                                <p>Напишете задачи, които можете да разделите в три основни категории: </p>
+                                <p>Напишете задачи, които можете да разделяте в отделни групи </p>
+                                <span>Ето и няколко предложения за групи: </span>
                                 <ul id="list">
                                     <li>- Дневни - задачи, които трябва да се изпълнят в рамките на ден.</li>
                                     <li>- Важни - задачи, които имат висок приоритет на изпълнение.</li>
                                     <li>- Планирани - задачи, които имат зададен срок за изпълнение.</li>
                                 </ul>
-                                <p>
-                                    Не знаете как да добавите категория?
-                                    Чрез бутона 'Добави' можете да добавяте най-различни категории.
-                                </p>
-                        </div>
-                        <button id="btn-close" onClick={() => this.closeImg("modal-tasks","tasksImg")}>Затвори</button>
+                                <span>Не знаете как да добавите група?</span><br/>
+                                <span>Чрез бутона 'Добави', намиращ се в страницата 'Groups',
+                                    можете да добавяте най-различни групи.
+                                </span>
+                            </div>
+                            <button id="btn-close" onClick={() => this.closeImg("modal-tasks","tasksImg")}>Затвори</button>
                         </div>
                     </div>
                     <div id="modal-table">
@@ -88,10 +89,10 @@ export class LandingPage extends Component {
                         <div class="body-content">
                             <div class="table-content">
                                 <h2 id="h2-table">Учебна програма</h2>
-                                <p>Добавете учебни предмети към учебната програма.</p>
-                                <p>Програмата е разделена на 5 реда - по 1 за всеки учебен ден.</p>
+                                <p>Добавете желаните дни.</p>
+                                <p>Добавете учебни предмети към всеки един от тях.</p>
                                 <p>
-                                    Чрез бутона 'Добави' можете да добавите предмет към учебната програма.
+                                    Задайте продължителност за всеки един предмет.
                                 </p>
                             </div>
                         </div>

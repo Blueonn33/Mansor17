@@ -23,4 +23,5 @@ export const endpoints = {
     deleteSubject: (timeTableItemId) => `${apiBaseUrl}/api/delete/subject/${timeTableItemId}`,
 
     getUsers: () => `${apiBaseUrl}/api/users`,
+    getUser: () => `${apiBaseUrl}/api/user`,
 }

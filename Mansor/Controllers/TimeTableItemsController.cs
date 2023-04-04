@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Mansor.Business.Services.Interfaces;
     using Mansor.Models;
+    using Microsoft.AspNetCore.Authorization;
 
     [ApiController]
     public class TimeTableItemController : ControllerBase

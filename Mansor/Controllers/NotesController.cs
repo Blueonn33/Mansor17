@@ -1,5 +1,6 @@
 ﻿using Mansor.Business.Services.Interfaces;
 using Mansor.Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Mansor.Controllers

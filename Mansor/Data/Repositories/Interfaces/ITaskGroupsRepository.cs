@@ -9,7 +9,7 @@ namespace Mansor.Data.Repositories.Interfaces
 {
     public interface ITaskGroupsRepository : IRepository<TaskGroup>
     {
-        Task<IEnumerable<TaskGroup>> GetTaskGroupsByUserId(string userId);
+        Task<IEnumerable<TaskGroup>> GetTaskGroupsByUserId(string? id);
         Task<int> GetCountAsync();
         Task<IEnumerable<TaskGroup>> GetAllTaskGroups();
         Task<TaskGroup?> GetTaskGroupByName(string name);
