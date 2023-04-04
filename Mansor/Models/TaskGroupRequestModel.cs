@@ -7,12 +7,12 @@
     {
         public string Name { get; set; }
 
-        public TaskGroup ToCreateTaskGroup(User user)
+        public TaskGroup ToCreateTaskGroup(string userId)
         {
             return new TaskGroup()
             {
                 Name = Name,
-                User = user,
+                UserId = userId,
             };
         }
     }

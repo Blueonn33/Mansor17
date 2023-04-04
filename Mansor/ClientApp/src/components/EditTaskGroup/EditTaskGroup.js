@@ -2,12 +2,12 @@
 import './EditTaskGroup.css';
 import { endpoints } from "../../endpoints";
 import { Link } from "react-router-dom";
+import authService from '../api-authorization/AuthorizeService';
 
 export class EditTaskGroup extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            //value: '',
             errorMessage: '',
             textColor: '',
             currentTaskGroupName: '',
@@ -29,9 +29,12 @@ export class EditTaskGroup extends Component {
 
 
     getTaskGroupName = async (taskGroupId) => {
+        const token = await authService.getAccessToken();
         let splittedURL = window.location.pathname.split('/')
         taskGroupId = splittedURL[splittedURL.length - 1]
-        await fetch(endpoints.getTaskGroupName(taskGroupId))
+        await fetch(endpoints.getTaskGroupName(taskGroupId), {
+            headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
+        })
             .then(async (res) => {
                 let taskGroupData = await res.json()
                 this.setState({ 'taskGroupData': taskGroupData })
@@ -66,12 +69,13 @@ export class EditTaskGroup extends Component {
             this.setState({ textColor: color.error });
         }
         else {
+            const token = await authService.getAccessToken();
             let splittedURL = window.location.pathname.split('/')
             let taskGroupId = splittedURL[splittedURL.length - 1]
             this.state.taskGroupData.name = this.state.currentTaskGroupName
             fetch(endpoints.editTaskGroup(taskGroupId), {
                 method: 'PATCH',
-                //body: JSON.stringify({ "Name": this.state.currentTaskGroupName })
+                headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
             })
                 .then((res) => {
                     this.getTaskGroupName(taskGroupId)
@@ -84,16 +88,6 @@ export class EditTaskGroup extends Component {
                         this.setState({ textColor: color.success });
                     }
                 })
-                //.then((response) => {
-                //    if (!response.ok) {
-                //        this.setState({ errorMessage: errors.existingTaskGroup });
-                //        this.setState({ textColor: color.error });
-                //    }
-                //    else {
-                //        this.setState({ errorMessage: errors.success });
-                //        this.setState({ textColor: color.success });
-                //    }
-                //})
                 .catch(error => {
                     console.error(error);
                 });

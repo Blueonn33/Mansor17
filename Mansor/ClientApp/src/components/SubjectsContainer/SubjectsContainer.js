@@ -1,11 +1,14 @@
 ﻿import React, { Component } from 'react'
 import { endpoints } from '../../endpoints';
 import '../SubjectsContainer/SubjectsContainer.css';
+import authService from '../api-authorization/AuthorizeService';
 
 export default class SubjectsContainer extends Component {
-    deleteSubject(timeTableItemId) {
-        fetch(endpoints.deleteSubject(timeTableItemId), {
-            method: 'DELETE'
+    async deleteSubject(timeTableItemId) {
+        const token = await authService.getAccessToken();
+        await fetch(endpoints.deleteSubject(timeTableItemId), {
+            method: 'DELETE',
+            headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
         })
             .then(response => {
                 if (!response.ok) {

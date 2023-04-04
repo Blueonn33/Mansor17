@@ -3,7 +3,7 @@ import { endpoints } from '../../endpoints';
 import '../TasksComponent/TasksComponent.css';
 import { AddTaskItem } from '../AddTaskItem/AddTaskItem';
 import TasksContainer from '../TasksContainer/TasksContainer';
-import { EditTaskGroup } from '../EditTaskGroup/EditTaskGroup';
+import authService from '../api-authorization/AuthorizeService';
 
 export default class TasksComponent extends Component {
 
@@ -26,10 +26,13 @@ export default class TasksComponent extends Component {
     }
 
     getTaskGroupName = async (taskGroupId) => {
+        const token = await authService.getAccessToken();
         let splittedURL = window.location.pathname.split('/')
         taskGroupId = splittedURL[splittedURL.length - 1]
         this.state.taskGroupId = taskGroupId
-        await fetch(endpoints.getTaskGroupName(taskGroupId))
+        await fetch(endpoints.getTaskGroupName(taskGroupId), {
+            headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
+        })
             .then(async (res) => {
                 let taskGroupData = await res.json()
                 this.setState({ 'taskGroupData': taskGroupData })
@@ -40,10 +43,12 @@ export default class TasksComponent extends Component {
     }
 
     deleteTaskGroup = async (taskGroupId) => {
+        const token = await authService.getAccessToken();
         let splittedURL = window.location.pathname.split('/')
         taskGroupId = splittedURL[splittedURL.length - 1]
         await fetch(endpoints.deleteTaskGroup(taskGroupId), {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
         })
             .then(response => {
                 if (!response.ok) {
@@ -57,19 +62,16 @@ export default class TasksComponent extends Component {
         window.location.pathname = '/taskGroups'
     }
 
-    async loadTaskItems(taskGroupId){
+    async loadTaskItems(taskGroupId) {
+        const token = await authService.getAccessToken();
         let splittedURL = window.location.pathname.split('/')
         taskGroupId = splittedURL[splittedURL.length - 1]
         let url = `https://localhost:7043/api/taskItems/${taskGroupId}`;
-        fetch(url)
+        fetch(url, {
+            headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
+        })
             .then((res) => res.json())
             .then((res) => this.setState({ tasks: res }))
-            //.then(async (res) => {
-            //    let taskItemData = await res.json()
-            //    this.setState({ 'taskItemData': taskItemData })
-            //    this.setState({ 'currentTaskItemValue': taskItemData.value })
-            //}
-            //)
             .catch(error => console.error(error));
     }
 

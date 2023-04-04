@@ -4,6 +4,7 @@ import { AddNote } from '../AddNote/AddNote';
 import '../Notes/Notes.css';
 import NotesContainer from '../NotesContainer/NotesContainer';
 import { FaBars, FaCalendarDay, FaListAlt, FaTable } from "react-icons/fa";
+import authService from '../api-authorization/AuthorizeService';
 
 export default class Notes extends Component {
 
@@ -17,8 +18,10 @@ export default class Notes extends Component {
     }
 
     async loadNotes() {
-        let url = endpoints.loadNotes();
-        fetch(url)
+        const token = await authService.getAccessToken();
+        await fetch(endpoints.loadNotes(), {
+            headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
+        })
             .then((res) => res.json())
             .then((res) => this.setState({ notes: res }))
             .catch(error => console.error(error));

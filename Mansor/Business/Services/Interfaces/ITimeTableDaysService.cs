@@ -13,10 +13,10 @@ namespace Mansor.Business.Services.Interfaces
         Task<IEnumerable<TimeTableDay>> GetDaysAsync();
         Task<TimeTableDay?> GetDayByIdAsync(int id);
         Task<TimeTableDay?> GetDayByTaskIdAsync(Task<int?> id);
-
+        Task<TimeTableDay> CreateDay(TimeTableDay TimeTableDay);
         Task AddDayAsync(TimeTableDay TimeTableDay);
         Task<TimeTableDay?> GetDayByNameAsync(string name);
         Task DeleteAsync(TimeTableDay TimeTableDay);
-        //Task<TimeTableDay?> GetAllDaysByUserId(string userId);
+        Task<IEnumerable<TimeTableDay>> GetDaysByUserId(string? id);
     }
 }

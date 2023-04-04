@@ -2,7 +2,7 @@
 import './EditTaskGroupName.css';
 import '../../custom.css';
 import { endpoints } from '../../endpoints';
-import { Link } from "react-router-dom";
+import authService from '../api-authorization/AuthorizeService';
 
 export class EditTaskGroupName extends Component {
     static displayName = EditTaskGroupName.name;
@@ -23,11 +23,13 @@ export class EditTaskGroupName extends Component {
         setTimeout(function () { msg.className = msg.className.replace("show", ""); }, 3000);
     }
 
-    componentDidMount() {
+    async componentDidMount() {
+        const token = await authService.getAccessToken();
         let splittedURL = window.location.pathname.split('/')
         let taskGroupId = splittedURL[splittedURL.length - 1]
-        let url = endpoints.getTaskGroupName(taskGroupId);
-        fetch(url)
+        fetch(endpoints.getTaskGroupName(taskGroupId), {
+            headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
+        })
             .then(response => response.json())
             .then(data => {
                 this.setState({ currentName: data.name });
@@ -39,7 +41,7 @@ export class EditTaskGroupName extends Component {
         this.setState({ newName: event.target.value });
     };
 
-    handleSubmit = (event) => {
+    handleSubmit = async (event) => {
         event.preventDefault();
         var input = this.state.newName;
         console.log(input);
@@ -68,15 +70,16 @@ export class EditTaskGroupName extends Component {
             this.setState({ textColor: color.error });
         }
         else {
+            const token = await authService.getAccessToken();
             let splittedURL = window.location.pathname.split('/')
             let taskGroupId = splittedURL[splittedURL.length - 1]
-            let url = endpoints.editTaskGroup(taskGroupId);
-            fetch(url, {
+            await fetch(endpoints.editTaskGroup(taskGroupId), {
                 method: 'PATCH',
                 body: JSON.stringify({ name: this.state.newName }),
                 headers: {
-                    'Content-Type': 'application/json'
-                }
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
             })
                 .then(response => response.json())
                 .then(data => {

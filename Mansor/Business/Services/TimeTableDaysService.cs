@@ -12,6 +12,16 @@ public class TimeTableDaysService : ITimeTableDaysService
     {
         _timeTableDaysRepository = timeTableDaysRepository;
     }
+    public async Task<TimeTableDay> CreateDay(TimeTableDay timeTableDay)
+    {
+        var isExist = await _timeTableDaysRepository.GetDayByName(timeTableDay.Name);
+        if (isExist != null)
+        {
+            return null;
+        }
+        return await _timeTableDaysRepository.AddAsync(timeTableDay);
+    }
+
     public Task<TimeTableDay?> GetDayById(int id)
     {
         return _timeTableDaysRepository.FindDay(id);
@@ -31,5 +41,10 @@ public class TimeTableDaysService : ITimeTableDaysService
     public Task DeleteAsync(TimeTableDay timeTableDay)
     {
         return _timeTableDaysRepository.DeleteAsync(timeTableDay);
+    }
+
+    public async Task<IEnumerable<TimeTableDay>> GetDaysByUserId(string? id)
+    {
+        return await _timeTableDaysRepository.GetDaysByUserId(id);
     }
 }

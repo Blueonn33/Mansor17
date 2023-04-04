@@ -2,6 +2,7 @@
 import './NotesComponent.css';
 import '../../custom.css';
 import { endpoints } from '../../endpoints';
+import authService from '../api-authorization/AuthorizeService';
 
 export class NotesComponent extends Component {
     static displayName = NotesComponent.name;
@@ -56,15 +57,16 @@ export class NotesComponent extends Component {
             this.setState({ textColorTitle: color.success });
         }
         else {
+            const token = await authService.getAccessToken();
             await fetch(endpoints.createNote(), {
                 method: 'POST',
                 headers: {
-                    'Content-type': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     "title": titleInput,
                     "content": contentInput,
-                    "userId": "3b6f5e57-edde-4dac-84bd-fcf320be8dad"
                 })
             })
                 .then((response) => {

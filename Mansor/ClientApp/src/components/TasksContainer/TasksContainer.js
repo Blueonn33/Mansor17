@@ -1,12 +1,15 @@
 ﻿import React, { Component } from 'react'
 import { endpoints } from '../../endpoints';
 import '../TasksContainer/TaskContainer.css';
+import authService from '../api-authorization/AuthorizeService';
 
 export default class TasksContainer extends Component {
 
-    completeTask(taskItemId) {
-        fetch(endpoints.completeTask(taskItemId), {
-            method: 'DELETE'
+    async completeTask(taskItemId) {
+        const token = await authService.getAccessToken();
+        await fetch(endpoints.completeTask(taskItemId), {
+            method: 'DELETE',
+            headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
         })
             .then(response => {
                 if (!response.ok) {

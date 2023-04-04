@@ -6,6 +6,7 @@
     using Microsoft.AspNetCore.Authorization;
 
     [ApiController]
+    [Authorize]
     public class TimeTableItemController : ControllerBase
     {
         private readonly ITimeTableItemsService _timeTableItemsService;

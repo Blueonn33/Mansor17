@@ -1,12 +1,15 @@
 ﻿import React, { Component } from 'react'
 import { endpoints } from '../../endpoints';
 import '../NotesContainer/NotesContainer.css';
+import authService from '../api-authorization/AuthorizeService';
 
 export default class NotesContainer extends Component {
 
-    deleteNote(noteId) {
-        fetch(endpoints.deleteNote(noteId), {
-            method: 'DELETE'
+    async deleteNote(noteId) {
+        const token = await authService.getAccessToken();
+        await fetch(endpoints.deleteNote(noteId), {
+            method: 'DELETE',
+            headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
         })
             .then(response => {
                 if (!response.ok) {

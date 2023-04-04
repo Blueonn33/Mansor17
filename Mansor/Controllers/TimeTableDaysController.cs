@@ -2,24 +2,47 @@
 using Microsoft.AspNetCore.Mvc;
 using Mansor.Data.Models;
 using Mansor.Business.Services.Interfaces;
+using Mansor.Data;
+using Microsoft.AspNetCore.Identity;
+using Mansor.Models;
 
 namespace Mansor.Controllers
 {
     [ApiController]
+    [Authorize]
     public class TimeTableDaysController : ControllerBase
     {
         private readonly ITimeTableDaysService _timeTableDaysService;
-        public TimeTableDaysController(ITimeTableDaysService timeTableDaysService)
+        private readonly IUsersService _usersService;
+        private readonly UserManager<User> _userManager;
+        public TimeTableDaysController(ITimeTableDaysService timeTableDaysService, IUsersService usersService,
+            UserManager<User> userManager)
         {
             _timeTableDaysService = timeTableDaysService;
+            _usersService = usersService;
+            _userManager = userManager;
         }
+
+        //[HttpGet]
+        //[Route("api/days")]
+        //public async Task<IEnumerable<TimeTableDay>> GetAllDays()
+        //{
+        //    Response.Headers.Add("Access-Control-Allow-Origin", "*");
+        //    return await _timeTableDaysService.GetDaysAsync();
+        //}
 
         [HttpGet]
         [Route("api/days")]
-        public async Task<IEnumerable<TimeTableDay>> GetAllDays()
+        public async Task<IActionResult> GetAllDays()
         {
-            Response.Headers.Add("Access-Control-Allow-Origin", "*");
-            return await _timeTableDaysService.GetDaysAsync();
+            var userId = _usersService.GetCurrentUserId().Result;
+            var timeTableDays = await _timeTableDaysService.GetDaysByUserId(userId);
+
+            if (!timeTableDays.Any())
+            {
+                return BadRequest("No existing days!");
+            }
+            return Ok(timeTableDays);
         }
 
         [HttpGet]
@@ -34,33 +57,38 @@ namespace Mansor.Controllers
             return Ok(targetTimeTableDay);
         }
 
-        //[HttpGet]
-        //[Route("api/timeTableDays/{userId}")]
-        //public async Task<IActionResult> GetAllDays([FromRoute] int userId)
+        //[HttpPost]
+        //[Route("api/create/timeTableDay")]
+        //public async Task<IActionResult> CreateDay([FromBody] TimeTableDay createDay)
         //{
-        //    Response.Headers.Add("Access-Control-Allow-Origin", "*");
-        //    var days = await _timeTableDaysService.GetAllDaysByUserId(userId);
+        //    var timeTableDay = await _timeTableDaysService.GetDayByNameAsync(createDay.Name);
 
-        //    if (!days.Any())
+        //    if (timeTableDay != null)
         //    {
-        //        return BadRequest("No existing days!");
+        //        return BadRequest("The day already exists");
         //    }
-        //    return Ok(days);
+
+        //    await _timeTableDaysService.AddDayAsync(createDay);
+        //    return Ok(createDay);
         //}
 
         [HttpPost]
         [Route("api/create/timeTableDay")]
-        public async Task<IActionResult> CreateDay([FromBody] TimeTableDay createDay)
+        public async Task<IActionResult> CreateDay([FromBody] TimeTableDayRequestModel timeTableDayRequestModel)
         {
-            var timeTableDay = await _timeTableDaysService.GetDayByNameAsync(createDay.Name);
+            var userId = _usersService.GetCurrentUserId().Result;
+            var timeTableDay = timeTableDayRequestModel.ToCreateDay(userId);
+            var result = await _timeTableDaysService.CreateDay(timeTableDay);
 
-            if (timeTableDay != null)
+            if (result == null)
             {
                 return BadRequest("The day already exists");
             }
+            else
+            {
+                return Ok(result);
+            }
 
-            await _timeTableDaysService.AddDayAsync(createDay);
-            return Ok(createDay);
         }
 
         [HttpDelete]

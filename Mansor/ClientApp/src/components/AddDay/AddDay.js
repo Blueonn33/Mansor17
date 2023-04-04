@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
 import { endpoints } from '../../endpoints';
 import './AddDay.css';
+import authService from '../api-authorization/AuthorizeService';
 
 export class AddDay extends Component {
     constructor(props) {
@@ -34,14 +35,15 @@ export class AddDay extends Component {
             this.invalidInput();
         }
         else {
+            const token = await authService.getAccessToken();
             await fetch(endpoints.createDay(), {
                 method: 'POST',
                 headers: {
-                    'Content-type': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     name: input,
-                    userId: "3b6f5e57-edde-4dac-84bd-fcf320be8dad"
                 })
             })
                 .then((response) => {

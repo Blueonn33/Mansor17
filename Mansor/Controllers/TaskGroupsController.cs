@@ -1,6 +1,7 @@
 ﻿using Mansor.Business.Services.Interfaces;
 using Mansor.Data;
 using Mansor.Data.Models;
+using Mansor.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -60,19 +61,38 @@ namespace Mansor.Controllers
             return Ok(targetTaskGroup);
         }
 
+        //[HttpPost]
+        //[Route("api/create/taskGroup")]
+        //public async Task<IActionResult> CreateTaskGroup([FromBody] TaskGroup createTaskGroup)
+        //{   
+        //    var taskGroup = await _taskGroupsService.GetTaskGroupByNameAsync(createTaskGroup.Name);
+
+        //    if (taskGroup != null)
+        //    {
+        //        return BadRequest("The group already exists");
+        //    }
+
+        //    await _taskGroupsService.AddTaskGroupAsync(createTaskGroup);
+        //    return Ok(createTaskGroup);
+        //}
+
         [HttpPost]
         [Route("api/create/taskGroup")]
-        public async Task<IActionResult> CreateTaskGroup([FromBody] TaskGroup createTaskGroup)
+        public async Task<IActionResult> CreateTaskGroup([FromBody] TaskGroupRequestModel taskGroupRequestModel)
         {
-            var taskGroup = await _taskGroupsService.GetTaskGroupByNameAsync(createTaskGroup.Name);
+            var userId = _usersService.GetCurrentUserId().Result;
+            var taskGroup = taskGroupRequestModel.ToCreateTaskGroup(userId);
+            var result = await _taskGroupsService.CreateTaskGroup(taskGroup);
 
-            if (taskGroup != null)
+            if (result == null)
             {
                 return BadRequest("The group already exists");
             }
+            else
+            {
+                return Ok(result);
+            }
 
-            await _taskGroupsService.AddTaskGroupAsync(createTaskGroup);
-            return Ok(createTaskGroup);
         }
 
         [HttpDelete]
