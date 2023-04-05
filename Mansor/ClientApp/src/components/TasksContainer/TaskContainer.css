@@ -69,3 +69,19 @@
     color: white;
     text-decoration: none;
 }
+
+.starTaskItemButtonWrapper {
+    margin-left: -23%;
+}
+
+.starButton {
+    margin-top: 3px;
+    height: 35px;
+    width: 35px;
+    color: #b3b3b3;
+}
+
+.starButton:hover {
+    color: white;
+    cursor: pointer;
+}
