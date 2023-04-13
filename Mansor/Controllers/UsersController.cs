@@ -65,22 +65,5 @@
             return userInfo == null ? BadRequest("User not found!") : Ok(userInfo);
         }
 
-        [HttpDelete]
-        [Route("api/delete/{id}")]
-        public async Task<IActionResult> DeleteUser([FromRoute] string id)
-        {
-            var targetUser = await _usersService.GetUserByIdAsync(id);
-            if (targetUser == null)
-            {
-                return NotFound("User doesn't exist");
-            }
-            if (targetUser.IsDeleted)
-            {
-                return BadRequest("User is already deleted");
-            }
-            await _usersService.DeleteAsync(targetUser);
-
-            return Ok(targetUser);
-        }
     }
 }

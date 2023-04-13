@@ -10,6 +10,19 @@ namespace Mansor.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Days",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Days", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "DeviceCodes",
                 columns: table => new
                 {
@@ -86,7 +99,6 @@ namespace Mansor.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -149,6 +161,34 @@ namespace Mansor.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Subjects",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    Duration = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    DayId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Subjects", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Subjects_Days_DayId",
+                        column: x => x.DayId,
+                        principalTable: "Days",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Subjects_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TaskGroups",
                 columns: table => new
                 {
@@ -162,25 +202,6 @@ namespace Mansor.Migrations
                     table.PrimaryKey("PK_TaskGroups", x => x.Id);
                     table.ForeignKey(
                         name: "FK_TaskGroups_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "TimeTableDays",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TimeTableDays", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_TimeTableDays_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id");
@@ -278,8 +299,7 @@ namespace Mansor.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TaskGroupId = table.Column<int>(type: "int", nullable: false),
-                    Value = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    IsCompleted = table.Column<bool>(type: "bit", nullable: false)
+                    Value = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -292,25 +312,16 @@ namespace Mansor.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "TimeTableItems",
-                columns: table => new
+            migrationBuilder.InsertData(
+                table: "Days",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TimeTableDayId = table.Column<int>(type: "int", nullable: false),
-                    Value = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TimeTableItems", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_TimeTableItems_TimeTableDays_TimeTableDayId",
-                        column: x => x.TimeTableDayId,
-                        principalTable: "TimeTableDays",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                    { 1, "Понеделник" },
+                    { 2, "Вторник" },
+                    { 3, "Сряда" },
+                    { 4, "Четвъртък" },
+                    { 5, "Петък" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -367,6 +378,16 @@ namespace Mansor.Migrations
                 filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Subjects_DayId",
+                table: "Subjects",
+                column: "DayId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Subjects_UserId",
+                table: "Subjects",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_TaskGroups_UserId",
                 table: "TaskGroups",
                 column: "UserId");
@@ -375,16 +396,6 @@ namespace Mansor.Migrations
                 name: "IX_TaskItems_TaskGroupId",
                 table: "TaskItems",
                 column: "TaskGroupId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TimeTableDays_UserId",
-                table: "TimeTableDays",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TimeTableItems_TimeTableDayId",
-                table: "TimeTableItems",
-                column: "TimeTableDayId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserClaims_UserId",
@@ -432,10 +443,10 @@ namespace Mansor.Migrations
                 name: "RoleClaims");
 
             migrationBuilder.DropTable(
-                name: "TaskItems");
+                name: "Subjects");
 
             migrationBuilder.DropTable(
-                name: "TimeTableItems");
+                name: "TaskItems");
 
             migrationBuilder.DropTable(
                 name: "UserClaims");
@@ -450,10 +461,10 @@ namespace Mansor.Migrations
                 name: "UserTokens");
 
             migrationBuilder.DropTable(
-                name: "TaskGroups");
+                name: "Days");
 
             migrationBuilder.DropTable(
-                name: "TimeTableDays");
+                name: "TaskGroups");
 
             migrationBuilder.DropTable(
                 name: "Roles");

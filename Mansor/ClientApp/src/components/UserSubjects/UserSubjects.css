@@ -1,0 +1,18 @@
+﻿.subjectsContainer {
+    height: max-content;
+    background-color: red;
+    width: max-content;
+}
+.subjectsContainer {
+    background-color: #424242 !important;
+    color: white;
+}
+.subjectsContainers {
+    font-size: 20px;
+    margin-right: 10px;
+    margin-left: 23px;
+    margin-top: 5px;
+}
+.subjectsContainers {
+    padding-bottom: 20vh;
+}

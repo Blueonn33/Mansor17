@@ -16,7 +16,6 @@ namespace Mansor.Business.Services.Interfaces
         Task<string> GetCurrentUserId();
         User GetUserByEmail(string email);
         Task DeleteAsync(User user);
-        Task UnDeleteUser(User user);
         Task<User?> GetUserDataByUserId(string userId);
     }
 }

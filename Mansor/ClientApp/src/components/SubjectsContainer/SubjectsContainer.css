@@ -1,4 +1,4 @@
-﻿.timeTableItemsContainer {
+﻿.subjectsContainer {
     font-weight: 400;
     font-size: 20px;
     line-height: 27.24px;
@@ -8,7 +8,7 @@
     background-color: #737373;
 }
 
-    .timeTableItemsContainer .timeTableItemNameWrapper {
+    .subjectsContainer .subjectNameWrapper {
         cursor: pointer;
         position: relative;
         padding: 3px;
@@ -30,13 +30,13 @@
         /*margin-top: 15px;*/
     }
 
-.timeTableItemsContainer .timeTableItemNameWrapper:hover {
+.subjectsContainer .subjectNameWrapper:hover {
     cursor: default;
     background-color: #737373;
     color: white;
 }
 
-.timeTableItemsContainer .timeTableItemsNameWrapper .timeTableItem {
+.subjectsContainer .subjectsNameWrapper .subject {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     margin-top: 0.3rem;

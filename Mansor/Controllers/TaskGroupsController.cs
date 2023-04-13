@@ -97,7 +97,6 @@ namespace Mansor.Controllers
 
         [HttpDelete]
         [Route("api/delete/taskGroup/{id}")]
-
         public async Task<IActionResult> DeleteTaskGroup([FromRoute] int id)
         {
             var targetTaskGroup = await _taskGroupsService.GetTaskGroupByIdAsync(id);
@@ -109,6 +108,7 @@ namespace Mansor.Controllers
 
             return Ok(targetTaskGroup);
         }
+
         [HttpPatch]
         [Route("api/edit/taskGroup/{id}")]
         public async Task<IActionResult> EditTaskGroupName([FromRoute] int id, [FromBody] TaskGroup taskGroup)

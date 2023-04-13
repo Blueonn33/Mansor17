@@ -163,6 +163,51 @@ namespace Mansor.Migrations
                     b.ToTable("PersistedGrants", (string)null);
                 });
 
+            modelBuilder.Entity("Mansor.Data.Models.Day", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Days", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Понеделник"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Вторник"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Сряда"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Четвъртък"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Петък"
+                        });
+                });
+
             modelBuilder.Entity("Mansor.Data.Models.Note", b =>
                 {
                     b.Property<int>("Id")
@@ -189,6 +234,40 @@ namespace Mansor.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Notes", (string)null);
+                });
+
+            modelBuilder.Entity("Mansor.Data.Models.Subject", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("DayId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Duration")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DayId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Subjects", (string)null);
                 });
 
             modelBuilder.Entity("Mansor.Data.Models.TaskGroup", b =>
@@ -222,9 +301,6 @@ namespace Mansor.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<bool>("IsCompleted")
-                        .HasColumnType("bit");
-
                     b.Property<int>("TaskGroupId")
                         .HasColumnType("int");
 
@@ -238,59 +314,6 @@ namespace Mansor.Migrations
                     b.HasIndex("TaskGroupId");
 
                     b.ToTable("TaskItems", (string)null);
-                });
-
-            modelBuilder.Entity("Mansor.Data.Models.TimeTableDay", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("TimeTableDays", (string)null);
-                });
-
-            modelBuilder.Entity("Mansor.Data.Models.TimeTableItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Duration")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("TimeTableDayId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Value")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TimeTableDayId");
-
-                    b.ToTable("TimeTableItems", (string)null);
                 });
 
             modelBuilder.Entity("Mansor.Data.User", b =>
@@ -310,9 +333,6 @@ namespace Mansor.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<bool>("LockoutEnabled")
@@ -512,6 +532,25 @@ namespace Mansor.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Mansor.Data.Models.Subject", b =>
+                {
+                    b.HasOne("Mansor.Data.Models.Day", "Day")
+                        .WithMany("Subjects")
+                        .HasForeignKey("DayId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Mansor.Data.User", "User")
+                        .WithMany("Subjects")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Day");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Mansor.Data.Models.TaskGroup", b =>
                 {
                     b.HasOne("Mansor.Data.User", "User")
@@ -530,26 +569,6 @@ namespace Mansor.Migrations
                         .IsRequired();
 
                     b.Navigation("TaskGroup");
-                });
-
-            modelBuilder.Entity("Mansor.Data.Models.TimeTableDay", b =>
-                {
-                    b.HasOne("Mansor.Data.User", "User")
-                        .WithMany("TimeTableDays")
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Mansor.Data.Models.TimeTableItem", b =>
-                {
-                    b.HasOne("Mansor.Data.Models.TimeTableDay", "TimeTableDay")
-                        .WithMany("TimeTableItems")
-                        .HasForeignKey("TimeTableDayId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("TimeTableDay");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -603,23 +622,23 @@ namespace Mansor.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Mansor.Data.Models.Day", b =>
+                {
+                    b.Navigation("Subjects");
+                });
+
             modelBuilder.Entity("Mansor.Data.Models.TaskGroup", b =>
                 {
                     b.Navigation("TaskItems");
-                });
-
-            modelBuilder.Entity("Mansor.Data.Models.TimeTableDay", b =>
-                {
-                    b.Navigation("TimeTableItems");
                 });
 
             modelBuilder.Entity("Mansor.Data.User", b =>
                 {
                     b.Navigation("Notes");
 
-                    b.Navigation("TaskGroups");
+                    b.Navigation("Subjects");
 
-                    b.Navigation("TimeTableDays");
+                    b.Navigation("TaskGroups");
                 });
 #pragma warning restore 612, 618
         }

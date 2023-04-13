@@ -2,15 +2,14 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 27.24px;
-    margin-left: 2rem;
-    margin-right: 2rem;
-    margin-top: 1rem;
+    margin-left: 28.2rem;
+    margin-top: 3.2rem;
 }
 
-.daysContainer .dayNameWrapper {
-    /*margin-left: 1.125rem;*/
+.daysContainer .dayNameWrapper{
+    margin-top: -7rem;
+    text-align: center;
     position: relative;
-    /*padding: 12px 8px 12px 40px;*/
     list-style-type: none;
     font-size: 18px;
     transition: 0.2s;
@@ -24,31 +23,27 @@
     height: min-content;
     width: 150px;
 }
-.daysContainer .dayNameWrapper .timeTableDay {
+.daysContainer .dayNameWrapper .day {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     margin-top: 0.3rem;
 }
-.dayName{
-    font-size: 23px;
+.dayName {
+    font-size: 30px;
     font-weight: 500;
+    color: white;
+    text-decoration-line: none;
+}
+.useDayButtonWrapper {
 }
 .showButtonText {
-    margin-left: 30px;
+    /*margin-top: -17rem;*/
+    margin-left: 40px;
     color: white;
     text-decoration-line: none;
     font-weight: 500;
 }
-.showButtonText:hover {
+.dayName:hover {
     color: white;
-    text-decoration-line: underline;
-}
-.deleteDay{
-    color: black;
-    background-color: #424242;
-    border: none;
-    margin-left: 30px;
-}
-.deleteDay:hover {
     text-decoration-line: underline;
 }

@@ -40,11 +40,11 @@ builder.Services.AddScoped<INotesService, NotesService>();
 builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 builder.Services.AddScoped<IUsersService, UsersService>();
 
-builder.Services.AddScoped<ITimeTableDaysRepository, TimeTableDaysRepository>();
-builder.Services.AddScoped<ITimeTableDaysService, TimeTableDaysService>();
+builder.Services.AddScoped<IDaysRepository, DaysRepository>();
+builder.Services.AddScoped<IDaysService, DaysService>();
 
-builder.Services.AddScoped<ITimeTableItemsRepository, TimeTableItemsRepository>();
-builder.Services.AddScoped<ITimeTableItemsService, TimeTableItemsService>();
+builder.Services.AddScoped<ISubjectsRepository, SubjectsRepository>();
+builder.Services.AddScoped<ISubjectsService, SubjectsService>();
 
 builder.Services.AddCors(options =>
 {

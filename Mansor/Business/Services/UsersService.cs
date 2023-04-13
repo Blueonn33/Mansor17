@@ -8,6 +8,7 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Mansor.Data;
+    using Mansor.Data.Models;
 
     public class UsersService : IUsersService
     {
@@ -19,6 +20,7 @@
             _userRepository = userRepository;
             _httpContextAccessor = httpContextAccessor;
         }
+
         public async Task<IEnumerable<User>> GetUserAsync()
         {
             return await _userRepository.GetAllUsers();
@@ -49,11 +51,6 @@
             return await _userRepository.AddAsync(user);
         }
 
-        public async Task UnDeleteUser(User user)
-        {
-            user.IsDeleted = false;
-            await _userRepository.UpdateAsync(user);
-        }
         public async Task<string> GetCurrentUserId()
         {
             if (_httpContextAccessor.HttpContext.User.Identity != null)

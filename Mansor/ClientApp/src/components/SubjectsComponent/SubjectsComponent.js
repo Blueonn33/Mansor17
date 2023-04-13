@@ -9,22 +9,28 @@ export default class SubjectsComponent extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { timeTableItems: [] }
+        this.state = {
+            subjects: [],
+            users: null,
+            userId: '',
+            dayId: ''
+        }
         this.loadSubjects = this.loadSubjects.bind(this);
     }
     async componentDidMount() {
         this.loadSubjects();
     }
-    async loadSubjects(timeTableDayId) {
+    async loadSubjects(dayId) {
         const token = await authService.getAccessToken();
         let splittedURL = window.location.pathname.split('/')
-        timeTableDayId = splittedURL[splittedURL.length - 1]
-        await fetch(endpoints.loadSubjects(timeTableDayId), {
-            headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
-        })
-            .then((res) => res.json())
-            .then((res) => this.setState({ timeTableItems: res }))
-            .catch(error => console.error(error));
+        dayId = splittedURL[splittedURL.length - 1]
+        this.state.dayId = dayId;
+        //await fetch(endpoints.loadSubjects(dayId), {
+        //    headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
+        //})
+        //    .then((res) => res.json())
+        //    .then((res) => this.setState({ subjects: res }))
+        //    .catch(error => console.error(error));
     }
 
     render() {
@@ -34,15 +40,18 @@ export default class SubjectsComponent extends Component {
                     <div className='createSubjectsButtonWrapper'>
                         <AddSubject onSubjectAdded={this.loadSubjects} />
                     </div>
-                    <div className='subjectsContent'>
-                        <div className='subjectsContainers'>
-                            {this.state.timeTableItems.map((timeTableItem) => {
-                                return (
-                                    <SubjectsContainer timeTableItemData={timeTableItem} key={timeTableItem.id} />
-                                )
-                            })}
-                        </div>
-                    </div>
+                    <button className='subjectsBackBtn'>
+                        <a href={`https://localhost:44414/subjects/${this.state.dayId}`} className='subjectsBackBtnText'>Работи</a>
+                    </button> 
+                    {/*<div className='subjectsContent'>*/}
+                    {/*    <div className='subjectsContainers'>*/}
+                    {/*        {this.state.subjects.map((subject) => {*/}
+                    {/*            return (*/}
+                    {/*                <SubjectsContainer subjectData={subject} key={subject.id} />*/}
+                    {/*            )*/}
+                    {/*        })}*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                 </div>
             </div>
         );

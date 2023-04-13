@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Calendar } from 'devextreme-react';
+import { Footer } from '../Footer/Footer';
 
 export class LandingPage extends Component {
     static displayName = LandingPage.name;
@@ -133,6 +134,7 @@ export class LandingPage extends Component {
                             <Calendar className="calendar" />
                         </div>
                     </div>
+                    <Footer />
                 </div>
         );
     }

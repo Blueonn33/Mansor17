@@ -4,9 +4,9 @@ import '../SubjectsContainer/SubjectsContainer.css';
 import authService from '../api-authorization/AuthorizeService';
 
 export default class SubjectsContainer extends Component {
-    async deleteSubject(timeTableItemId) {
+    async deleteSubject(subjectId) {
         const token = await authService.getAccessToken();
-        await fetch(endpoints.deleteSubject(timeTableItemId), {
+        await fetch(endpoints.deleteSubject(subjectId), {
             method: 'DELETE',
             headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
         })
@@ -24,13 +24,13 @@ export default class SubjectsContainer extends Component {
 
     render() {
         return (
-            <div className='timeTableItemsContainer d-flex' key={this.props.timeTableItemData.id}>
-                <div className='timeTableItemNameWrapper'>
-                    <span className='subjectName pageText'> {this.props.timeTableItemData.value} </span>
-                    <span className='durationName pageText'> {this.props.timeTableItemData.duration} </span>
+            <div className='subjectsContainer d-flex' key={this.props.subjectData.id}>
+                <div className='subjectNameWrapper'>
+                    <span className='subjectName pageText'> {this.props.subjectData.name} </span>
+                    <span className='durationName pageText'> {this.props.subjectData.duration} </span>
                 </div>
                 <div className='deleteSubjectButtonWrapper ml-auto'>
-                    <button className='deleteSubjectButton' onClick={() => this.deleteSubject(this.props.timeTableItemData.id)}>
+                    <button className='deleteSubjectButton' onClick={() => this.deleteSubject(this.props.subjectData.id)}>
                         Изтрий
                     </button>
                 </div>

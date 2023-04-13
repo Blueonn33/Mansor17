@@ -11,6 +11,7 @@ import { TasksCalendar } from "./components/TasksCalendar/TasksCalendar";
 import TimeTablesComponent from "./components/TimeTablesComponent/TimeTablesComponent";
 import SubjectsComponent from './components/SubjectsComponent/SubjectsComponent';
 import { EditTaskGroupName } from './components/EditTaskGroupName/EditTaskGroupName';
+import UserSubjects from './components/UserSubjects/UserSubjects';
 
 const AppRoutes = [
     {
@@ -46,8 +47,12 @@ const AppRoutes = [
         element: <TimeTablesComponent />
     },
     {
-        path: '/subjects/:id',
+        path: '/add/subject/:id',
         element: <SubjectsComponent />
+    },
+    {
+        path: '/subjects/:id',
+        element: <UserSubjects />
     },
   {
     path: '/counter',

@@ -62,10 +62,6 @@ namespace Mansor.Controllers
             {
                 return NotFound("Task doesn't exist");
             }
-            if (targetItem.IsCompleted)
-            {
-                return BadRequest("Task is already completed");
-            }
             await _taskItemsService.DeleteAsync(targetItem);
 
             return Ok(targetItem);

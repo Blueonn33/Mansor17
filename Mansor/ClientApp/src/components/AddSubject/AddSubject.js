@@ -9,8 +9,9 @@ export class AddSubject extends Component {
         this.state = {
             subject: '',
             duration: '',
-            timeTableDayId: '',
-            isDeleted: ''
+            dayId: '',
+            users: null,
+            userId: ''
         }
         this.createSubject = this.createSubject.bind(this);
     }
@@ -25,7 +26,7 @@ export class AddSubject extends Component {
         this.render();
     }
 
-    async createSubject(timeTableDayId) {
+    async createSubject(dayId) {
         console.log(this.state.duration);
         console.log(this.state.subject);
         var subjectInput = this.state.subject;
@@ -40,18 +41,17 @@ export class AddSubject extends Component {
         else {
             const token = await authService.getAccessToken();
             let splittedURL = window.location.pathname.split('/')
-            timeTableDayId = splittedURL[splittedURL.length - 1]
-            await fetch(endpoints.createSubject(timeTableDayId), {
+            dayId = splittedURL[splittedURL.length - 1]
+            await fetch(endpoints.createSubject(dayId), {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
-                    value: subjectInput,
+                    name: subjectInput,
                     duration: durationInput,
-                    timeTableDayId: timeTableDayId,
-                    isDeleted: false
+                    dayId: dayId
                 })
             })
                 .then((response) => {
