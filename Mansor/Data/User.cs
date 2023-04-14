@@ -15,6 +15,7 @@ namespace Mansor.Data
             TaskGroups = new List<TaskGroup>();
             Notes = new List<Note>();
             Subjects = new List<Subject>();
+            UserDays = new List<UserDay>();
         }
 
         public User(string name) : this()
@@ -26,5 +27,6 @@ namespace Mansor.Data
         public ICollection<TaskGroup> TaskGroups { get; set; } = null!;
         public ICollection<Note> Notes { get; set; } = null!;
         public ICollection<Subject> Subjects { get; set; } = null!;
+        public ICollection<UserDay> UserDays { get; set; } = null!;
     }
 }

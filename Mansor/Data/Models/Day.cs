@@ -5,7 +5,7 @@
         public Day()
         {
             Name = Guid.NewGuid().ToString();
-            Subjects = new List<Subject>();
+            UserDays = new List<UserDay>();
         }
         public Day(string name) : this()
         {
@@ -13,6 +13,6 @@
         }
         public int Id { get; set; }
         public string Name { get; set; }
-        public ICollection<Subject> Subjects { get; set; } = null!;
+        public ICollection<UserDay> UserDays { get; set; } = null!;
     }
 }
