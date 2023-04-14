@@ -12,6 +12,7 @@ namespace Mansor.Data.EntityConfigurations
 
             builder.HasKey(t => t.Id);
             builder.Property(t => t.Value).HasMaxLength(255);
+            builder.Property(t => t.Color).HasMaxLength(255);
 
             builder.HasOne(r => r.TaskGroup)
                 .WithMany(ti => ti.TaskItems)

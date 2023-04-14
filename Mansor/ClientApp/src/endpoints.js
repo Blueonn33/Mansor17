@@ -9,6 +9,8 @@ export const endpoints = {
     loadTaskItems: (taskGroupId) => `${apiBaseUrl}/api/taskItems/${taskGroupId}`,
     createTaskItem: (taskGroupId) => `${apiBaseUrl}/api/create/taskItem/${taskGroupId}`,
     completeTask: (taskItemId) => `${apiBaseUrl}/api/delete/taskItem/${taskItemId}`,
+    editTaskItem: (taskItemId) => `${apiBaseUrl}/api/edit/taskItem/${taskItemId}`,
+    getTaskItemColor: (taskItemId) => `${apiBaseUrl}/api/taskItem/${taskItemId}`,
 
     loadNotes: () => `${apiBaseUrl}/api/notes`,
     createNote: () => `${apiBaseUrl}/api/create/note`,

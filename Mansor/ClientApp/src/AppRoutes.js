@@ -12,6 +12,7 @@ import TimeTablesComponent from "./components/TimeTablesComponent/TimeTablesComp
 import SubjectsComponent from './components/SubjectsComponent/SubjectsComponent';
 import { EditTaskGroupName } from './components/EditTaskGroupName/EditTaskGroupName';
 import UserSubjects from './components/UserSubjects/UserSubjects';
+import { EditTaskItemColor } from './components/EditTaskItemColor/EditTaskItemColor';
 
 const AppRoutes = [
     {
@@ -29,6 +30,10 @@ const AppRoutes = [
     {
         path: '/taskItems/:id',
         element: <TasksComponent />
+    },
+    {
+        path: '/editTaskItem/:id',
+        element: <EditTaskItemColor />
     },
     {
         path: '/notes',

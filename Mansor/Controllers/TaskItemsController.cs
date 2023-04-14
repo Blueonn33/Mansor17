@@ -40,6 +40,18 @@ namespace Mansor.Controllers
             return Ok(items);
         }
 
+        [HttpGet]
+        [Route("api/taskItem/{id}")]
+        public async Task<IActionResult> GetTaskItemById([FromRoute] int id)
+        {
+            var targetTaskItem = await _taskItemsService.GetTaskItemByIdAsync(id);
+            if (targetTaskItem == null)
+            {
+                return NotFound();
+            }
+            return Ok(targetTaskItem);
+        }
+
         [HttpPost]
         [Route("api/create/taskItem/{taskGroupId}")]
         public async Task<IActionResult> CreateTaskItems([FromRoute] int taskGroupId, [FromBody] TaskItemRequestModel taskItemsRequestModel)
@@ -64,6 +76,31 @@ namespace Mansor.Controllers
             await _taskItemsService.DeleteAsync(targetItem);
 
             return Ok(targetItem);
+        }
+
+        [HttpPatch]
+        [Route("api/edit/taskItem/{id}")]
+        public async Task<IActionResult> EditTaskItemColor([FromRoute] int id, [FromBody] TaskItem taskItem)
+        {
+            var targetTaskItem = await _taskItemsService.GetTaskItemByIdAsync(id);
+            if (targetTaskItem == null)
+            {
+                return NotFound();
+            }
+
+            if (targetTaskItem.Color == null || targetTaskItem.Color == string.Empty)
+            {
+                return BadRequest();
+            }
+            if (targetTaskItem.Color == taskItem.Color)
+            {
+                return BadRequest();
+            }
+
+            targetTaskItem.Color = taskItem.Color;
+            await _taskItemsService.UpdateTaskItemAsync(targetTaskItem);
+
+            return Ok(targetTaskItem);
         }
     }
 }

@@ -47,6 +47,7 @@ export class AddTaskItem extends Component {
                 },
                 body: JSON.stringify({
                     value: input,
+                    color: '#B3B3B3',
                     taskGroupId: taskGroupId,
                 })
             })
