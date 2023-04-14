@@ -23,12 +23,13 @@
         //}
         public async Task<IEnumerable<Subject>> GetAllSubjectsByDayAsync(int dayId)
         {
-            return await Entities.AsNoTracking().Include(t => t.Day).Where(t => t.DayId == dayId).ToListAsync();
+            return await Entities.AsNoTracking().Include(t => t.Day).Where(t => t.DayId == dayId)
+                .ToListAsync();
         }
         public async Task<IEnumerable<Subject>> GetAllSubjectsAsync(int dayId, string userId)
         {
-            return await Entities.AsNoTracking().Include(t => t.Day).Where(t => t.DayId == dayId)
-                .Include(t => t.User).Where(t => t.UserId == userId).ToListAsync();
+            return await Entities.AsNoTracking().Include(t => t.Day).Include(t => t.User)
+               .Where(t => t.DayId == dayId && t.UserId == userId).ToListAsync();
         }
 
         public async Task<IEnumerable<Subject>> GetSubjectsByUserId(string? Id)

@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace Mansor.Controllers
 {
     [ApiController]
-    [Authorize]
     public class TaskGroupsController : ControllerBase
     {
         private readonly ITaskGroupsService _taskGroupsService;

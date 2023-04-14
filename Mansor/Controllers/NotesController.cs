@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace Mansor.Controllers
 {
     [ApiController]
-    [Authorize]
     public class NotesController : ControllerBase
     {
         private readonly INotesService _notesService;

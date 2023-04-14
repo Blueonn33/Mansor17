@@ -51,10 +51,10 @@
         //{
         //    return await _subjectsRepository.GetAllSubjects(userId);
         //}
-        //public async Task<Subject?> GetSubjectByIdAsync(int id) => await _subjectsRepository.FindAsync(id);
-        //public Task DeleteAsync(Subject subject)
-        //{
-        //    return _subjectsRepository.DeleteAsync(subject);
-        //}
+        public async Task<Subject?> GetSubjectByIdAsync(int id) => await _subjectsRepository.FindAsync(id);
+        public Task DeleteAsync(Subject subject)
+        {
+            return _subjectsRepository.DeleteAsync(subject);
+        }
     }
 }

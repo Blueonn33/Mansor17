@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+﻿import React, { Component, Fragment } from 'react';
 import { NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import authService from './AuthorizeService';
@@ -48,13 +48,13 @@ export class LoginMenu extends Component {
   authenticatedView(userName, profilePath, logoutPath, logoutState) {
     return (<Fragment>
         <NavItem>
-            <NavLink tag={Link} className="text-white" to="/taskGroups">Groups</NavLink>
+            <NavLink tag={Link} className="text-white" to="/taskGroups">Групи</NavLink>
         </NavItem>
         <NavItem>
-            <NavLink tag={Link} className="text-white" to={profilePath}>{userName}</NavLink>
+            <NavLink tag={Link} className="text-white" to={profilePath}>Профил</NavLink>
         </NavItem>
         <NavItem>
-            <NavLink replace tag={Link} className="text-white" to={logoutPath} state={logoutState}>Logout</NavLink>
+            <NavLink replace tag={Link} className="text-white" to={logoutPath} state={logoutState}>Изход</NavLink>
         </NavItem>
     </Fragment>);
   }
@@ -62,10 +62,10 @@ export class LoginMenu extends Component {
   anonymousView(registerPath, loginPath) {
     return (<Fragment>
       <NavItem>
-        <NavLink tag={Link} className="text-white" to={registerPath}>Register</NavLink>
+        <NavLink tag={Link} className="text-white" to={registerPath}>Регистрация</NavLink>
       </NavItem>
       <NavItem>
-        <NavLink tag={Link} className="text-white" to={loginPath}>Login</NavLink>
+        <NavLink tag={Link} className="text-white" to={loginPath}>Вход</NavLink>
       </NavItem>
     </Fragment>);
   }
