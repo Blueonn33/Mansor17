@@ -24,33 +24,33 @@
             if (Model.RecoveryCodesLeft == 0)
             {
                 <div class="alert alert-danger">
-                    <strong>You have no recovery codes left.</strong>
-                    <p>You must <a asp-page="./GenerateRecoveryCodes">generate a new set of recovery codes</a> before you can log in with a recovery code.</p>
+                    <strong>Нямате останали кодове за възстановяване.</strong>
+                    <p>Вие трябва да <a asp-page="./GenerateRecoveryCodes">генерирате нов набор от кодове за възстановяване</a> преди да можете да влезете с код за възстановяване.</p>
                 </div>
             }
             else if (Model.RecoveryCodesLeft == 1)
             {
                 <div class="alert alert-danger">
-                    <strong>You have 1 recovery code left.</strong>
-                    <p>You can <a asp-page="./GenerateRecoveryCodes">generate a new set of recovery codes</a>.</p>
+                    <strong>Имате 1 останал код за възстановяване.</strong>
+                    <p>Вие можете да <a asp-page="./GenerateRecoveryCodes">генерирате нов набор от кодове за възстановяване</a>.</p>
                 </div>
             }
             else if (Model.RecoveryCodesLeft <= 3)
             {
                 <div class="alert alert-warning">
-                    <strong>You have @Model.RecoveryCodesLeft recovery codes left.</strong>
-                    <p>You should <a asp-page="./GenerateRecoveryCodes">generate a new set of recovery codes</a>.</p>
+                    <strong>Имате @Model.RecoveryCodesLeft останали кода за възстановяване.</strong>
+                    <p>Вие можете да <a asp-page="./GenerateRecoveryCodes">генерирате нов набор от кодове за възстановяване</a>.</p>
                 </div>
             }
 
             if (Model.IsMachineRemembered)
             {
                 <form method="post" style="display: inline-block">
-                    <button type="submit" class="btn btn-primary">Forget this browser</button>
+                    <button type="submit" class="btn btn-primary">Забрави този браузър</button>
                 </form>
             }
-            <a asp-page="./Disable2fa" class="btn btn-primary">Disable 2FA</a>
-            <a asp-page="./GenerateRecoveryCodes" class="btn btn-primary">Reset recovery codes</a>
+            <a asp-page="./Disable2fa" class="btn btn-primary">Нулиране на 2FA</a>
+            <a asp-page="./GenerateRecoveryCodes" class="btn btn-primary">Нулиране на кодовете за възстановяване</a>
         }
 
         <h4>Приложение за удостоверяване</h4>
@@ -60,15 +60,15 @@
         }
         else
         {
-            <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="btn btn-primary">Set up authenticator app</a>
-            <a id="reset-authenticator" asp-page="./ResetAuthenticator" class="btn btn-primary">Reset authenticator app</a>
+            <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="btn btn-primary">Настройте приложението за удостоверяване</a>
+            <a id="reset-authenticator" asp-page="./ResetAuthenticator" class="btn btn-primary">Нулирайте приложението за удостоверяване</a>
         }
     }
     else
     {
         <div class="alert alert-danger">
-            <strong>Privacy and cookie policy have not been accepted.</strong>
-            <p>You must accept the policy before you can enable two factor authentication.</p>
+            <strong>Политиката за поверителност и бисквитки не е приета.</strong>
+            <p>Трябва да приемете правилата, преди да можете да активирате двуфакторно удостоверяване.</p>
         </div>
     }
 }

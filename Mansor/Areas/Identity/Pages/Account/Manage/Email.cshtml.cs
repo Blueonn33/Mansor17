@@ -129,11 +129,11 @@ namespace Mansor.Areas.Identity.Pages.Account.Manage
                     "Confirm your email",
                     $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
-                StatusMessage = "Confirmation link to change email sent. Please check your email.";
+                StatusMessage = "Изпратен е линк за потвърждаване смяната на email. Проверете email-а си.";
                 return RedirectToPage();
             }
 
-            StatusMessage = "Your email is unchanged.";
+            StatusMessage = "Вашият email не е променен.";
             return RedirectToPage();
         }
 

@@ -27,11 +27,11 @@
     border: 3px solid #424242;
     width: 1080px;
     height: min-content;
-    /*margin-top: -3%;*/
 }
 .noteContentWrapper {
     width: 1000px;
-    height: 140px;
+    min-height: 140px;
+    max-height: 500px;
     background-color: #d9d9d9;
     margin-bottom: 9px;
     color: black;

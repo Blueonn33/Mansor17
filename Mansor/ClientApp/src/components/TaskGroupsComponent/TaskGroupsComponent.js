@@ -35,7 +35,7 @@ export default class TaskGroupsComponent extends Component {
             <div className='taskGroupsListWrapper d-flex justify-content-center align-items-center'>
                 <div className="offcanvas offcanvas-start" id="offcanvas">
                     <div className="offcanvas-header">
-                        <h3 className="offcanvas-title text-white">Мартин Маринов</h3>
+                        <h3 className="offcanvas-title text-white"></h3>
                         <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
                     </div>
                     <hr id="line"></hr>

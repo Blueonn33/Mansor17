@@ -55,15 +55,6 @@ export default class TasksContainer extends Component {
 
     };
 
-    //handleClick = (id) => {
-    //    this.setState(prevState => ({
-    //        backgroundColors: {
-    //            ...prevState.backgroundColors,
-    //            [id]: 'white',
-    //        },
-    //    }));
-    //}
-
     async completeTask(taskItemId) {
         const token = await authService.getAccessToken();
         await fetch(endpoints.completeTask(taskItemId), {

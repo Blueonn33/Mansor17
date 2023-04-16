@@ -7,6 +7,7 @@
     using Mansor.Data.Models;
 
     [ApiController]
+    [Authorize]
     public class SubjectController : ControllerBase
     {
         private readonly ISubjectsService _subjectsService;
