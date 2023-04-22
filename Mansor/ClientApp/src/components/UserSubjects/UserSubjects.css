@@ -1,0 +1,12 @@
+﻿.subjectsListHeaderWrapper {
+    background-color: #424242;
+    color: white;
+    margin-top: 130px;
+    height: max-content;
+    margin-left: 40%;
+}
+.subjectsListHeader {
+    margin-top: -5.8rem;
+    font-weight: 700;
+    font-size: 50px;
+}

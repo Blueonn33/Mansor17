@@ -36,5 +36,7 @@ namespace Mansor.Business.Services
         {
             return _taskItemsRepository.DeleteAsync(taskItem);
         }
+        public async Task<TaskItem?> GetTaskItemByIdAsync(int id) => await _taskItemsRepository.FindAsync(id);
+        public async Task UpdateTaskItemAsync(TaskItem taskItem) => await _taskItemsRepository.UpdateAsync(taskItem);
     }
 }

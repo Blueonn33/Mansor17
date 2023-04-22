@@ -9,10 +9,10 @@ export class AddSubject extends Component {
         this.state = {
             subject: '',
             duration: '',
-            timeTableDayId: '',
-            isDeleted: ''
+            dayId: '',
         }
         this.createSubject = this.createSubject.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     invalidInput() {
@@ -21,11 +21,16 @@ export class AddSubject extends Component {
         setTimeout(function () { msg.className = msg.className.replace("show", ""); }, 3000);
     }
 
+    handleChange(event) {
+        this.setState({ subject: event.target.value });
+        this.setState({ duration: event.target.value });
+    }
+
     componentDidMount() {
         this.render();
     }
 
-    async createSubject(timeTableDayId) {
+    async createSubject(dayId) {
         console.log(this.state.duration);
         console.log(this.state.subject);
         var subjectInput = this.state.subject;
@@ -40,18 +45,17 @@ export class AddSubject extends Component {
         else {
             const token = await authService.getAccessToken();
             let splittedURL = window.location.pathname.split('/')
-            timeTableDayId = splittedURL[splittedURL.length - 1]
-            await fetch(endpoints.createSubject(timeTableDayId), {
+            dayId = splittedURL[splittedURL.length - 1]
+            await fetch(endpoints.createSubject(dayId), {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
-                    value: subjectInput,
+                    name: subjectInput,
                     duration: durationInput,
-                    timeTableDayId: timeTableDayId,
-                    isDeleted: false
+                    dayId: dayId,
                 })
             })
                 .then((response) => {
@@ -59,7 +63,6 @@ export class AddSubject extends Component {
                         console.log("invalid input")
                     }
                     else {
-                        this.props.onSubjectAdded(this.props.value);
                         this.state.subject = '';
                         this.state.duration = '';
                     }

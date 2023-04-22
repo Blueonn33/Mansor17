@@ -54,6 +54,8 @@ label {
     max-height: 150px;
     min-height: 150px;
     border-bottom: 5px solid white;
+    overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
 }
 

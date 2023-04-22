@@ -1,0 +1,81 @@
+﻿.editTaskItemContainer {
+    margin-top: 5%;
+    margin-left: 25%;
+    background-color: #b3b3b3;
+    height: 250px;
+    width: 550px;
+    border-radius: 10px;
+}
+
+.currentColor{
+    text-align: center;
+    color: white;
+}
+
+#editInput {
+    margin-top: -32px;
+    border-radius: 10px;
+    background-color: #d9d9d9;
+    width: 370px;
+    margin-bottom: 20px;
+    border: none;
+    height: 40px;
+    /*border-bottom: 5px solid white;*/
+}
+
+.form-control:focus {
+    border-bottom: 5px solid white;
+}
+
+#errorTaskItem {
+    margin-top: -63px;
+    margin-right: -357px;
+    font-size: 15px;
+}
+
+#editSubmit {
+    font-size: 20px;
+    line-height: 27px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white;
+    height: 36px;
+    margin-top: -30px;
+    margin-left: 75%;
+}
+
+#editSubmit:hover {
+    text-decoration-line: underline;
+}
+
+#editBack {
+    font-size: 20px;
+    margin-left: 60%;
+    border: none;
+    background-color: #b3b3b3;
+    text-decoration-line: none;
+    color: black !important;
+    margin-bottom: -30%;
+    margin-top: 1%;
+}
+
+#editBack-text {
+    color: black;
+    text-decoration-line: none;
+}
+#editBack-text:hover {
+    color: black;
+    text-decoration-line: underline;
+}
+#editColor-text {
+    margin-top: 40px;
+    margin-left: 3%;
+    margin-right: 2%;
+}
+
+#errorEditItem{
+    margin-top: -20px;
+    margin-left: 58%;
+}
+

@@ -9,5 +9,7 @@ namespace Mansor.Business.Services.Interfaces
         Task<IEnumerable<TaskItem>> GetTaskItemsAsync();
         Task<TaskItem?> GetTaskItemById(int id);
         Task DeleteAsync(TaskItem taskItem);
+        Task<TaskItem?> GetTaskItemByIdAsync(int id);
+        Task UpdateTaskItemAsync(TaskItem taskItem);
     }
 }

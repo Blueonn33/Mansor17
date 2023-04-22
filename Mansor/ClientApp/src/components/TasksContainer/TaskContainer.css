@@ -22,6 +22,7 @@
     color: black;
     width: 780px;
     word-break: break-all;
+    border: 2px solid white;
 }
 
 .taskItemsContainer .taskItemNameWrapper:hover {
@@ -37,7 +38,7 @@
 
 .useTaskItemButtonWrapper {
     margin-left: 1rem;
-    margin-top: 0.5rem;
+    margin-top: 0.83rem;
     margin-bottom: 0.5rem;
 }
 
@@ -70,18 +71,58 @@
     text-decoration: none;
 }
 
-.starTaskItemButtonWrapper {
-    margin-left: -23%;
+.checkTaskItemButtonWrapper {
+    /*margin-left: -23%;*/
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-right: 16rem;
 }
 
-.starButton {
+.checkButton {
     margin-top: 3px;
     height: 35px;
     width: 35px;
     color: #b3b3b3;
 }
 
-.starButton:hover {
+.checkButton:hover {
     color: white;
     cursor: pointer;
+}
+
+.colorTaskItemButtonWrapper {
+    margin-left: -14rem;
+    margin-top: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.colorTaskItemButtonWrapper {
+    height: max-content;
+    width: 130px;
+    font-family: sans-serif;
+    background-color: #424242;
+    border: 3px #b3b3b3 solid;
+    color: white;
+    border-radius: 10px;
+    margin-right: 5rem;
+    font-size: 15px;
+    /*padding: 3px 0px 3px 20px;*/
+    text-align: center;
+}
+
+.colorTaskItemButtonWrapper:hover {
+    background-color: #b3b3b3;
+    border: 3px white solid;
+    cursor: pointer;
+}
+
+.colorButtonText {
+    color: white;
+    text-decoration: none;
+}
+
+.colorButtonText:hover {
+    color: white;
+    text-decoration: none;
 }

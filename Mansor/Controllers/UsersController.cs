@@ -36,13 +36,27 @@
 
         [HttpGet]
         [Route("api/user")]
-        public async Task<IActionResult> GetUserIdAsync()
+        public async Task<IActionResult> GetUserById()
         {
-            var authState = await _authenticationStateProvider.GetAuthenticationStateAsync();
-            var userId = authState.User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            return Ok(userId);
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            var userId = _usersService.GetCurrentUserId().Result;
+            var targetUser = await _usersService.GetUserByIdAsync(userId);
+            if (targetUser == null)
+            {
+                return NotFound();
+            }
+            return Ok(targetUser);
         }
+
+        //[HttpGet]
+        //[Route("api/user")]
+        //public async Task<IActionResult> GetUserIdAsync()
+        //{
+        //    var authState = await _authenticationStateProvider.GetAuthenticationStateAsync();
+        //    var userId = authState.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        //    return Ok(userId);
+        //}
 
         [HttpGet]
         [Route("api/users")]
@@ -65,22 +79,5 @@
             return userInfo == null ? BadRequest("User not found!") : Ok(userInfo);
         }
 
-        [HttpDelete]
-        [Route("api/delete/{id}")]
-        public async Task<IActionResult> DeleteUser([FromRoute] string id)
-        {
-            var targetUser = await _usersService.GetUserByIdAsync(id);
-            if (targetUser == null)
-            {
-                return NotFound("User doesn't exist");
-            }
-            if (targetUser.IsDeleted)
-            {
-                return BadRequest("User is already deleted");
-            }
-            await _usersService.DeleteAsync(targetUser);
-
-            return Ok(targetUser);
-        }
     }
 }

@@ -1,16 +1,15 @@
 ﻿import React, { Component } from 'react'
 import { endpoints } from '../../endpoints';
-import { AddDay } from '../AddDay/AddDay';
 import '../TimeTablesComponent/TimeTablesComponent.css';
 import TimeTablesContainer from '../TimeTablesContainer/TimeTablesContainer';
-import { FaBars, FaCalendarDay, FaListAlt, FaListUl, FaRegStickyNote, FaTable } from "react-icons/fa";
+import { FaBars, FaCalendarDay, FaListAlt, FaRegStickyNote } from "react-icons/fa";
 import authService from '../api-authorization/AuthorizeService';
 
 export default class TimeTablesComponent extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { timeTableDays: [] }
+        this.state = { days: [] }
         this.loadDays = this.loadDays.bind(this);
     }
     async componentDidMount() {
@@ -23,7 +22,7 @@ export default class TimeTablesComponent extends Component {
             headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
         })
             .then((res) => res.json())
-            .then((res) => this.setState({ timeTableDays: res }))
+            .then((res) => this.setState({ days: res }))
             .catch(error => console.error(error));
     }
 
@@ -32,7 +31,7 @@ export default class TimeTablesComponent extends Component {
             <div className='timeTablesListWrapper d-flex justify-content-center align-items-center'>
                 <div className="offcanvas offcanvas-start" id="offcanvas">
                     <div className="offcanvas-header">
-                        <h3 className="offcanvas-title text-white">Мартин Маринов</h3>
+                        <h3 className="offcanvas-title text-white"></h3>
                         <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
                     </div>
                     <hr id="line"></hr>
@@ -66,13 +65,10 @@ export default class TimeTablesComponent extends Component {
                         <div className="menu-bar">
                             <FaBars id="bar" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" />
                         </div>
-                        <div className='createNewTimeTableButtonWrapper'>
-                            <AddDay onDayAdded={this.loadDays} />
-                        </div>
                         <div className='timeTablesContainers'>
-                            {this.state.timeTableDays.map((timeTableDay) => {
+                            {this.state.days.map((day) => {
                                 return (
-                                    <TimeTablesContainer timeTableDayData={timeTableDay} key={timeTableDay.id} />
+                                    <TimeTablesContainer dayData={day} key={day.id} />
                                 )
                             })}
                         </div>

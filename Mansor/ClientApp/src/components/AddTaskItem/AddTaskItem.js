@@ -9,7 +9,6 @@ export class AddTaskItem extends Component {
         this.state = {
             value: '',
             taskGroupId: '',
-            isCompleted: ''
         }
         this.createTaskItem = this.createTaskItem.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -48,8 +47,8 @@ export class AddTaskItem extends Component {
                 },
                 body: JSON.stringify({
                     value: input,
+                    color: '#B3B3B3',
                     taskGroupId: taskGroupId,
-                    isCompleted: false
                 })
             })
                 .then((response) => {

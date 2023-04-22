@@ -9,19 +9,24 @@ export const endpoints = {
     loadTaskItems: (taskGroupId) => `${apiBaseUrl}/api/taskItems/${taskGroupId}`,
     createTaskItem: (taskGroupId) => `${apiBaseUrl}/api/create/taskItem/${taskGroupId}`,
     completeTask: (taskItemId) => `${apiBaseUrl}/api/delete/taskItem/${taskItemId}`,
+    editTaskItem: (taskItemId) => `${apiBaseUrl}/api/edit/taskItem/${taskItemId}`,
+    getTaskItemColor: (taskItemId) => `${apiBaseUrl}/api/taskItem/${taskItemId}`,
 
     loadNotes: () => `${apiBaseUrl}/api/notes`,
     createNote: () => `${apiBaseUrl}/api/create/note`,
     deleteNote: (noteId) => `${apiBaseUrl}/api/delete/note/${noteId}`,
 
     loadDays: () => `${apiBaseUrl}/api/days`,
-    createDay: () => `${apiBaseUrl}/api/create/timeTableDay`,
-    deleteDay: (timeTableDayId) => `${apiBaseUrl}/api/delete/timeTableDay/${timeTableDayId}`,
+    createDay: () => `${apiBaseUrl}/api/create/day`,
+    deleteDay: (dayId) => `${apiBaseUrl}/api/delete/day/${dayId}`,
 
-    loadSubjects: (timeTableDayId) => `${apiBaseUrl}/api/subjects/${timeTableDayId}`,
-    createSubject: (timeTableDayId) => `${apiBaseUrl}/api/create/subject/${timeTableDayId}`,
-    deleteSubject: (timeTableItemId) => `${apiBaseUrl}/api/delete/subject/${timeTableItemId}`,
+    loadSubjects: () => `${apiBaseUrl}/api/subjects`,
+    loadSubjectsForDay: (dayId) => `${apiBaseUrl}/api/subjects/${dayId}`,
+    //loadUserSubjects: () => `${apiBaseUrl}/api/subjects`,
+    loadUserSubjects: () => `${apiBaseUrl}/api/userSubjects`,
+    createSubject: (dayId) => `${apiBaseUrl}/api/create/subject/${dayId}`,
+    deleteSubject: (subjectId) => `${apiBaseUrl}/api/delete/subject/${subjectId}`,
 
     getUsers: () => `${apiBaseUrl}/api/users`,
-    getUser: () => `${apiBaseUrl}/api/user`,
+    getUserName: () => `${apiBaseUrl}/api/user`,
 }

@@ -12,9 +12,9 @@ namespace Mansor.Data
     {
         public DbSet<TaskGroup> TaskGroups => Set<TaskGroup>();
         public DbSet<TaskItem> TaskItems => Set<TaskItem>();
-        public DbSet<Note> Note => Set<Note>();
-        public DbSet<TimeTableDay> TimeTableDay => Set<TimeTableDay>();
-        public DbSet<TimeTableItem> TimeTableItem => Set<TimeTableItem>();
+        public DbSet<Note> Notes => Set<Note>();
+        public DbSet<Day> Days => Set<Day>();
+        public DbSet<Subject> Subjects => Set<Subject>();
 
         public ApplicationDbContext(DbContextOptions options, IOptions<OperationalStoreOptions> operationalStoreOptions)
             : base(options, operationalStoreOptions)
@@ -38,9 +38,22 @@ namespace Mansor.Data
             builder.ApplyConfiguration(new TaskItemEntityConfiguration());
             builder.ApplyConfiguration(new NoteEntityConfiguration());
             builder.ApplyConfiguration(new UserEntityConfiguration());
-            builder.ApplyConfiguration(new TimeTableDayEntityConfiguration());
-            builder.ApplyConfiguration(new TimeTableItemEntityConfiguration());
+            builder.ApplyConfiguration(new DayEntityConfiguration());
+            builder.ApplyConfiguration(new SubjectEntityConfiguration());
 
+            SeedInitialData(builder);
+        }
+
+        private void SeedInitialData(ModelBuilder builder)
+        {
+            //Seed Days
+            builder.Entity<Day>().HasData(
+                new Day { Id = 1, Name = "Понеделник" },
+                new Day { Id = 2, Name = "Вторник" },
+                new Day { Id = 3, Name = "Сряда" },
+                new Day { Id = 4, Name = "Четвъртък" },
+                new Day { Id = 5, Name = "Петък" }
+                );
         }
     }
 }

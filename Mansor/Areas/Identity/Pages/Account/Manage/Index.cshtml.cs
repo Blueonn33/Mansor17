@@ -112,7 +112,7 @@ namespace Mansor.Areas.Identity.Pages.Account.Manage
             }
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "Профилът ви беше подновен";
             return RedirectToPage();
         }
     }

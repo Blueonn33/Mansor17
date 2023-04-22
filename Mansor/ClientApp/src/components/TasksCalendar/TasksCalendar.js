@@ -22,20 +22,15 @@ export function TasksCalendar() {
     const [minDateValue, setMinDateValue] = React.useState(null);
     const [maxDateValue, setMaxDateValue] = React.useState(null);
     const [weekendDisabled, setWeekendDisabled] = React.useState(null);
-    const [firstDay, setFirstDay] = React.useState(0);
+    const [firstDay, setFirstDay] = React.useState(1);
     const [showWeekNumbers, setShowWeekNumbers] = React.useState(false);
     const [currentValue, setCurrentValue] = React.useState(new Date());
     const [useCellTemplate, setUseCellTemplate] = React.useState(null);
-    const [disabled, setDisabled] = React.useState(false);
     const [zoomLevel, setZoomLevel] = React.useState('month');
 
     const onCurrentValueChange = React.useCallback(({ value }) => {
         setCurrentValue(value);
     }, [setCurrentValue]);
-
-    const onDisabledChange = React.useCallback(({ value }) => {
-        setDisabled(value);
-    }, [setDisabled]);
 
     const onZoomLevelChange = React.useCallback(({ value }) => {
         setZoomLevel(value);
@@ -81,7 +76,7 @@ export function TasksCalendar() {
         <div id="container">
             <div className="offcanvas offcanvas-start" id="offcanvas">
                 <div className="offcanvas-header">
-                    <h3 className="offcanvas-title text-white">Мартин Маринов</h3>
+                    <h3 className="offcanvas-title text-white"></h3>
                     <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
                 </div>
                 <hr id="line"></hr>
@@ -120,7 +115,6 @@ export function TasksCalendar() {
                     disabledDates={weekendDisabled ? isDateDisabled : null}
                     firstDayOfWeek={firstDay}
                     showWeekNumbers={showWeekNumbers}
-                    disabled={disabled}
                     zoomLevel={zoomLevel}
                     cellRender={useCellTemplate ? CustomCell : null}
                 />
@@ -160,13 +154,6 @@ export function TasksCalendar() {
                         defaultValue={false}
                         text="Специално оформление"
                         onValueChanged={onUseCellTemplateChange}
-                    />
-                </div>
-                <div className="options">
-                    <CheckBox
-                        value={disabled}
-                        text="Без календар"
-                        onValueChanged={onDisabledChange}
                     />
                 </div>
                 <div className="options">

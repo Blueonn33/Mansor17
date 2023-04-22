@@ -7,19 +7,20 @@ namespace Mansor.Data.Models
         public TaskItem()
         {
             Value = Guid.NewGuid().ToString();
+            Color = string.Empty;
         }
 
-        public TaskItem(TaskGroup? taskGroup, string value, bool completed = false) :this()
+        public TaskItem(TaskGroup? taskGroup, string value, string color, bool completed = false) :this()
         {
             _taskGroup = taskGroup;
             Value = value ?? throw new ArgumentNullException(nameof(value));
-            IsCompleted = completed;
+            Color = color;
         }
         public int Id { get; set; }
         public int TaskGroupId { get; set; }
         public TaskGroup? _taskGroup;
         public TaskGroup TaskGroup;
         public string Value { get; set; }
-        public bool IsCompleted { get; set; }
+        public string Color { get; set; }
     }
 }

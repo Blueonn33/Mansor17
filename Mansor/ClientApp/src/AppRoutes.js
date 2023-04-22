@@ -11,6 +11,8 @@ import { TasksCalendar } from "./components/TasksCalendar/TasksCalendar";
 import TimeTablesComponent from "./components/TimeTablesComponent/TimeTablesComponent";
 import SubjectsComponent from './components/SubjectsComponent/SubjectsComponent';
 import { EditTaskGroupName } from './components/EditTaskGroupName/EditTaskGroupName';
+import UserSubjects from './components/UserSubjects/UserSubjects';
+import { EditTaskItemColor } from './components/EditTaskItemColor/EditTaskItemColor';
 
 const AppRoutes = [
     {
@@ -30,6 +32,10 @@ const AppRoutes = [
         element: <TasksComponent />
     },
     {
+        path: '/editTaskItem/:id/:id',
+        element: <EditTaskItemColor />
+    },
+    {
         path: '/notes',
         element: <Notes />
     },
@@ -46,8 +52,12 @@ const AppRoutes = [
         element: <TimeTablesComponent />
     },
     {
-        path: '/subjects/:id',
+        path: '/add/subject/:id',
         element: <SubjectsComponent />
+    },
+    {
+        path: '/subjects/:id',
+        element: <UserSubjects />
     },
   {
     path: '/counter',

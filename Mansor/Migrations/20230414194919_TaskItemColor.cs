@@ -4,14 +4,15 @@
 
 namespace Mansor.Migrations
 {
-    public partial class AddDuration : Migration
+    public partial class TaskItemColor : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "Duration",
-                table: "TimeTableItems",
-                type: "nvarchar(max)",
+                name: "Color",
+                table: "TaskItems",
+                type: "nvarchar(255)",
+                maxLength: 255,
                 nullable: false,
                 defaultValue: "");
         }
@@ -19,8 +20,8 @@ namespace Mansor.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Duration",
-                table: "TimeTableItems");
+                name: "Color",
+                table: "TaskItems");
         }
     }
 }

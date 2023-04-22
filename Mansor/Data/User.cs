@@ -12,10 +12,9 @@ namespace Mansor.Data
         public User()
         {
             Name = string.Empty;
-            IsDeleted = false;
             TaskGroups = new List<TaskGroup>();
             Notes = new List<Note>();
-            TimeTableDays = new List<TimeTableDay>();
+            Subjects = new List<Subject>();
         }
 
         public User(string name) : this()
@@ -24,9 +23,8 @@ namespace Mansor.Data
         }
 
         public string Name { get; set; } = null!;
-        public bool IsDeleted { get; set; }
         public ICollection<TaskGroup> TaskGroups { get; set; } = null!;
         public ICollection<Note> Notes { get; set; } = null!;
-        public ICollection<TimeTableDay> TimeTableDays { get; set; } = null!;
+        public ICollection<Subject> Subjects { get; set; } = null!;
     }
 }

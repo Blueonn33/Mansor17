@@ -11,14 +11,12 @@
 
 #footer {
     height: 80px;
-    /*position: fixed;*/
-    position: absolute;
+    position: fixed;
     left: 0;
     bottom: 0;
     width: stretch;
     text-align: center;
     background-color: black;
-    margin-bottom: -55%;
 }
 
 #main-content, #dev {
