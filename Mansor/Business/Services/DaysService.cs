@@ -28,6 +28,11 @@ public class DaysService : IDaysService
     //{
     //    return _daysRepository.FindDay(id);
     //}
+    public Task<Day?> GetDayById(int id)
+    {
+        return _daysRepository.FindDay(id);
+    }
+
     public async Task<IEnumerable<Day>> GetDaysAsync() => await _daysRepository.GetAllDays();
 
 

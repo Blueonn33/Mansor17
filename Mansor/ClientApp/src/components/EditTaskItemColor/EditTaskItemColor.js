@@ -105,6 +105,8 @@ export class EditTaskItemColor extends Component {
     };
 
     render() {
+        let splittedURL = window.location.pathname.split('/')
+        let taskGroupId = splittedURL[splittedURL.length - 2]
         return (
             <div className="editTaskItemContainer">
                 <div id="editItemForm">
@@ -123,7 +125,7 @@ export class EditTaskItemColor extends Component {
                                 {this.state.errorMessage}</p>
                         </div>
                         <button id='editBack' onClick={this.close}>
-                            <a href={`https://localhost:44414/taskGroups`} id="editBack-text">Назад</a>
+                            <a href={`https://localhost:44414/taskItems/${taskGroupId}`} id="editBack-text">Назад</a>
                         </button>
                         <button type="submit" id="editSubmit" method="post" className="btn" name="editTaskItem">Промени</button>
                     </form>

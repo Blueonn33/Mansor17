@@ -55,7 +55,6 @@
         [Route("api/subjects/{dayId}")]
         public async Task<IActionResult> GetAllSubjectsForDay([FromRoute] int dayId)
         {
-            Response.Headers.Add("Access-Control-Allow-Origin", "*");
             var userId = _usersService.GetCurrentUserId().Result;
             var subjects = await _subjectsService.GetSubjectsForDay(dayId, userId);
 
@@ -108,7 +107,6 @@
         [Route("api/userSubjects")]
         public async Task<IActionResult> GetAllUserSubjects()
         {
-            Response.Headers.Add("Access-Control-Allow-Origin", "*");
             var userId = _usersService.GetCurrentUserId().Result;
             var subjects = await _subjectsService.GetSubjectsByUserId(userId);
 
@@ -119,7 +117,7 @@
             return Ok(subjects);
         }
 
-       
+
         //[HttpGet]
         //[Route("api/subjects")]
         //public async Task<IActionResult> GetAllUserSubjects()
@@ -135,18 +133,39 @@
         //    return Ok(subjects);
         //}
 
+        //[HttpPost]
+        //[Route("api/create/subject/{dayId}")]
+        //public async Task<IActionResult> CreateSubjects([FromRoute] int dayId, [FromBody] SubjectRequestModel subjectsRequestModel)
+        //{
+        //    //Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
+        //    var userId = _usersService.GetCurrentUserId().Result;
+        //    var day = await _daysService.GetDayByIdAsync(dayId);
+        //    var subject = subjectsRequestModel.ToCreateSubject(day, userId);
+
+        //    var result = await _subjectsService.CreateSubject(subject);
+
+        //    return Ok(result);
+        //}
+
         [HttpPost]
         [Route("api/create/subject/{dayId}")]
         public async Task<IActionResult> CreateSubjects([FromRoute] int dayId, [FromBody] SubjectRequestModel subjectsRequestModel)
         {
-            Response.Headers.Add("Access-Control-Allow-Origin", "*");
-            var userId = _usersService.GetCurrentUserId().Result;
-            var day = await _daysService.GetDayByIdAsync(dayId);
-            var subject = subjectsRequestModel.ToCreateSubject(day, userId);
+            try
+            {
+                var userId = _usersService.GetCurrentUserId().Result;
+                var day = await _daysService.GetDayById(dayId);
+                var subject = subjectsRequestModel.Subjects(day, userId);
 
-            var result = await _subjectsService.CreateSubject(subject);
+                var result = await _subjectsService.CreateSubject(subject);
 
-            return Ok(result);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
         }
 
         [HttpDelete]

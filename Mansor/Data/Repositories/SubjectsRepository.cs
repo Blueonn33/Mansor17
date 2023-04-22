@@ -15,7 +15,7 @@
         {
         }
 
-        public async Task<IEnumerable<Subject>> GetAllSubjects() => await Entities.ToListAsync();
+        public async Task<IEnumerable<Subject>> GetAllSubjects() => await Entities.OrderBy(t => t.DayId).ToListAsync();
 
         //public async Task<IEnumerable<Subject>> GetAllSubjectsAsync(int dayId)
         //{
@@ -23,12 +23,12 @@
         //}
         public async Task<IEnumerable<Subject>> GetAllSubjectsByDayAsync(int dayId)
         {
-            return await Entities.AsNoTracking().Include(t => t.Day).Where(t => t.DayId == dayId)
+            return await Entities.Include(t => t.Day).Where(t => t.DayId == dayId)
                 .ToListAsync();
         }
-        public async Task<IEnumerable<Subject>> GetAllSubjectsAsync(int dayId, string userId)
+        public async Task<IEnumerable<Subject>> GetAllSubjectsAsync(int dayId, string? userId)
         {
-            return await Entities.AsNoTracking().Include(t => t.Day).Include(t => t.User)
+            return await Entities.Include(t => t.Day).Include(t => t.User)
                .Where(t => t.DayId == dayId && t.UserId == userId).ToListAsync();
         }
 

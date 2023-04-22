@@ -47,6 +47,11 @@
             return await _subjectsRepository.AddAsync(subject);
         }
 
+        //public async Task<Subject> CreateSubject(Subject subject, string userId)
+        //{
+        //    return await _subjectsRepository.AddAsync(subject);
+        //}
+
         //public async Task<IEnumerable<string>> GetSubjectsByUserIdAsync(string userId)
         //{
         //    return await _subjectsRepository.GetAllSubjects(userId);

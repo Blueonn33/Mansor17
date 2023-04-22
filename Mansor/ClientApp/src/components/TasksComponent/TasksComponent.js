@@ -20,6 +20,7 @@ export default class TasksComponent extends Component {
         }
         this.loadTaskItems = this.loadTaskItems.bind(this);
     }
+
     async componentDidMount() {
         this.loadTaskItems();
         this.getTaskGroupName();

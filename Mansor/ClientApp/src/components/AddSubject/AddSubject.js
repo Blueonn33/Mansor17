@@ -10,16 +10,20 @@ export class AddSubject extends Component {
             subject: '',
             duration: '',
             dayId: '',
-            users: null,
-            userId: ''
         }
         this.createSubject = this.createSubject.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     invalidInput() {
         var msg = document.getElementById("snackbar");
         msg.className = "show";
         setTimeout(function () { msg.className = msg.className.replace("show", ""); }, 3000);
+    }
+
+    handleChange(event) {
+        this.setState({ subject: event.target.value });
+        this.setState({ duration: event.target.value });
     }
 
     componentDidMount() {
@@ -51,7 +55,7 @@ export class AddSubject extends Component {
                 body: JSON.stringify({
                     name: subjectInput,
                     duration: durationInput,
-                    dayId: dayId
+                    dayId: dayId,
                 })
             })
                 .then((response) => {
@@ -59,7 +63,6 @@ export class AddSubject extends Component {
                         console.log("invalid input")
                     }
                     else {
-                        this.props.onSubjectAdded(this.props.value);
                         this.state.subject = '';
                         this.state.duration = '';
                     }

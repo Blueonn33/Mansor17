@@ -12,6 +12,7 @@ namespace Mansor.Business.Services.Interfaces
         //Task<Day?> GetDayById(int id);
         Task<IEnumerable<Day>> GetDaysAsync();
         Task<Day?> GetDayByIdAsync(int id);
+        Task<Day?> GetDayById(int id);
         //Task<Day?> FindDay(int id);
         //Task<Day?> GetDayByTaskIdAsync(Task<int?> id);
         //Task<Day?> GetDayByNameAsync(string name);

@@ -32,7 +32,7 @@ const AppRoutes = [
         element: <TasksComponent />
     },
     {
-        path: '/editTaskItem/:id',
+        path: '/editTaskItem/:id/:id',
         element: <EditTaskItemColor />
     },
     {

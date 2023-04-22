@@ -24,9 +24,9 @@ namespace Mansor.Data.Repositories
         {
             return await Entities.FirstOrDefaultAsync(t => t.Name == name);
         }
-        //public async Task<Day?> FindDay(int id)
-        //{
-        //    return await Entities.Include(t => t.User).FirstOrDefaultAsync(t => t.Id == id);
-        //}
+        public async Task<Day?> FindDay(int id)
+        {
+            return await Entities.FirstOrDefaultAsync(t => t.Id == id);
+        }
     }
 }

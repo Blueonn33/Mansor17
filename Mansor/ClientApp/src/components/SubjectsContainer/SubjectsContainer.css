@@ -1,11 +1,11 @@
-﻿.subjectsContainer {
+﻿/*.subjectsContainer {
     font-weight: 400;
     font-size: 20px;
     line-height: 27.24px;
     margin-right: 2rem;
-    margin-top: 1rem;
-    background-color: red !important;
-    height: 150px;
+    margin-top: 1rem;*/
+    /*background-color: red !important;*/
+    /*height: 150px;
     width: max-content;
     border-bottom: 10px solid #737373;
 }
@@ -61,5 +61,5 @@
 .deleteSubjectButton:hover {
     color: white;
     text-decoration-line: underline;
-}
+}*/
 

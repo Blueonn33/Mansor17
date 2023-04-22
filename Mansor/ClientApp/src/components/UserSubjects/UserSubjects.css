@@ -1,19 +1,12 @@
-﻿/*.subjectsContainer {
-    height: max-content;
-    background-color: red;
-    width: max-content;
-}
-.subjectsContainer {
-    background-color: #424242 !important;
+﻿.subjectsListHeaderWrapper {
+    background-color: #424242;
     color: white;
+    margin-top: 130px;
+    height: max-content;
+    margin-left: 40%;
 }
-.subjectsContainers {
-    font-size: 20px;
-    margin-right: 10px;
-    margin-left: 23px;
-    margin-top: 5px;
+.subjectsListHeader {
+    margin-top: -5.8rem;
+    font-weight: 700;
+    font-size: 50px;
 }
-.subjectsContainers {
-    padding-bottom: 20vh;
-}
-*/

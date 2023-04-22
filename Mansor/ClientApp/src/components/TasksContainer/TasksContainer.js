@@ -74,6 +74,8 @@ export default class TasksContainer extends Component {
     }
 
     render() {
+        let splittedURL = window.location.pathname.split('/')
+        let taskGroupId = splittedURL[splittedURL.length - 1]
         return (
             <div className='taskItemsContainer d-flex' key={this.props.taskItemData.id}>
                 {/*<div className='taskItemNameWrapper' style={{ backgroundColor: this.state.backgroundColors['this.props.taskItemData.id'] }}>*/}
@@ -91,7 +93,7 @@ export default class TasksContainer extends Component {
                 {/*    </button>*/}
                 {/*</div>*/}
                 <div className="colorTaskItemButtonWrapper ml-auto">
-                    <a href={`https://localhost:44414/editTaskItem/${this.props.taskItemData.id}`} className='colorButtonText'>Оцвети</a>
+                    <a href={`https://localhost:44414/editTaskItem/${taskGroupId}/${this.props.taskItemData.id}`} className='colorButtonText'>Оцвети</a>
                 </div>
                 {/*<div className="checkTaskItemButtonWrapper ml-auto">*/}
                 {/*    <FaCheckCircle className="checkButton" onClick={() => this.handleClick('this.props.taskItemData.id')}*/}

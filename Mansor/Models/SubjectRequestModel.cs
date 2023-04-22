@@ -9,7 +9,7 @@ namespace Mansor.Models
         public string Duration { get; set; }
         public int DayId { get; set; }
 
-        public Subject ToCreateSubject(Day day, string userId)
+        public Subject Subjects(Day day, string userId)
         {
             return new Subject()
             {

@@ -28,5 +28,5 @@ export const endpoints = {
     deleteSubject: (subjectId) => `${apiBaseUrl}/api/delete/subject/${subjectId}`,
 
     getUsers: () => `${apiBaseUrl}/api/users`,
-    getUser: () => `${apiBaseUrl}/api/user`,
+    getUserName: () => `${apiBaseUrl}/api/user`,
 }

@@ -8,5 +8,6 @@ public interface IDaysRepository : IRepository<Day>
     Task<int> GetCountAsync();
     Task<IEnumerable<Day>> GetAllDays();
     Task<Day?> GetDayByName(string name);
+    Task<Day?> FindDay(int id);
     //Task<Day?> FindDay(int id);
 }
