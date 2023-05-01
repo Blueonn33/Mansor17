@@ -56,7 +56,7 @@ const AppRoutes = [
         element: <SubjectsComponent />
     },
     {
-        path: '/subjects/:id',
+        path: '/subjects',
         element: <UserSubjects />
     },
   {

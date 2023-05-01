@@ -17,7 +17,7 @@
     using System.Security.Claims;
 
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class UserController : ControllerBase
     {
         private readonly AuthenticationStateProvider _authenticationStateProvider;

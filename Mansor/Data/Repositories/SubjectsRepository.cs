@@ -17,10 +17,6 @@
 
         public async Task<IEnumerable<Subject>> GetAllSubjects() => await Entities.OrderBy(t => t.DayId).ToListAsync();
 
-        //public async Task<IEnumerable<Subject>> GetAllSubjectsAsync(int dayId)
-        //{
-        //    return await Entities.AsNoTracking().Include(t => t.Day).Where(t => t.DayId == dayId).ToListAsync();
-        //}
         public async Task<IEnumerable<Subject>> GetAllSubjectsByDayAsync(int dayId)
         {
             return await Entities.Include(t => t.Day).Where(t => t.DayId == dayId)
@@ -36,10 +32,5 @@
         {
             return await Entities.Include(t => t.User).Where(t => t.UserId == Id).ToListAsync();
         }
-
-        //public async Task<IEnumerable<string>> GetTimeTablesSubjects(string userId)
-        //{
-        //    return await Entities.Include(t => t.User).Where(t => t.UserId == userId).Select(p => p.Value).ToListAsync();
-        //}
     }
 }

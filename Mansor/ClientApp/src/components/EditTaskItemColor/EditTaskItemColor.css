@@ -11,22 +11,19 @@
     text-align: center;
     color: white;
 }
-
-#editInput {
-    margin-top: -32px;
-    border-radius: 10px;
-    background-color: #d9d9d9;
-    width: 370px;
-    margin-bottom: 20px;
-    border: none;
-    height: 40px;
-    /*border-bottom: 5px solid white;*/
+.editColorContainer{
+    margin-top: -20px;
+    margin-left: 140px;
 }
-
+#editInput {
+    width: 370px;
+    height: 40px;
+    border: 5px solid white;
+    border-radius: 0px;
+}
 .form-control:focus {
     border-bottom: 5px solid white;
 }
-
 #errorTaskItem {
     margin-top: -63px;
     margin-right: -357px;

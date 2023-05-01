@@ -1,8 +1,8 @@
 ﻿import React, { Component } from 'react'
-import { endpoints } from '../../endpoints';
 import '../UserSubjects/UserSubjects.css';
 import authService from '../api-authorization/AuthorizeService';
 import UserSubjectsContainer from '../UserSubjectsContainer/UserSubjectsContainer';
+import { endpoints } from '../../endpoints';
 
 export default class UserSubjects extends Component {
 
@@ -19,17 +19,28 @@ export default class UserSubjects extends Component {
 
     async loadSubjects() {
         const token = await authService.getAccessToken();
-        await fetch(endpoints.loadSubjects(), {
+        let url = `https://localhost:7043/api/subjects`;
+        await fetch(url, {
             headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
         })
-            .then((res) => res.json())
-            .then((res) => this.setState({ subjects: res }))
-            .catch(error => console.error(error));
+            //.then((res) => res.json())
+            //.then((res) => this.setState({ subjects: res }))
+            //.catch(error => console.error(error));
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                this.setState({ subjects: data })
+            })
+            .catch(error => console.log(error));
     }
 
     render() {
-        let splittedURL = window.location.pathname.split('/')
-        let taskGroupId = splittedURL[splittedURL.length - 1]
+        //let splittedURL = window.location.pathname.split('/')
+        //let dayId = splittedURL[splittedURL.length - 1]
         return (
             <div className='subjectsListWrapper d-flex justify-content-center align-items-center'>
                 <div className='subjectsContainer'>
@@ -38,7 +49,7 @@ export default class UserSubjects extends Component {
                             <h4 className='subjectsListHeader'>Предмети</h4>
                         </div>
                         <button className='subjectsBackBtn'>
-                            <a href={`https://localhost:44414/add/subject/${taskGroupId}`} className='subjectsBackBtnText'>Назад</a>
+                            <a href={`https://localhost:44414/timeTable`} className='subjectsBackBtnText'>Назад</a>
                         </button> 
                         <div className='subjectsContainers'>
                             {this.state.subjects.map((subject) => {

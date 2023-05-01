@@ -21,9 +21,6 @@ export const endpoints = {
     deleteDay: (dayId) => `${apiBaseUrl}/api/delete/day/${dayId}`,
 
     loadSubjects: () => `${apiBaseUrl}/api/subjects`,
-    loadSubjectsForDay: (dayId) => `${apiBaseUrl}/api/subjects/${dayId}`,
-    //loadUserSubjects: () => `${apiBaseUrl}/api/subjects`,
-    loadUserSubjects: () => `${apiBaseUrl}/api/userSubjects`,
     createSubject: (dayId) => `${apiBaseUrl}/api/create/subject/${dayId}`,
     deleteSubject: (subjectId) => `${apiBaseUrl}/api/delete/subject/${subjectId}`,
 

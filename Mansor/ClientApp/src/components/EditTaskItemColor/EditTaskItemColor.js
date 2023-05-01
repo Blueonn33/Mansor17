@@ -114,12 +114,15 @@ export class EditTaskItemColor extends Component {
                         <h3 className="currentColor">{this.state.currentColor}</h3>
                         <hr id="line"></hr>
                         <label htmlFor="" id="editColor-text">Нов цвят:</label>
-                        <input type="text" name="taskItemColorField" id="editInput"
-                            value={this.state.newColor}
-                            onChange={this.handleColorChange}
-                            style={{ borderBottomColor: this.state.textColor }}
-                            placeholder = "#......"
-                        />
+                        <div className="editColorContainer">
+                            <input
+                                type="color"
+                                name="taskItemColorField"
+                                id="editInput"
+                                value={this.state.newColor}
+                                onChange={this.handleColorChange}
+                            />
+                        </div>
                         <div id="errorEditItem">
                             <p style={{ color: this.state.textColor }}>
                                 {this.state.errorMessage}</p>
