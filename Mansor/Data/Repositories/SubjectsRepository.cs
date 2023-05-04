@@ -15,7 +15,8 @@
         {
         }
 
-        public async Task<IEnumerable<Subject>> GetAllSubjects() => await Entities.OrderBy(t => t.DayId).ToListAsync();
+        public async Task<IEnumerable<Subject>> GetAllSubjects() => await Entities.OrderBy(t => t.DayId)
+            .ThenBy(t => t.Duration).ToListAsync();
 
         public async Task<IEnumerable<Subject>> GetAllSubjectsByDayAsync(int dayId)
         {

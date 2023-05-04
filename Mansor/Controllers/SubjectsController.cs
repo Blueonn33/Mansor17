@@ -4,6 +4,7 @@
     using Mansor.Business.Services.Interfaces;
     using Mansor.Models;
     using Microsoft.AspNetCore.Cors;
+    using Mansor.Data.Models;
 
     [ApiController]
     //[Authorize]
@@ -22,27 +23,30 @@
             _usersService = usersService;
         }
 
-        //[HttpGet]
-        //[Route("api/subjects")]
-        //public async Task<IEnumerable<Subject>> GetAllSubjectsForUser()
-        //{
-        //    Response.Headers.Add("Access-Control-Allow-Origin", "*");
-        //    return await _subjectsService.GetSubjectsAsync();
-        //}
-
         [HttpGet]
         [Route("api/subjects")]
-        public async Task<IActionResult> GetAllSubjects()
+        public async Task<IEnumerable<Subject>> GetAllSubjectsForUser()
         {
-            var userId = _usersService.GetCurrentUserId().Result;
-            var subjects = await _subjectsService.GetSubjectsByUserId(userId);
-
-            if (!subjects.Any())
-            {
-                return BadRequest("No existing subjects!");
-            }
-            return Ok(subjects);
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            return await _subjectsService.GetSubjectsAsync();
         }
+
+        //[HttpGet]
+        //[Route("api/subjects")]
+        //public async Task<IActionResult> GetAllSubjects()
+        //{
+        //    var headers = HttpContext.Response.Headers;
+        //    headers.Remove("Cross-Origin-Resource-Policy");
+
+        //    var userId = _usersService.GetCurrentUserId().Result;
+        //    var subjects = await _subjectsService.GetSubjectsByUserId(userId);
+
+        //    if (!subjects.Any())
+        //    {
+        //        return BadRequest("No existing subjects!");
+        //    }
+        //    return Ok(subjects);
+        //}
 
         //[HttpGet]
         //[Route("api/subjects")]
