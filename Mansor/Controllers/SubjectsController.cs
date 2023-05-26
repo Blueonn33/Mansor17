@@ -5,9 +5,10 @@
     using Mansor.Models;
     using Microsoft.AspNetCore.Cors;
     using Mansor.Data.Models;
+    using Microsoft.AspNetCore.Authorization;
 
     [ApiController]
-    //[Authorize]
+    [Authorize]
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None)]
     [DisableCors]
     public class SubjectController : ControllerBase
@@ -30,53 +31,6 @@
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
             return await _subjectsService.GetSubjectsAsync();
         }
-
-        //[HttpGet]
-        //[Route("api/subjects")]
-        //public async Task<IActionResult> GetAllSubjects()
-        //{
-        //    var headers = HttpContext.Response.Headers;
-        //    headers.Remove("Cross-Origin-Resource-Policy");
-
-        //    var userId = _usersService.GetCurrentUserId().Result;
-        //    var subjects = await _subjectsService.GetSubjectsByUserId(userId);
-
-        //    if (!subjects.Any())
-        //    {
-        //        return BadRequest("No existing subjects!");
-        //    }
-        //    return Ok(subjects);
-        //}
-
-        //[HttpGet]
-        //[Route("api/subjects")]
-        //public async Task<IActionResult> GetAllSubjects()
-        //{
-        //    HttpContext.Response.Headers["Referrer-Policy"] = "unsafe-url";
-        //    Response.Headers.Add("Access-Control-Allow-Origin", "*");
-        //    var userId = _usersService.GetCurrentUserId().Result;
-        //    var subjects = await _subjectsService.GetSubjectsByUserId(userId);
-
-        //    if (!subjects.Any())
-        //    {
-        //        return BadRequest("No existing subjects!");
-        //    }
-        //    return Ok(subjects);
-        //}
-
-        //[HttpGet]
-        //[Route("api/subjects/{dayId}")]
-        //public async Task<IActionResult> GetAllSubjectsForDay([FromRoute] int dayId)
-        //{
-        //    var userId = _usersService.GetCurrentUserId().Result;
-        //    var subjects = await _subjectsService.GetSubjectsForDay(dayId, userId);
-
-        //    if (!subjects.Any())
-        //    {
-        //        return BadRequest("No existing subjects");
-        //    }
-        //    return Ok(subjects);
-        //}
 
         [HttpPost]
         [Route("api/create/subject/{dayId}")]

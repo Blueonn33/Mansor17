@@ -6,7 +6,7 @@
     margin-top: 3.2rem;
 }
 
-.daysContainer .dayNameWrapper{
+.daysContainer .dayNameWrapper {
     margin-top: -7rem;
     text-align: center;
     position: relative;
@@ -19,7 +19,6 @@
     user-select: none;
     margin-bottom: -30px;
     font-size: 20px;
-    margin-right: 5px;
     height: min-content;
     width: 150px;
 }

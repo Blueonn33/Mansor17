@@ -96,7 +96,7 @@ export class AddSubject extends Component {
                             value={this.state.subject}
                             onChange={(e) => this.setState({ 'subject': e.target.value })}
                         />
-                        <input type="text" id="input-subject" placeholder="8:00 - 8:45"
+                        <input type="text" id="input-subject" placeholder="08:00 - 08:45"
                             value={this.state.duration}
                             onChange={(e) => this.setState({ 'duration': e.target.value })}
                         />

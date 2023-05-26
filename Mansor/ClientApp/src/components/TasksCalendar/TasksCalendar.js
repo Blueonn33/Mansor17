@@ -175,7 +175,7 @@ export function TasksCalendar() {
                     />
                 </div>
                 <div className="options">
-                    <span>Избиране на дата</span>
+                    <span>Избиране на дата - ММ/ДД/ГГГГ</span>
                     <DateBox
                         id="selected-date"
                         value={currentValue}

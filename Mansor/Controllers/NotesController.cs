@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Mansor.Controllers
 {
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class NotesController : ControllerBase
     {
         private readonly INotesService _notesService;
@@ -22,14 +22,6 @@ namespace Mansor.Controllers
             _usersService = usersService;
             _userManager = userManager;
         }
-
-        //[HttpGet]
-        //[Route("api/notes")]
-        //public async Task<IEnumerable<Note>> GetAllNotes()
-        //{
-        //    Response.Headers.Add("Access-Control-Allow-Origin", "*");
-        //    return await _notesService.GetNotesAsync();
-        //}
 
         [HttpGet]
         [Route("api/notes")]
@@ -57,21 +49,6 @@ namespace Mansor.Controllers
             return Ok(targetNote);
         }
 
-        //[HttpPost]
-        //[Route("api/create/note")]
-        //public async Task<IActionResult> CreateNote([FromBody] Note createNote)
-        //{
-        //    var note = await _notesService.GetNoteByTitleAsync(createNote.Title);
-
-        //    if (note != null)
-        //    {
-        //        return BadRequest("The note already exists");
-        //    }
-
-        //    await _notesService.AddNoteAsync(createNote);
-        //    return Ok(createNote);
-        //}
-
         [HttpPost]
         [Route("api/create/note")]
         public async Task<IActionResult> CreateNote([FromBody] NoteRequestModel noteRequestModel)
@@ -93,7 +70,6 @@ namespace Mansor.Controllers
 
         [HttpDelete]
         [Route("api/delete/note/{id}")]
-
         public async Task<IActionResult> DeleteNote([FromRoute] int id)
         {
             var targetNote = await _notesService.GetNoteByIdAsync(id);

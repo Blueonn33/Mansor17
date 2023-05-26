@@ -102,7 +102,7 @@ export class EditTaskGroupName extends Component {
                         <h3 className="currentName">{this.state.currentName}</h3>
                         <hr id="line"></hr>
                         <label htmlFor="" id="editName-text">Ново име:</label>
-                        <input type="text" name="taskGroupNameField" id="editInput"
+                        <input type="text" name="taskGroupNameField" id="editGroupInput"
                             value={this.state.newName}
                             onChange={this.handleNameChange}
                             style={{ borderBottomColor: this.state.textColor }}

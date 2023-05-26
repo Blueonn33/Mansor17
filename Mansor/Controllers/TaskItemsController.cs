@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Mansor.Controllers
 {
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class TaskItemsController : ControllerBase
     {
         private readonly ITaskItemsService _taskItemsService;

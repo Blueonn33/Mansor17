@@ -17,7 +17,7 @@
     using System.Security.Claims;
 
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly AuthenticationStateProvider _authenticationStateProvider;
@@ -47,16 +47,6 @@
             }
             return Ok(targetUser);
         }
-
-        //[HttpGet]
-        //[Route("api/user")]
-        //public async Task<IActionResult> GetUserIdAsync()
-        //{
-        //    var authState = await _authenticationStateProvider.GetAuthenticationStateAsync();
-        //    var userId = authState.User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-        //    return Ok(userId);
-        //}
 
         [HttpGet]
         [Route("api/users")]
