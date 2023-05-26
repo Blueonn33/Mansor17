@@ -36,6 +36,7 @@ body {
 .body-container {
     width: 800px;
     margin-left: 20%;
+    text-align: justify;
     margin-bottom: 100px;
     padding-top: 330px;
     margin-top: -200px;

@@ -48,16 +48,6 @@
             return Ok(targetUser);
         }
 
-        //[HttpGet]
-        //[Route("api/user")]
-        //public async Task<IActionResult> GetUserIdAsync()
-        //{
-        //    var authState = await _authenticationStateProvider.GetAuthenticationStateAsync();
-        //    var userId = authState.User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-        //    return Ok(userId);
-        //}
-
         [HttpGet]
         [Route("api/users")]
         public async Task<IEnumerable<User>> GetAllUsers()

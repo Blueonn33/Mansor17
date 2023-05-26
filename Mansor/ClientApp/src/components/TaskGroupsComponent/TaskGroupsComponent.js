@@ -12,17 +12,11 @@ export default class TaskGroupsComponent extends Component {
         super(props)
         this.state = {
             taskGroups: [],
-            users: null,
-            userId: '',
-            currentUserName: '',
-            userData: undefined,
-            userHeaderName: '',
         }
         this.loadTaskGroups = this.loadTaskGroups.bind(this);
     }
     async componentDidMount() {
         this.loadTaskGroups();
-        this.getUserName();
     }
     async loadTaskGroups() {
         const token = await authService.getAccessToken();
@@ -34,26 +28,12 @@ export default class TaskGroupsComponent extends Component {
             .catch(error => console.error(error));
     }
 
-    getUserName = async () => {
-        const token = await authService.getAccessToken();
-        await fetch(endpoints.getUserName(), {
-            headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
-        })
-            .then(async (res) => {
-                let userData = await res.json()
-                this.setState({ 'userData': userData })
-                this.setState({ 'currentUserName': userData.name })
-                this.setState({ 'userHeaderName': userData.name })
-            }
-            )
-    }
-
     render() {
         return (
             <div className='taskGroupsListWrapper d-flex justify-content-center align-items-center'>
                 <div className="offcanvas offcanvas-start" id="offcanvas">
                     <div className="offcanvas-header">
-                        <h3 className="offcanvas-title text-white">{this.state.userHeaderName}</h3>
+                        <h3 className="offcanvas-title text-white"></h3>
                         <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
                     </div>
                     <hr id="line"></hr>

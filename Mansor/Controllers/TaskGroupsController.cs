@@ -24,16 +24,6 @@ namespace Mansor.Controllers
             _usersService = usersService;
             _userManager = userManager;
         }
-        //[HttpGet]
-        //[Route("api/taskGroups")]
-        //public async Task<IEnumerable<TaskGroup>> GetAllTaskGroups()
-        //{
-        //    //var userId = _usersService.GetCurrentUserId().Result;
-        //    //var taskGroups = await _taskGroupsService.GetTaskGroupsByUserId(userId);
-        //    Response.Headers.Add("Access-Control-Allow-Origin", "*");
-        //    return await _taskGroupsService.GetTaskGroupsAsync();
-        //    //return taskGroups;
-        //}
 
         [HttpGet]
         [Route("api/taskGroups")]
@@ -60,21 +50,6 @@ namespace Mansor.Controllers
             }
             return Ok(targetTaskGroup);
         }
-
-        //[HttpPost]
-        //[Route("api/create/taskGroup")]
-        //public async Task<IActionResult> CreateTaskGroup([FromBody] TaskGroup createTaskGroup)
-        //{   
-        //    var taskGroup = await _taskGroupsService.GetTaskGroupByNameAsync(createTaskGroup.Name);
-
-        //    if (taskGroup != null)
-        //    {
-        //        return BadRequest("The group already exists");
-        //    }
-
-        //    await _taskGroupsService.AddTaskGroupAsync(createTaskGroup);
-        //    return Ok(createTaskGroup);
-        //}
 
         [HttpPost]
         [Route("api/create/taskGroup")]

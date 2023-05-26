@@ -5,8 +5,8 @@ import '../SubjectsComponent/SubjectsComponent.css';
 export default class SubjectsComponent extends Component {
 
     render() {
-        const splittedURL = window.location.pathname.split('/')
-        const taskGroupId = splittedURL[splittedURL.length - 1]
+        //const splittedURL = window.location.pathname.split('/')
+        //const dayId = splittedURL[splittedURL.length - 1]
         return (
             <div className='subjectsListWrapper d-flex justify-content-center align-items-center'>
                 <div className='subjectsContainer'>
@@ -14,7 +14,7 @@ export default class SubjectsComponent extends Component {
                         <AddSubject onSubjectAdded={this.loadSubjects} />
                     </div>
                     <button className='subjectsTableBtn'>
-                        <a href={`https://localhost:44414/subjects/${taskGroupId}`} className='subjectsTableBtnText'>Програма</a>
+                        <a href={`https://localhost:44414/subjects`} className='subjectsTableBtnText'>Програма</a>
                     </button>
                 </div>
             </div>

@@ -10,6 +10,7 @@ export class AddSubject extends Component {
             subject: '',
             duration: '',
             dayId: '',
+            errorMessage: ''
         }
         this.createSubject = this.createSubject.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -31,6 +32,10 @@ export class AddSubject extends Component {
     }
 
     async createSubject(dayId) {
+        const messages = {
+            error: "Въведете текст в полето",
+            success: "Успешно създадохте предмет"
+        }
         console.log(this.state.duration);
         console.log(this.state.subject);
         var subjectInput = this.state.subject;
@@ -38,11 +43,17 @@ export class AddSubject extends Component {
 
         if (subjectInput === '') {
             this.invalidInput();
+            this.setState({ errorMessage: messages.error });
         }
         else if (durationInput === '') {
             this.invalidInput();
+            this.setState({ errorMessage: messages.error });
         }
         else {
+            this.invalidInput();
+            this.state.subject = '';
+            this.state.duration = '';
+            this.setState({ errorMessage: messages.success });
             const token = await authService.getAccessToken();
             let splittedURL = window.location.pathname.split('/')
             dayId = splittedURL[splittedURL.length - 1]
@@ -61,10 +72,6 @@ export class AddSubject extends Component {
                 .then((response) => {
                     if (!response.ok) {
                         console.log("invalid input")
-                    }
-                    else {
-                        this.state.subject = '';
-                        this.state.duration = '';
                     }
                 })
                 .catch(error => {
@@ -89,14 +96,14 @@ export class AddSubject extends Component {
                             value={this.state.subject}
                             onChange={(e) => this.setState({ 'subject': e.target.value })}
                         />
-                        <input type="text" id="input-subject" placeholder="8:00 - 8:45"
+                        <input type="text" id="input-subject" placeholder="08:00 - 08:45"
                             value={this.state.duration}
                             onChange={(e) => this.setState({ 'duration': e.target.value })}
                         />
                         <button type="button" className="addSubject" onClick={this.createSubject}>Добави</button>
                     </div>
                 </div>
-                <div id="snackbar">Въведете текст в полето</div>
+                <div id="snackbar">{this.state.errorMessage}</div>
             </div>
         );
     }
