@@ -23,9 +23,6 @@ export default class UserSubjects extends Component {
         await fetch(url, {
             headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
         })
-            //.then((res) => res.json())
-            //.then((res) => this.setState({ subjects: res }))
-            //.catch(error => console.error(error));
             .then(response => {
                 if (!response.ok) {
                     throw new Error(response.statusText);
@@ -39,8 +36,6 @@ export default class UserSubjects extends Component {
     }
 
     render() {
-        //let splittedURL = window.location.pathname.split('/')
-        //let dayId = splittedURL[splittedURL.length - 1]
         return (
             <div className='subjectsListWrapper d-flex justify-content-center align-items-center'>
                 <div className='subjectsContainer'>
