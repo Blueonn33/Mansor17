@@ -13,11 +13,16 @@ import SubjectsComponent from './components/SubjectsComponent/SubjectsComponent'
 import { EditTaskGroupName } from './components/EditTaskGroupName/EditTaskGroupName';
 import UserSubjects from './components/UserSubjects/UserSubjects';
 import { EditTaskItemColor } from './components/EditTaskItemColor/EditTaskItemColor';
+import SpecialityComponent from './components/SpecialityComponent/SpecialityComponent';
 
 const AppRoutes = [
     {
         index: true,
         element: <LandingPage />
+    },
+    {
+        path: '/specialities',
+        element: <SpecialityComponent />
     },
     {
         path: '/taskGroups',

@@ -46,6 +46,9 @@ builder.Services.AddScoped<IDaysService, DaysService>();
 builder.Services.AddScoped<ISubjectsRepository, SubjectsRepository>();
 builder.Services.AddScoped<ISubjectsService, SubjectsService>();
 
+builder.Services.AddScoped<ISpecialitiesRepository, SpecialitiesRepository>();
+builder.Services.AddScoped<ISpecialitiesService, SpecialitiesService>();
+
 builder.Services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.MaxDepth = 64);
 
 builder.Services.AddCors(options =>
