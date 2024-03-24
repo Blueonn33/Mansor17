@@ -51,7 +51,6 @@ export default class UserSubjectsContainer extends Component {
                     <h6 className='subjectDay pageText'> {this.getDayName(this.props.subjectData.dayId)} </h6>
                 </div>
                 <div className='subjectNameWrapper'>
-                    {/*<span className='dayNumber pageText'> {this.getDayName(this.props.subjectData.dayId)} - </span>*/}
                     <span className='subjectName pageText'> {this.props.subjectData.name} </span>
                     <span className='durationName pageText'> {this.props.subjectData.duration} </span>
                 </div>
