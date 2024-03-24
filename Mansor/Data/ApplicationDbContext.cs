@@ -15,8 +15,11 @@ namespace Mansor.Data
         public DbSet<Note> Notes => Set<Note>();
         public DbSet<Day> Days => Set<Day>();
         public DbSet<Subject> Subjects => Set<Subject>();
+		public DbSet<Speciality> Specialities => Set<Speciality>();
+		public DbSet<Student> Students => Set<Student>();
+		public DbSet<Grade> Grades => Set<Grade>();
 
-        public ApplicationDbContext(DbContextOptions options, IOptions<OperationalStoreOptions> operationalStoreOptions)
+		public ApplicationDbContext(DbContextOptions options, IOptions<OperationalStoreOptions> operationalStoreOptions)
             : base(options, operationalStoreOptions)
         {
 
@@ -40,8 +43,11 @@ namespace Mansor.Data
             builder.ApplyConfiguration(new UserEntityConfiguration());
             builder.ApplyConfiguration(new DayEntityConfiguration());
             builder.ApplyConfiguration(new SubjectEntityConfiguration());
+			builder.ApplyConfiguration(new SpecialityEntityConfiguration());
+			builder.ApplyConfiguration(new StudentEntityConfiguration());
+			builder.ApplyConfiguration(new GradeEntityConfiguration());
 
-            SeedInitialData(builder);
+			SeedInitialData(builder);
         }
 
         private void SeedInitialData(ModelBuilder builder)

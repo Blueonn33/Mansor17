@@ -26,4 +26,10 @@ export const endpoints = {
 
     getUsers: () => `${apiBaseUrl}/api/users`,
     getUserName: () => `${apiBaseUrl}/api/user`,
+
+    loadSpecialities: () => `${apiBaseUrl}/api/specialities`,
+    getSpecialityName: (specialityId) => `${apiBaseUrl}/api/speciality/${specialityId}`,
+    deleteSpeciality: (specialityId) => `${apiBaseUrl}/api/delete/speciality/${specialityId}`,
+    editSpeciality: (specialityId) => `${apiBaseUrl}/api/edit/speciality/${specialityId}`,
+    createSpeciality: () => `${apiBaseUrl}/api/create/speciality`,
 }
