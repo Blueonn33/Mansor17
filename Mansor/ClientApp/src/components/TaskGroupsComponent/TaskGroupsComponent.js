@@ -1,6 +1,6 @@
 ﻿import React, { Component } from 'react'
 import { endpoints } from '../../endpoints';
-import { AddTaskGroup } from '../AddTaskGroup/AddTaskGroup';
+import { AddTaskGroup } from '../AddTaskGroup/AddTaskGroup.js';
 import '../TaskGroupsComponent/TaskGroupsComponent.css';
 import TaskGroupsContainer from '../TaskGroupsContainer/TaskGroupsContainer';
 import { FaBars, FaCalendarDay, FaRegStickyNote, FaTable } from "react-icons/fa";

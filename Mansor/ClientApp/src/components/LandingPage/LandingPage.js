@@ -64,7 +64,7 @@ export class LandingPage extends Component {
                      <div id="modal-tasks">
                         <div className="tasksImg">
                             <a target="_blank" href='/Images/Tasks.png'>
-                                <img id="tasksImg" src='/Images/Tasks.png' alt="Time table" href='/Images/Timetable.png' />
+                                <img id="tasksImg" src='/Images/Tasks.png' alt="Tasks" href='/Images/Tasks.png' />
                             </a>
                         </div>
                         <div className="body-content">
@@ -106,7 +106,7 @@ export class LandingPage extends Component {
                     <div id="modal-notes">
                     <div>
                         <a target="_blank" href='/Images/Notes.png'>
-                            <img id="notesImg" src='/Images/Notes.png' alt="Time table" href='/Images/Timetable.png' />
+                            <img id="notesImg" src='/Images/Notes.png' alt="Notes" href='/Images/Notes.png' />
                         </a>
                         </div>
                         <div className="body-content">
