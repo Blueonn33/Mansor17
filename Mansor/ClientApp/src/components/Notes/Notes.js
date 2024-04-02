@@ -46,7 +46,7 @@ export default class Notes extends Component {
                     <div className="offcanvas-body text-white">
                         <FaListAlt className="groupsIcon" />
                         <button className='groupsBtn'>
-                            <a href={`https://localhost:44414/taskGroups`} className='groupsBtnText'>Групи</a>
+                            <a href={`https://localhost:44414/taskGroups`} className='groupsBtnText'>Дисциплини</a>
                         </button>
                         <hr id="line"></hr>
                     </div>

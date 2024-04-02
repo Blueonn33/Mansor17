@@ -62,7 +62,7 @@ export default class TaskGroupsComponent extends Component {
                 <div className='taskGroupsContainer'>
                     <div className='taskGroupsContent'>
                         <div className='taskGroupsListHeaderWrapper d-flex'>
-                            <h4 className='taskGroupsListHeader'>Групи</h4>
+                            <h4 className='taskGroupsListHeader'>Дисциплини</h4>
                         </div>
                         <div className="menu-bar">
                             <FaBars id="bar" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" />

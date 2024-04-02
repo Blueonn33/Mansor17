@@ -102,7 +102,7 @@ export default class TasksComponent extends Component {
                         </div>
                     </div>
                 </div>
-                <div id="snackbar">Еnter text in the input field</div>
+                <div id="snackbar">Въведете текст в полето</div>
             </div>
         );
     }

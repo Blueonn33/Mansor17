@@ -49,6 +49,12 @@ builder.Services.AddScoped<ISubjectsService, SubjectsService>();
 builder.Services.AddScoped<ISpecialitiesRepository, SpecialitiesRepository>();
 builder.Services.AddScoped<ISpecialitiesService, SpecialitiesService>();
 
+builder.Services.AddScoped<IStudentsRepository, StudentsRepository>();
+builder.Services.AddScoped<IStudentsService, StudentsService>();
+
+builder.Services.AddScoped<IGradesRepository, GradesRepository>();
+builder.Services.AddScoped<IGradesService, GradesService>();
+
 builder.Services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.MaxDepth = 64);
 
 builder.Services.AddCors(options =>

@@ -21,10 +21,10 @@ export class AddTaskGroup extends Component {
         var input = this.state.value;
 
         const errors = {
-            success: "Добавихте успешно нова група.",
+            success: "Добавихте успешно нова дисциплина.",
             minLength: "Името е твърде кратко.",
             maxLength: "Името е твърде дълго.",
-            existingTaskGroup: "Групата вече съществува."
+            existingTaskGroup: "Дисциплината вече съществува."
         }
         const color = {
             error: "red",
@@ -92,7 +92,7 @@ export class AddTaskGroup extends Component {
                             <div className="modal-header border-0">
                                 <button type="button" className="close" data-bs-dismiss="modal">&times;</button>
                                 <div className="title">
-                                    <h4 className="modal-title" id="title">Нова група</h4>
+                                    <h4 className="modal-title" id="groupsTitle">Нова дисциплина</h4>
                                     <hr id="line"></hr>
                                 </div>
 

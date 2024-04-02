@@ -92,7 +92,7 @@ export class AddSpeciality extends Component {
                             <div className="modal-header border-0">
                                 <button type="button" className="close" data-bs-dismiss="modal">&times;</button>
                                 <div className="title">
-                                    <h4 className="modal-title" id="title">Нова специалност</h4>
+                                    <h4 className="modal-title" id="specialityTitle">Нова специалност</h4>
                                     <hr id="line"></hr>
                                 </div>
 

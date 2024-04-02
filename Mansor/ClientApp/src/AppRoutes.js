@@ -1,7 +1,6 @@
 import ApiAuthorzationRoutes from './components/api-authorization/ApiAuthorizationRoutes';
 import { Counter } from "./components/Counter";
 import { FetchData } from "./components/FetchData";
-import { Home } from "./components/Home";
 import { LandingPage } from './components/LandingPage/LandingPage';
 import TaskGroupsComponent from "./components/TaskGroupsComponent/TaskGroupsComponent";
 import TasksComponent from "./components/TasksComponent/TasksComponent";
@@ -14,6 +13,7 @@ import { EditTaskGroupName } from './components/EditTaskGroupName/EditTaskGroupN
 import UserSubjects from './components/UserSubjects/UserSubjects';
 import { EditTaskItemColor } from './components/EditTaskItemColor/EditTaskItemColor';
 import SpecialityComponent from './components/SpecialityComponent/SpecialityComponent';
+import StudentComponent from './components/StudentComponent/StudentComponent';
 
 const AppRoutes = [
     {
@@ -23,6 +23,10 @@ const AppRoutes = [
     {
         path: '/specialities',
         element: <SpecialityComponent />
+    },
+    {
+        path: '/students/:id',
+        element: <StudentComponent />
     },
     {
         path: '/taskGroups',
