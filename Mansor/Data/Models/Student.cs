@@ -8,7 +8,7 @@ namespace Mansor.Data.Models
 		public Student()
 		{
 			Name = Guid.NewGuid().ToString();
-			Grades = new List<Grade>();
+			TypeOfGrades = new List<TypeOfGrade>();
 		}
 
 		public Student(Speciality? speciality, string name) : this()
@@ -21,6 +21,6 @@ namespace Mansor.Data.Models
 		public Speciality? _speciality;
 		public Speciality Speciality;
 		public string Name { get; set; }
-		public ICollection<Grade> Grades { get; set; }
+		public ICollection<TypeOfGrade> TypeOfGrades { get; set; }
 	}
 }

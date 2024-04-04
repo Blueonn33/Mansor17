@@ -12,9 +12,9 @@ export default class StudentContainer extends Component {
         };
     }
 
-    async componentDidMount(studentId) {
+    async componentDidMount(specialityId) {
         const token = await authService.getAccessToken();
-        fetch(endpoints.getStudentColor(studentId), {
+        fetch(endpoints.loadStudents(specialityId), {
             headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
         })
             .then(response => response.json())
@@ -46,9 +46,10 @@ export default class StudentContainer extends Component {
                     <span className='studentName pageText' > {this.props.studentData.name} </span>
                     <hr id="studentLine"></hr>
                 </div>
-                <div className="markStudentButtonWrapper ml-auto">
-                    <button className="markStudent">
-                        Оцени
+                <div className='markStudentButtonWrapper ml-auto'>
+                    <button className='markStudent'>
+                        <a href={`https://localhost:44414/typeOfGrade/${this.props.studentData.id}`}
+                            className="markStudentText">Оцени</a>
                     </button>
                 </div>
                 <div className="removeStudentButtonWrapper ml-auto">
@@ -56,7 +57,6 @@ export default class StudentContainer extends Component {
                         Премахни
                     </button>
                 </div>
-          
             </div>
         )
     }

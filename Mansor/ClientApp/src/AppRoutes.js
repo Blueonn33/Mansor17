@@ -14,6 +14,7 @@ import UserSubjects from './components/UserSubjects/UserSubjects';
 import { EditTaskItemColor } from './components/EditTaskItemColor/EditTaskItemColor';
 import SpecialityComponent from './components/SpecialityComponent/SpecialityComponent';
 import StudentComponent from './components/StudentComponent/StudentComponent';
+import TypeOfGradeComponent from './components/TypeOfGradeComponent/TypeOfGradeComponent';
 
 const AppRoutes = [
     {
@@ -63,6 +64,10 @@ const AppRoutes = [
     {
         path: '/add/subject/:id',
         element: <SubjectsComponent />
+    },
+    {
+        path: '/typeOfGrade/:id',
+        element: <TypeOfGradeComponent />
     },
     {
         path: '/subjects',

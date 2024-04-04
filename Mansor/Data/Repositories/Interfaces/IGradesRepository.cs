@@ -9,7 +9,7 @@ namespace Mansor.Data.Repositories.Interfaces
 {
 	public interface IGradesRepository : IRepository<Grade>
 	{
-		Task<IEnumerable<Grade>> GetAllGradesAsync(int studentId);
+		Task<IEnumerable<Grade>> GetAllGradesAsync(int typeOfGradeId);
 		Task<IEnumerable<Grade>> GetAllGrades();
 		Task<Grade?> FindGrade(int id);
 	}

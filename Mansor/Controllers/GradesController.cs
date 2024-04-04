@@ -11,12 +11,11 @@ namespace Mansor.Controllers
 	public class GradesController : ControllerBase
 	{
 		private readonly IGradesService _gradesService;
-		private readonly IStudentsService _studentsService;
-		private readonly IUsersService _usersService;
-		public GradesController(IGradesService gradesService, IStudentsService studentsService)
+		private readonly ITypeOfGradesService _typeOfGradesService;
+		public GradesController(IGradesService gradesService, ITypeOfGradesService typeOfGradesService)
 		{
 			_gradesService = gradesService;
-			_studentsService = studentsService;
+			_typeOfGradesService = typeOfGradesService;
 		}
 
 		[HttpGet]
@@ -28,11 +27,11 @@ namespace Mansor.Controllers
 		}
 
 		[HttpGet]
-		[Route("api/grades/{studentId}")]
-		public async Task<IActionResult> GetAllItems([FromRoute] int studentId)
+		[Route("api/grades/{typeOfGradeId}")]
+		public async Task<IActionResult> GetAllItems([FromRoute] int typeOfGradeId)
 		{
 			Response.Headers.Add("Access-Control-Allow-Origin", "*");
-			var grades = await _gradesService.GetAllGrades(studentId);
+			var grades = await _gradesService.GetAllGrades(typeOfGradeId);
 
 			if (!grades.Any())
 			{
@@ -54,11 +53,11 @@ namespace Mansor.Controllers
 		}
 
 		[HttpPost]
-		[Route("api/create/grade/{studentId}")]
-		public async Task<IActionResult> CreateGrades([FromRoute] int studentId, [FromBody] GradeRequestModel gradesRequestModel)
+		[Route("api/create/grade/{typeOfGradeId}")]
+		public async Task<IActionResult> CreateGrades([FromRoute] int typeOfGradeId, [FromBody] GradeRequestModel gradesRequestModel)
 		{
-			var student = await _studentsService.GetStudentById(studentId);
-			var grade = gradesRequestModel.Grades(student);
+			var typeOfGrade = await _typeOfGradesService.GetTypeOfGradeById(typeOfGradeId);
+			var grade = gradesRequestModel.Grades(typeOfGrade);
 
 			var result = await _gradesService.CreateGrade(grade);
 

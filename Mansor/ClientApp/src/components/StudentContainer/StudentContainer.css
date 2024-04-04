@@ -51,4 +51,11 @@
     color:white;
     opacity:1;
 }
+.markStudentText{
+    color:black;
+    text-decoration: none;
+}
+.markStudentText:hover{
+    color:black;
+}
 

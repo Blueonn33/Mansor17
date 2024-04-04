@@ -18,6 +18,7 @@ namespace Mansor.Data
 		public DbSet<Speciality> Specialities => Set<Speciality>();
 		public DbSet<Student> Students => Set<Student>();
 		public DbSet<Grade> Grades => Set<Grade>();
+		public DbSet<TypeOfGrade> TypeOfGrades => Set<TypeOfGrade>();
 
 		public ApplicationDbContext(DbContextOptions options, IOptions<OperationalStoreOptions> operationalStoreOptions)
             : base(options, operationalStoreOptions)
