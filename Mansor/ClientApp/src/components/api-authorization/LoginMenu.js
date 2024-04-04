@@ -51,7 +51,7 @@ export class LoginMenu extends Component {
             <NavLink tag={Link} className="text-white" to="/specialities">Специалности</NavLink>
         </NavItem>
         <NavItem>
-            <NavLink tag={Link} className="text-white" to="/taskGroups">Групи</NavLink>
+            <NavLink tag={Link} className="text-white" to="/taskGroups">Дисциплини</NavLink>
         </NavItem>
         <NavItem>
             <NavLink tag={Link} className="text-white" to={profilePath}>Профил</NavLink>

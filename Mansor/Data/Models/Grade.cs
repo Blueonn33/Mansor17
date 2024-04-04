@@ -10,15 +10,15 @@ namespace Mansor.Data.Models
 			Value = Guid.NewGuid().ToString();
 		}
 
-		public Grade(Student? student, string value) : this()
+		public Grade(TypeOfGrade? typeOfGrade, string value) : this()
 		{
-			_student = student;
+			_typeOfGrade = typeOfGrade;
 			Value = value ?? throw new ArgumentNullException(nameof(value));
 		}
 		public int Id { get; set; }
-		public int StudentId { get; set; }
-		public Student? _student;
-		public Student Student;
+		public int TypeOfGradeId { get; set; }
+		public TypeOfGrade? _typeOfGrade;
+		public TypeOfGrade TypeOfGrade;
 		public string Value { get; set; }
 	}
 }

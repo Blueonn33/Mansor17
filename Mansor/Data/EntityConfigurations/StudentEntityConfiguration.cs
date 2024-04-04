@@ -16,6 +16,10 @@ namespace Mansor.Data.EntityConfigurations
 			builder.HasOne(r => r.Speciality)
 				.WithMany(ti => ti.Students)
 				.HasForeignKey(r => r.SpecialityId);
+
+			builder.HasMany(u => u.TypeOfGrades)
+			  .WithOne(tg => tg.Student)
+			  .HasForeignKey(tg => tg.StudentId);
 		}
 	}
 }

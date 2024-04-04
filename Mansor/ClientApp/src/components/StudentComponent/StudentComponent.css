@@ -1,0 +1,103 @@
+﻿.studentsContainer {
+    top: 8rem;
+    width: 1060px;
+    background-color: #424242 !important;
+    color: white;
+    word-break: break-all;
+}
+
+.studentsContainers {
+    margin-top: 100px;
+    font-size: 20px;
+    margin-right: 10px;
+    text-align: left;
+}
+
+.studentsListHeaderWrapper {
+    background-color: #424242;
+    color: white;
+    margin-top: 140px;
+    margin-left: 4%;
+    height: max-content;
+    margin-bottom: 50px;
+}
+
+.studentsListHeader {
+    margin-top: -12.3rem;
+    font-weight: 700;
+    font-size: 50px;
+}
+
+.createNewTaskItemButtonWrapper {
+    margin-top: -2.8rem;
+    margin-bottom: 0.8125rem;
+    margin-left: 1rem;
+}
+
+.specialityElements:hover {
+    background-color: #b3b3b3;
+    cursor: default;
+}
+
+.btn-specialities {
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    border: none;
+    background-color: #b3b3b3;
+    margin-left: 100%;
+    margin-top: -13px;
+}
+
+.btn-specialities:hover {
+    background-color: #d9d9d9;
+}
+
+.studentsContainers {
+    padding-bottom: 20vh;
+}
+
+.deleteButton {
+    font-family: sans-serif;
+    font-size: 20px;
+    background-color: #424242;
+    border: 3px #b3b3b3 solid;
+    color: white;
+    border-radius: 10px;
+    margin-left: 575px;
+    margin-bottom: -5%;
+    font-size: 20px;
+    padding: 5px 17px 5px 17px;
+}
+
+.deleteButton:hover {
+    background-color: #b3b3b3;
+    border: 3px white solid;
+}
+
+.editButton {
+    font-family: sans-serif;
+    font-size: 20px;
+    background-color: #424242;
+    border: 3px #b3b3b3 solid;
+    color: white;
+    border-radius: 10px;
+    margin-left: 13px;
+    margin-top: 3%;
+    font-size: 20px;
+    padding: 5px 17px 5px 17px;
+}
+
+.editButton:hover {
+    background-color: #b3b3b3;
+    border: 3px white solid;
+}
+
+#edit-text {
+    color: white;
+    text-decoration-line: none;
+}
+
+#edit-text:hover {
+    color: white;
+}

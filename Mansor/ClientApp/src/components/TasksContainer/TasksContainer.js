@@ -78,9 +78,6 @@ export default class TasksContainer extends Component {
         let taskGroupId = splittedURL[splittedURL.length - 1]
         return (
             <div className='taskItemsContainer d-flex' key={this.props.taskItemData.id}>
-                {/*<div className='taskItemNameWrapper' style={{ backgroundColor: this.state.backgroundColors['this.props.taskItemData.id'] }}>*/}
-                {/*    <span className='taskItemName pageText' > {this.props.taskItemData.value} </span>*/}
-                {/*</div>*/}
                 <div className='taskItemNameWrapper' style={{ backgroundColor: this.props.taskItemData.color }}>
                     <span className='taskItemName pageText' > {this.props.taskItemData.value} </span>
                 </div>
@@ -88,17 +85,9 @@ export default class TasksContainer extends Component {
                     <FaCheckCircle className="checkButton" onClick={() => this.completeTask(this.props.taskItemData.id)}
                     />
                 </div>
-                {/*<div className='useTaskItemButtonWrapper ml-auto'>*/}
-                {/*    <button className='useButton' onClick={() => this.completeTask(this.props.taskItemData.id)}>*/}
-                {/*    </button>*/}
-                {/*</div>*/}
                 <div className="colorTaskItemButtonWrapper ml-auto">
                     <a href={`https://localhost:44414/editTaskItem/${taskGroupId}/${this.props.taskItemData.id}`} className='colorButtonText'>Оцвети</a>
                 </div>
-                {/*<div className="checkTaskItemButtonWrapper ml-auto">*/}
-                {/*    <FaCheckCircle className="checkButton" onClick={() => this.handleClick('this.props.taskItemData.id')}*/}
-                {/*    />*/}
-                {/*</div>*/}
             </div>
         )
     }

@@ -12,7 +12,6 @@ namespace Mansor.Controllers
     {
         private readonly ITaskItemsService _taskItemsService;
         private readonly ITaskGroupsService _taskGroupsService;
-        private readonly IUsersService _usersService;
         public TaskItemsController(ITaskItemsService taskItemsService, ITaskGroupsService taskGroupsService)
         {
             _taskItemsService = taskItemsService;

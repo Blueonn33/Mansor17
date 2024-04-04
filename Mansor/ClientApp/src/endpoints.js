@@ -32,4 +32,14 @@ export const endpoints = {
     deleteSpeciality: (specialityId) => `${apiBaseUrl}/api/delete/speciality/${specialityId}`,
     editSpeciality: (specialityId) => `${apiBaseUrl}/api/edit/speciality/${specialityId}`,
     createSpeciality: () => `${apiBaseUrl}/api/create/speciality`,
+
+    loadStudents: (specialityId) => `${apiBaseUrl}/api/students/${specialityId}`,
+    createStudent: (specialityId) => `${apiBaseUrl}/api/create/student/${specialityId}`,
+    removeStudent: (studentId) => `${apiBaseUrl}/api/delete/student/${studentId}`,
+    editStudent: (studentId) => `${apiBaseUrl}/api/edit/student/${studentId}`,
+
+    loadTypeOfGrades: (studentId) => `${apiBaseUrl}/api/typeOfGrades/${studentId}`,
+    getTypeOfGradeName: (typeOfGradeId) => `${apiBaseUrl}/api/typeOfGrade/${typeOfGradeId}`,
+    deleteTypeOfGrade: (typeOfGradeId) => `${apiBaseUrl}/api/delete/typeOfGrade/${typeOfGradeId}`,
+    createTypeOfGrade: (studentId) => `${apiBaseUrl}/api/create/typeOfGrade/${studentId}`,
 }
