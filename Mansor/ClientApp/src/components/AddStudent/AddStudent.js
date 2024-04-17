@@ -72,6 +72,7 @@ export class AddStudent extends Component {
                 <div className="container">
                     <div className="container">
                         <input type="text" id="input-student"
+                            placeholder = "Добави студент"
                             value={this.state.name}
                             onChange={(e) => this.setState({ 'name': e.target.value })}
                         />

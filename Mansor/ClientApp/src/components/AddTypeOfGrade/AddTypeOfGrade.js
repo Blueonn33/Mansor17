@@ -53,7 +53,6 @@ export class AddTypeOfGrade extends Component {
                 .then((response) => {
                     if (!response.ok) {
                         console.log("invalid input")
-                        this.state.name = '';
 
                     }
                     else {
@@ -63,7 +62,6 @@ export class AddTypeOfGrade extends Component {
                 })
                 .catch(error => {
                     console.error(error);
-                    this.state.name = '';
                 });
         }
     }
@@ -74,6 +72,7 @@ export class AddTypeOfGrade extends Component {
                 <div className="container">
                     <div className="container">
                         <input type="text" id="input-type"
+                            placeholder="Пример: контролно, изпит.."
                             name={this.state.value}
                             onChange={(e) => this.setState({ 'name': e.target.value })}
                         />

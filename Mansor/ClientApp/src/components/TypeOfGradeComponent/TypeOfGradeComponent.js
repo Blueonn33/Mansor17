@@ -1,5 +1,4 @@
 ﻿import React, { Component } from 'react'
-import { endpoints } from '../../endpoints';
 import { AddTypeOfGrade } from '../AddTypeOfGrade/AddTypeOfGrade.js';
 import '../TypeOfGradeComponent/TypeOfGradeComponent.css';
 import TypeOfGradeContainer from '../TypeOfGradeContainer/TypeOfGradeContainer';
@@ -27,7 +26,7 @@ export default class TypeOfGradeComponent extends Component {
             headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
         })
             .then((res) => res.json())
-            .then((res) => this.setState({ typeOfGrades: res }))
+            .then((res) => this.setState({ typeOfGrades: res}))
             .catch(error => console.error(error));
     }
 
@@ -41,7 +40,7 @@ export default class TypeOfGradeComponent extends Component {
                             <h4 className='typeOfGradesListHeader'>Тип на оценката</h4>
                         </div>
                         <div className='createNewTypeOfGradeButtonWrapper'>
-                            <AddTypeOfGrade onTypeOfGradeAdded={this.loadTypeOfGradesData} />
+                            <AddTypeOfGrade onTypeOfGradeAdded={this.loadTypeOfGrades} />
                         </div>
                         <div className='typeOfGradesContainers'>
                             {this.state.typeOfGrades.map((typeOfGrade) => {

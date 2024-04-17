@@ -28,7 +28,7 @@ namespace Mansor.Controllers
 
 		[HttpGet]
 		[Route("api/grades/{typeOfGradeId}")]
-		public async Task<IActionResult> GetAllItems([FromRoute] int typeOfGradeId)
+		public async Task<IActionResult> GetAllGrades([FromRoute] int typeOfGradeId)
 		{
 			Response.Headers.Add("Access-Control-Allow-Origin", "*");
 			var grades = await _gradesService.GetAllGrades(typeOfGradeId);

@@ -47,6 +47,7 @@ namespace Mansor.Data
 			builder.ApplyConfiguration(new SpecialityEntityConfiguration());
 			builder.ApplyConfiguration(new StudentEntityConfiguration());
 			builder.ApplyConfiguration(new GradeEntityConfiguration());
+			builder.ApplyConfiguration(new TypeOfGradeEntityConfiguration());
 
 			SeedInitialData(builder);
         }
