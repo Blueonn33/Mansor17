@@ -21,9 +21,9 @@ export default class TypeOfDataContainer extends Component {
         this.render();
     }
 
-    async removeTypeOfData(typeOfDataId) {
+    async deleteTypeOfGrade(typeOfGradeId) {
         const token = await authService.getAccessToken();
-        await fetch(endpoints.removeTypeOfData(typeOfDataId), {
+        await fetch(endpoints.deleteTypeOfGrade(typeOfGradeId), {
             method: 'DELETE',
             headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
         })
@@ -41,10 +41,15 @@ export default class TypeOfDataContainer extends Component {
 
     render() {
         return (
-            <div className='typeOfDatasContainer d-flex' key={this.props.typeOfGradeData.id}>
-                <div className='typeOfDataNameWrapper'>
-                    <span className='typeOfDataName pageText' > {this.props.typeOfGradeData.name} </span>
-                    <hr id="typeOfDataLine"></hr>
+            <div className='typeOfGradesContainer d-flex' key={this.props.typeOfGradeData.id}>
+                <div className='typeOfGradeNameWrapper'>
+                    {/*<span className='typeOfGradeName pageText' > {this.props.typeOfGradeData.name} </span>*/}
+                    <a className='typeOfGradeName pageText' href={`https://localhost:44414/grades/${this.props.typeOfGradeData.id}`}>{this.props.typeOfGradeData.name} </a>
+                </div>
+                <div className="removeTypeButtonWrapper ml-auto">
+                    <button className="removeTypeButton" onClick={() => this.deleteTypeOfGrade(this.props.typeOfGradeData.id)}>
+                        Премахни
+                    </button>
                 </div>
             </div>
         )

@@ -42,4 +42,7 @@ export const endpoints = {
     getTypeOfGradeName: (typeOfGradeId) => `${apiBaseUrl}/api/typeOfGrade/${typeOfGradeId}`,
     deleteTypeOfGrade: (typeOfGradeId) => `${apiBaseUrl}/api/delete/typeOfGrade/${typeOfGradeId}`,
     createTypeOfGrade: (studentId) => `${apiBaseUrl}/api/create/typeOfGrade/${studentId}`,
+
+    loadGrades: (typeOfGradeId) => `${apiBaseUrl}/api/grades/${typeOfGradeId}`,
+    createGrade: (typeOfGradeId) => `${apiBaseUrl}/api/create/grade/${typeOfGradeId}`,
 }
