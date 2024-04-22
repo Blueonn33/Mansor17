@@ -13,9 +13,9 @@ namespace Mansor.Data.EntityConfigurations
             builder.HasKey(p => p.Id);
             builder.Property(p => p.Name).HasMaxLength(255);
 
-            builder.HasOne(tg => tg.User)
+            builder.HasOne(tg => tg.Semester)
                 .WithMany(u => u.TaskGroups)
-                .HasForeignKey(u => u.UserId);
+                .HasForeignKey(u => u.SemesterId);
 
             builder.HasMany(tg => tg.TaskItems)
                  .WithOne(ti => ti.TaskGroup)

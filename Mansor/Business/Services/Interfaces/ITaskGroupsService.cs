@@ -8,15 +8,12 @@ namespace Mansor.Business.Services.Interfaces
 {
     public interface ITaskGroupsService
     {
-        Task<IEnumerable<TaskGroup>> GetTaskGroupsAsync();
-        Task<IEnumerable<TaskGroup>> GetTaskGroupsByUserId(string? id);
-        Task<TaskGroup?> GetTaskGroupById(int id);
-        Task<TaskGroup> UpdateTaskGroupName(TaskGroup taskGroup);
-        Task<TaskGroup> CreateTaskGroup(TaskGroup taskGroup);
-        Task<TaskGroup?> GetTaskGroupByNameAsync(string name);
-        Task AddTaskGroupAsync(TaskGroup taskGroup);
-        Task<TaskGroup?> GetTaskGroupByIdAsync(int id);
-        Task UpdateTaskGroupAsync(TaskGroup taskGroup);
-        Task DeleteAsync(TaskGroup taskGroup);
-    }
+		Task<IEnumerable<TaskGroup>> GetAllTaskGroups(int semesterId);
+		Task<TaskGroup> CreateTaskGroup(TaskGroup taskGroup);
+		Task<IEnumerable<TaskGroup>> GetTaskGroupsAsync();
+		Task<TaskGroup?> GetTaskGroupById(int id);
+		Task DeleteAsync(TaskGroup taskGroup);
+		Task<TaskGroup?> GetTaskGroupByIdAsync(int id);
+		Task UpdateTaskGroupAsync(TaskGroup taskGroup);
+	}
 }

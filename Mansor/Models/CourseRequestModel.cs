@@ -2,16 +2,16 @@
 
 namespace Mansor.Models
 {
-	public class StudentRequestModel
+	public class CourseRequestModel
 	{
-		public string Name { get; set; }
+		public string Value { get; set; }
 		public int SpecialityId { get; set; }
 
-		public Student Students(Speciality Speciality)
+		public Course Courses(Speciality Speciality)
 		{
-			return new Student()
+			return new Course()
 			{
-				Name = Name,
+				Value = Value,
 				SpecialityId = Speciality.Id,
 				Speciality = Speciality
 			};

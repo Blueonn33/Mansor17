@@ -45,4 +45,7 @@ export const endpoints = {
 
     loadGrades: (typeOfGradeId) => `${apiBaseUrl}/api/grades/${typeOfGradeId}`,
     createGrade: (typeOfGradeId) => `${apiBaseUrl}/api/create/grade/${typeOfGradeId}`,
+
+    loadCourses: (specialityId) => `${apiBaseUrl}/api/courses/${specialityId}`,
+    createCourse: (specialityId) => `${apiBaseUrl}/api/create/course/${specialityId}`,
 }

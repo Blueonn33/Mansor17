@@ -92,7 +92,7 @@ export class AddSpeciality extends Component {
                             <div className="modal-header border-0">
                                 <button type="button" className="close" data-bs-dismiss="modal">&times;</button>
                                 <div className="title">
-                                    <h4 className="modal-title" id="specialityTitle">Нова специалност</h4>
+                                    <h4 className="modal-title" id="specialityModalTitle">Нова специалност</h4>
                                     <hr id="line"></hr>
                                 </div>
 
@@ -110,8 +110,9 @@ export class AddSpeciality extends Component {
                                                 <p style={{ color: this.state.textColor }}>
                                                     {this.state.errorMessage}</p>
                                             </div>
-                                            <Link to='/specialities' id='close' onClick={this.close}>Назад</Link>
-                                            <button type="submit" id="submit" method="post" className="btn" name="addSpeciality">Добави</button>
+                                            <Link to='/schedule' id='close' onClick={this.close}>Назад</Link>
+                                            <button type="submit" id="submit" method="post" className="btn"
+                                                name="addSpeciality">Добави</button>
                                         </div>
                                     </form>
                                 </div>

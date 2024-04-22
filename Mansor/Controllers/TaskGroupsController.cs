@@ -1,4 +1,5 @@
-﻿using Mansor.Business.Services.Interfaces;
+﻿using Mansor.Business.Services;
+using Mansor.Business.Services.Interfaces;
 using Mansor.Data;
 using Mansor.Data.Models;
 using Mansor.Models;
@@ -14,63 +15,98 @@ namespace Mansor.Controllers
     public class TaskGroupsController : ControllerBase
     {
         private readonly ITaskGroupsService _taskGroupsService;
-        private readonly IUsersService _usersService;
-        private readonly UserManager<User> _userManager;
+        private readonly ISemestersService _semestersService;
 
-        public TaskGroupsController(ITaskGroupsService taskGroupsService, IUsersService usersService, 
-            UserManager<User> userManager)
+        public TaskGroupsController(ITaskGroupsService taskGroupsService, ISemestersService semestersService)
         {
             _taskGroupsService = taskGroupsService;
-            _usersService = usersService;
-            _userManager = userManager;
+            _semestersService = semestersService;
         }
 
-        [HttpGet]
-        [Route("api/taskGroups")]
-        public async Task<IActionResult> GetAllTaskGroups()
-        {
-            var userId = _usersService.GetCurrentUserId().Result;
-            var taskGroups = await _taskGroupsService.GetTaskGroupsByUserId(userId);
+		//[HttpGet]
+		//[Route("api/taskGroups")]
+		//public async Task<IActionResult> GetAllTaskGroups()
+		//{
+		//    var semesterId = _semestersService.GetCurrentSemesterId().Result;
+		//    var taskGroups = await _taskGroupsService.GetTaskGroupsBySemesterId(semesterId);
 
-            if (!taskGroups.Any())
-            {
-                return BadRequest("No existing task groups!");
-            }
-            return Ok(taskGroups);
-        }
+		//    if (!taskGroups.Any())
+		//    {
+		//        return BadRequest("No existing task groups!");
+		//    }
+		//    return Ok(taskGroups);
+		//}
 
-        [HttpGet]
-        [Route("api/taskGroup/{id}")]
-        public async Task<IActionResult> GetTaskGroupById([FromRoute] int id)
-        {
-            var targetTaskGroup = await _taskGroupsService.GetTaskGroupByIdAsync(id);
-            if (targetTaskGroup == null)
-            {
-                return NotFound();
-            }
-            return Ok(targetTaskGroup);
-        }
+		//[HttpGet]
+		//[Route("api/taskGroup/{id}")]
+		//public async Task<IActionResult> GetTaskGroupById([FromRoute] int id)
+		//{
+		//    var targetTaskGroup = await _taskGroupsService.GetTaskGroupByIdAsync(id);
+		//    if (targetTaskGroup == null)
+		//    {
+		//        return NotFound();
+		//    }
+		//    return Ok(targetTaskGroup);
+		//}
 
-        [HttpPost]
-        [Route("api/create/taskGroup")]
-        public async Task<IActionResult> CreateTaskGroup([FromBody] TaskGroupRequestModel taskGroupRequestModel)
-        {
-            var userId = _usersService.GetCurrentUserId().Result;
-            var taskGroup = taskGroupRequestModel.ToCreateTaskGroup(userId);
-            var result = await _taskGroupsService.CreateTaskGroup(taskGroup);
+		//[HttpPost]
+		//[Route("api/create/taskGroup")]
+		//public async Task<IActionResult> CreateTaskGroup([FromBody] TaskGroupRequestModel taskGroupRequestModel)
+		//{
+		//    var semesterId = _semestersService.GetCurrentSemesterId().Result;
+		//    var taskGroup = taskGroupRequestModel.ToCreateTaskGroup(semesterId);
+		//    var result = await _taskGroupsService.CreateTaskGroup(taskGroup);
 
-            if (result == null)
-            {
-                return BadRequest("The group already exists");
-            }
-            else
-            {
-                return Ok(result);
-            }
+		//    if (result == null)
+		//    {
+		//        return BadRequest("The group already exists");
+		//    }
+		//    else
+		//    {
+		//        return Ok(result);
+		//    }
 
-        }
+		//}
 
-        [HttpDelete]
+		[HttpGet]
+		[Route("api/taskGroups/{semesterId}")]
+		public async Task<IActionResult> GetAllTaskGroups([FromRoute] int semesterId)
+		{
+			Response.Headers.Add("Access-Control-Allow-Origin", "*");
+			var items = await _taskGroupsService.GetAllTaskGroups(semesterId);
+
+			if (!items.Any())
+			{
+				return BadRequest("No existing taskGroups!");
+			}
+			return Ok(items);
+		}
+
+		[HttpGet]
+		[Route("api/taskGroup/{id}")]
+		public async Task<IActionResult> GetTaskGroupById([FromRoute] int id)
+		{
+			var targetTaskGroup = await _taskGroupsService.GetTaskGroupByIdAsync(id);
+			if (targetTaskGroup == null)
+			{
+				return NotFound();
+			}
+			return Ok(targetTaskGroup);
+		}
+
+		[HttpPost]
+		[Route("api/create/taskGroup/{semesterId}")]
+		public async Task<IActionResult> CreateTaskGroups([FromRoute] int semesterId, [FromBody] TaskGroupRequestModel taskGroupsRequestModel)
+		{
+			var semester = await _semestersService.GetSemesterById(semesterId);
+			var taskGroup = taskGroupsRequestModel.ToCreateTaskGroup(semester);
+
+			var result = await _taskGroupsService.CreateTaskGroup(taskGroup);
+
+			return Ok(result);
+		}
+
+		[HttpDelete]
         [Route("api/delete/taskGroup/{id}")]
         public async Task<IActionResult> DeleteTaskGroup([FromRoute] int id)
         {

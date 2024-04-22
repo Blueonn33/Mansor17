@@ -13,14 +13,22 @@ namespace Mansor.Data.Repositories.Interfaces
         public TaskGroupsRepository(ApplicationDbContext context) : base(context)
         {
         }
-        public async Task<IEnumerable<TaskGroup>> GetTaskGroupsByUserId(string? Id)
+
+        public async Task<IEnumerable<TaskGroup>> GetAllTaskGroupsAsync(int semesterId)
+		{
+			return await Entities.AsNoTracking().Include(t => t.Semester.Course)
+				.Where(t => t.SemesterId == semesterId)
+				.OrderByDescending(t => t.Id).ToListAsync();
+		}
+
+        public async Task<IEnumerable<TaskGroup>> GetTaskGroupsBySemesterId(int? Id)
         {
-            return await Entities.Include(t => t.User).Where(t => t.UserId == Id).ToListAsync();
+            return await Entities.Include(t => t.Semester).Where(t => t.SemesterId == Id).ToListAsync();
         }
 
         public async Task<TaskGroup?> FindTaskGroup(int id)
         {
-            return await Entities.Include(t => t.User).FirstOrDefaultAsync(t => t.Id == id);
+            return await Entities.Include(t => t.Semester).FirstOrDefaultAsync(t => t.Id == id);
         }
 
         public async Task<IEnumerable<TaskGroup>> GetAllTaskGroups() => await Entities.ToListAsync();

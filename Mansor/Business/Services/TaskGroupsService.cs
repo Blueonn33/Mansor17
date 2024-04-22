@@ -18,15 +18,27 @@ namespace Mansor.Business.Services
             _taskGroupsRepository = taskGroupsRepository;
         }
 
-        public Task<TaskGroup?> GetTaskGroupById(int id)
-        {
-            return _taskGroupsRepository.FindTaskGroup(id);
-        }
+		public async Task<TaskGroup> CreateTaskGroup(TaskGroup taskGroup)
+		{
+			return await _taskGroupsRepository.AddAsync(taskGroup);
+		}
 
-        public async Task<IEnumerable<TaskGroup>> GetTaskGroupsByUserId(string? id)
-        {
-            return await _taskGroupsRepository.GetTaskGroupsByUserId(id);
-        }
+		public async Task<IEnumerable<TaskGroup>> GetAllTaskGroups(int semesterId)
+		{
+			return await _taskGroupsRepository.GetAllTaskGroupsAsync(semesterId);
+		}
+
+		public async Task<IEnumerable<TaskGroup>> GetTaskGroupsAsync() => await _taskGroupsRepository.GetAllTaskGroups();
+		public Task<TaskGroup?> GetTaskGroupById(int id)
+		{
+			return _taskGroupsRepository.FindTaskGroup(id);
+		}
+		public Task DeleteAsync(TaskGroup taskGroup)
+		{
+			return _taskGroupsRepository.DeleteAsync(taskGroup);
+		}
+		public async Task<TaskGroup?> GetTaskGroupByIdAsync(int id) => await _taskGroupsRepository.FindAsync(id);
+		public async Task UpdateTaskGroupAsync(TaskGroup taskGroup) => await _taskGroupsRepository.UpdateAsync(taskGroup);
 
         public async Task<TaskGroup> UpdateTaskGroupName(TaskGroup taskGroup)
         {
@@ -43,34 +55,6 @@ namespace Mansor.Business.Services
                 return group;
             }
             return null; 
-        }
-
-        public async Task<TaskGroup> CreateTaskGroup(TaskGroup taskGroup)
-        {
-            var isExist = await _taskGroupsRepository.GetTaskGroupByName(taskGroup.Name);
-            if (isExist != null)
-            {
-                return null;
-            }
-            return await _taskGroupsRepository.AddAsync(taskGroup);
-        }
-
-
-        public async Task AddTaskGroupAsync(TaskGroup taskGroup) => await _taskGroupsRepository.AddAsync(taskGroup);
-
-        public async Task<TaskGroup?> GetTaskGroupByNameAsync(string name)
-        {
-            return await _taskGroupsRepository.GetTaskGroupByName(name);
-        }
-
-        public async Task<IEnumerable<TaskGroup>> GetTaskGroupsAsync() => await _taskGroupsRepository.GetAllTaskGroups();
-
-        public async Task<TaskGroup?> GetTaskGroupByIdAsync(int id) => await _taskGroupsRepository.FindAsync(id);
-
-        public async Task UpdateTaskGroupAsync(TaskGroup taskGroup) => await _taskGroupsRepository.UpdateAsync(taskGroup);
-        public Task DeleteAsync(TaskGroup taskGroup)
-        {
-            return _taskGroupsRepository.DeleteAsync(taskGroup);
         }
     }
 }

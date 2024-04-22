@@ -17,7 +17,7 @@ namespace Mansor.Data.EntityConfigurations
 				.WithMany(u => u.Specialities)
 				.HasForeignKey(u => u.UserId);
 
-			builder.HasMany(tg => tg.Students)
+			builder.HasMany(tg => tg.Courses)
 				 .WithOne(ti => ti.Speciality)
 				 .HasForeignKey(ti => ti.SpecialityId);
 

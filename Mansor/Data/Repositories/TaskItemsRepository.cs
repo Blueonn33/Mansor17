@@ -12,7 +12,8 @@ namespace Mansor.Data.Repositories
 
         public async Task<IEnumerable<TaskItem>> GetAllTasksAsync(int taskGroupId)
         {
-            return await Entities.AsNoTracking().Include(t => t.TaskGroup.User).Where(t => t.TaskGroupId == taskGroupId)
+            return await Entities.AsNoTracking().Include(t => t.TaskGroup.Semester)
+                .Where(t => t.TaskGroupId == taskGroupId)
                 .OrderByDescending(t => t.Id).ToListAsync();
         }
         public async Task<IEnumerable<TaskItem>> GetAllTasks() => await Entities.ToListAsync();
