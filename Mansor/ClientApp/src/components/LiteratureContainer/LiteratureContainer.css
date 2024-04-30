@@ -1,0 +1,18 @@
+﻿.literatureElement{
+    border: 15px solid white;
+    padding: 10px;
+}
+.literatureTitle{
+    margin-top: -10px;
+    font-size: 30px;
+}
+.deleteLiteratureButtonWrapper {
+    margin-left: 500px;
+}
+.deleteLiteratureButton {
+    background-color: #424242;
+    color: white;
+    border: 2px solid #d9d9d9;
+    padding: 5px;
+    font-size: 15px;
+}

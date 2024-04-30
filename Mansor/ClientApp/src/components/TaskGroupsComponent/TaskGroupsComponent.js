@@ -11,20 +11,24 @@ export default class TaskGroupsComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            taskGroups: [],
+            taskGroup: [],
+            taskGroupData: undefined
         }
         this.loadTaskGroups = this.loadTaskGroups.bind(this);
     }
     async componentDidMount() {
         this.loadTaskGroups();
     }
-    async loadTaskGroups() {
+    async loadTaskGroups(semesterId) {
         const token = await authService.getAccessToken();
-        await fetch(endpoints.loadTaskGroups(), {
+        let splittedURL = window.location.pathname.split('/')
+        semesterId = splittedURL[splittedURL.length - 1]
+        let url = `https://localhost:7043/api/taskGroups/${semesterId}`;
+        fetch(url, {
             headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
         })
             .then((res) => res.json())
-            .then((res) => this.setState({ taskGroups: res }))
+            .then((res) => this.setState({ taskGroup: res }))
             .catch(error => console.error(error));
     }
 
@@ -71,7 +75,7 @@ export default class TaskGroupsComponent extends Component {
                             <AddTaskGroup onTaskGroupAdded={this.loadTaskGroups} />
                         </div>
                         <div className='taskGroupsContainers'>
-                            {this.state.taskGroups.map((taskGroup) => {
+                            {this.state.taskGroup.map((taskGroup) => {
                                 return (
                                     <TaskGroupsContainer taskGroupData={taskGroup} key={taskGroup.id} />
                                 )

@@ -27,9 +27,9 @@ export class ScheduleComponent extends Component {
                             <li><a href="information_brokerage_and_digital_media">Информационно брокерство и дигитални медии</a></li>
                         </ul>
                     </div>
-                    <div className="specialitiesBtnContainer">
-                        <Link to='/specialities' className="specialitiesBtn">Към специалностите</Link>
-                    </div>
+                    {/*<div className="specialitiesBtnContainer">*/}
+                    {/*    <Link to='/specialities' className="specialitiesBtn">Към специалностите</Link>*/}
+                    {/*</div>*/}
                 </div>
             </div>
         );

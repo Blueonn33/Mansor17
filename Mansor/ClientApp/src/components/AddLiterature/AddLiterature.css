@@ -1,0 +1,44 @@
+﻿.addLiteratureContainer{
+    margin-bottom: 50px;
+}
+.addLiteratureBtnContainer{
+    margin-top: 20px;
+    margin-left: 60%;
+    margin-top: -74px;
+}
+.addLiteratureBtn {
+    color: white;
+    border: 2px solid #d9d9d9;
+    padding: 5px;
+    font-size: 18px;
+    height: 40px;
+}
+.addLiteratureBtn:hover{
+    cursor: pointer;
+}
+.literatureValue{
+    width: 300px;
+    margin-right: 20px;
+    background-color: #424242;
+    border: 3px solid #d9d9d9;
+    color: white;
+    height: 40px;
+    margin-bottom: 40px;
+}
+.literatureKeyword {
+    width: 300px;
+    margin-right: 20px;
+    background-color: #424242;
+    border: 3px solid #d9d9d9;
+    color: white;
+    height: 40px;
+}
+.literatureInputContent{
+    margin-top: 30px;
+    color: white;
+}
+.literatureInputKeyword {
+    margin-left: 29%;
+    margin-top: -30px;
+    color: white;
+}

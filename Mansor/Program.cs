@@ -55,6 +55,9 @@ builder.Services.AddScoped<ICoursesService, CoursesService>();
 builder.Services.AddScoped<ISemestersRepository, SemestersRepository>();
 builder.Services.AddScoped<ISemestersService, SemestersService>();
 
+builder.Services.AddScoped<ILiteraturesRepository, LiteraturesRepository>();
+builder.Services.AddScoped<ILiteraturesService, LiteraturesService>();
+
 builder.Services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.MaxDepth = 64);
 
 builder.Services.AddCors(options =>

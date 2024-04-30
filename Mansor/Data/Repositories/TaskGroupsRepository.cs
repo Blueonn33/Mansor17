@@ -18,7 +18,7 @@ namespace Mansor.Data.Repositories.Interfaces
 		{
 			return await Entities.AsNoTracking().Include(t => t.Semester.Course)
 				.Where(t => t.SemesterId == semesterId)
-				.OrderByDescending(t => t.Id).ToListAsync();
+				.OrderBy(t => t.Id).ToListAsync();
 		}
 
         public async Task<IEnumerable<TaskGroup>> GetTaskGroupsBySemesterId(int? Id)

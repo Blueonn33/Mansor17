@@ -3,8 +3,9 @@ import { endpoints } from '../../endpoints';
 import { AddSpeciality } from '../AddSpeciality/AddSpeciality.js';
 import '../SpecialityComponent/SpecialityComponent.css';
 import SpecialityContainer from '../SpecialityContainer/SpecialityContainer';
-import { FaBars, FaCalendarDay, FaRegStickyNote, FaTable } from "react-icons/fa";
+import { FaBars, FaCalendarDay, FaRegStickyNote, FaTable, FaPeopleArrows } from "react-icons/fa";
 import authService from '../api-authorization/AuthorizeService';
+import '../../custom.css';
 
 export default class SpecialityComponent extends Component {
 
@@ -55,6 +56,13 @@ export default class SpecialityComponent extends Component {
                         <FaTable className='timeTableIcon' />
                         <button className='timeTableBtn'>
                             <a href={`https://localhost:44414/timeTable`} className='timeTableBtnText'>Програма</a>
+                        </button>
+                        <hr id="line"></hr>
+                    </div>
+                    <div className="offcanvas-body text-white">
+                        <FaPeopleArrows className='informationIcon' />
+                        <button className='informationBtn'>
+                            <a href={`https://localhost:44414/schedule`} className='informationBtnText'>Информация</a>
                         </button>
                         <hr id="line"></hr>
                     </div>

@@ -3,8 +3,9 @@ import { endpoints } from '../../endpoints';
 import { AddNote } from '../AddNote/AddNote';
 import '../Notes/Notes.css';
 import NotesContainer from '../NotesContainer/NotesContainer';
-import { FaBars, FaCalendarDay, FaListAlt, FaTable } from "react-icons/fa";
+import { FaBars, FaCalendarDay, FaListAlt, FaTable, FaPeopleArrows} from "react-icons/fa";
 import authService from '../api-authorization/AuthorizeService';
+import '../../custom.css'
 
 export default class Notes extends Component {
 
@@ -44,9 +45,9 @@ export default class Notes extends Component {
                         <hr id="line"></hr>
                     </div>
                     <div className="offcanvas-body text-white">
-                        <FaListAlt className="groupsIcon" />
-                        <button className='groupsBtn'>
-                            <a href={`https://localhost:44414/taskGroups`} className='groupsBtnText'>Дисциплини</a>
+                        <FaListAlt className="specialityIcon" />
+                        <button className='specialitiesBtn'>
+                            <a href={`https://localhost:44414/specialities`} className='specialitesBtnText'>Специалности</a>
                         </button>
                         <hr id="line"></hr>
                     </div>
@@ -54,6 +55,13 @@ export default class Notes extends Component {
                         <FaTable className='timeTableIcon' />
                         <button className='timeTableBtn'>
                             <a href={`https://localhost:44414/timeTable`} className='timeTableBtnText'>Програма</a>
+                        </button>
+                        <hr id="line"></hr>
+                    </div>
+                    <div className="offcanvas-body text-white">
+                        <FaPeopleArrows className='informationIcon' />
+                        <button className='informationBtn'>
+                            <a href={`https://localhost:44414/schedule`} className='informationBtnText'>Информация</a>
                         </button>
                         <hr id="line"></hr>
                     </div>

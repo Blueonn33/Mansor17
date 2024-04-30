@@ -21,6 +21,10 @@ namespace Mansor.Data.EntityConfigurations
                  .WithOne(ti => ti.TaskGroup)
                  .HasForeignKey(ti => ti.TaskGroupId);
 
-        }
+			builder.HasMany(tg => tg.Literatures)
+				 .WithOne(ti => ti.TaskGroup)
+				 .HasForeignKey(ti => ti.TaskGroupId);
+
+		}
     }
 }

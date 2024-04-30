@@ -57,7 +57,7 @@
     padding-bottom: 20vh;
 }
 
-.deleteButton {
+.deleteStudentButton {
     font-family: sans-serif;
     font-size: 20px;
     background-color: #424242;
@@ -70,7 +70,7 @@
     padding: 5px 17px 5px 17px;
 }
 
-.deleteButton:hover {
+.deleteStudentButton:hover {
     background-color: #b3b3b3;
     border: 3px white solid;
 }

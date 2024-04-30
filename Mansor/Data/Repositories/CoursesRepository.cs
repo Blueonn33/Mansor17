@@ -14,7 +14,7 @@ namespace Mansor.Data.Repositories
 		{
 			return await Entities.AsNoTracking().Include(t => t.Speciality.User)
 				.Where(t => t.SpecialityId == specialityId)
-				.OrderByDescending(t => t.Id).ToListAsync();
+				.OrderBy(t => t.Id).ToListAsync();
 		}
 		public async Task<IEnumerable<Course>> GetAllCourses() => await Entities.ToListAsync();
 

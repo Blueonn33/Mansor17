@@ -15,16 +15,16 @@ export class AddTaskGroup extends Component {
         this.createTaskGroup = this.createTaskGroup.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
-    async createTaskGroup(event){
-        event.preventDefault();
+    async createTaskGroup(semesterId){
+        //event.preventDefault();
         console.log(this.state.value);
         var input = this.state.value;
 
         const errors = {
-            success: "Добавихте успешно нова дисциплина.",
-            minLength: "Името е твърде кратко.",
-            maxLength: "Името е твърде дълго.",
-            existingTaskGroup: "Дисциплината вече съществува."
+            success: "",
+            minLength: "",
+            maxLength: "",
+            existingTaskGroup: ""
         }
         const color = {
             error: "red",
@@ -41,14 +41,17 @@ export class AddTaskGroup extends Component {
         }
         else {
             const token = await authService.getAccessToken();
-            await fetch(endpoints.createTaskGroup(), {
+            let splittedURL = window.location.pathname.split('/')
+            semesterId = splittedURL[splittedURL.length - 1]
+            await fetch(endpoints.createTaskGroup(semesterId), {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
-                    name: input
+                    name: input,
+                    semesterId: semesterId,
                 })
             })
                 .then((response) => {
@@ -110,7 +113,7 @@ export class AddTaskGroup extends Component {
                                                 <p style={{ color: this.state.textColor}}>
                                                     {this.state.errorMessage}</p>
                                             </div>
-                                            <Link to='/taskGroups' id='close' onClick={this.close}>Назад</Link>
+                                            {/*<Link to='/taskGroups' id='close' onClick={this.close}>Назад</Link>*/}
                                             <button type="submit" id="submit" method="post" className="btn" name="addTaskGroup">Добави</button>
                                         </div>
                                     </form>

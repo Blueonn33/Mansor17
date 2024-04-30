@@ -228,7 +228,45 @@ namespace Mansor.Migrations
                         {
                             Id = 5,
                             Name = "Петък"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Събота"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Неделя"
                         });
+                });
+
+            modelBuilder.Entity("Mansor.Data.Models.Literature", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Keyword")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<int>("TaskGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TaskGroupId");
+
+                    b.ToTable("Literatures", (string)null);
                 });
 
             modelBuilder.Entity("Mansor.Data.Models.Note", b =>
@@ -608,6 +646,17 @@ namespace Mansor.Migrations
                     b.Navigation("Speciality");
                 });
 
+            modelBuilder.Entity("Mansor.Data.Models.Literature", b =>
+                {
+                    b.HasOne("Mansor.Data.Models.TaskGroup", "TaskGroup")
+                        .WithMany("Literatures")
+                        .HasForeignKey("TaskGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TaskGroup");
+                });
+
             modelBuilder.Entity("Mansor.Data.Models.Note", b =>
                 {
                     b.HasOne("Mansor.Data.User", "User")
@@ -749,6 +798,8 @@ namespace Mansor.Migrations
 
             modelBuilder.Entity("Mansor.Data.Models.TaskGroup", b =>
                 {
+                    b.Navigation("Literatures");
+
                     b.Navigation("TaskItems");
                 });
 

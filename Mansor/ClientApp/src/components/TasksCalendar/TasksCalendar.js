@@ -5,7 +5,7 @@ import DateBox from 'devextreme-react/date-box';
 import Calendar from 'devextreme-react/calendar';
 import CustomCell, { isWeekend } from './CustomCell.js';
 import './TasksCalendar.css';
-import { FaBars, FaListAlt, FaRegStickyNote, FaTable } from "react-icons/fa";
+import { FaBars, FaListAlt, FaRegStickyNote, FaTable, FaPeopleArrows } from "react-icons/fa";
 
 const zoomLevels = ['month', 'year', 'decade', 'century'];
 const weekDays = [
@@ -81,9 +81,9 @@ export function TasksCalendar() {
                 </div>
                 <hr id="line"></hr>
                 <div className="offcanvas-body text-white">
-                    <FaListAlt className="groupsIcon" />
-                    <button className='groupsBtn'>
-                        <a href={`https://localhost:44414/taskGroups`} className='groupsBtnText'>Дисциплини</a>
+                    <FaListAlt className="specialityIcon" />
+                    <button className='specialitiesBtn'>
+                        <a href={`https://localhost:44414/specialities`} className='specialitiesBtnText'>Специалности</a>
                     </button>
                     <hr id="line"></hr>
                 </div>
@@ -98,6 +98,13 @@ export function TasksCalendar() {
                     <FaTable className='timeTableIcon' />
                     <button className='timeTableBtn'>
                         <a href={`https://localhost:44414/timeTable`} className='timeTableBtnText'>Програма</a>
+                    </button>
+                    <hr id="line"></hr>
+                </div>
+                <div className="offcanvas-body text-white">
+                    <FaPeopleArrows className="informationIcon" />
+                    <button className='informationBtn'>
+                        <a href={`https://localhost:44414/schedule`} className='informationBtnText'>Информация</a>
                     </button>
                     <hr id="line"></hr>
                 </div>

@@ -10,7 +10,8 @@ namespace Mansor.Data.Models
         {
             Name = Guid.NewGuid().ToString();
             TaskItems = new List<TaskItem>();
-        }
+			Literatures = new List<Literature>();
+		}
         public TaskGroup(Semester? semester, string name) : this()
         {
             _semester = semester;
@@ -23,5 +24,6 @@ namespace Mansor.Data.Models
         public int? SemesterId { get; set; }
         public Semester Semester;
         public ICollection<TaskItem> TaskItems { get; set; }
-    }
+		public ICollection<Literature> Literatures { get; set; }
+	}
 }

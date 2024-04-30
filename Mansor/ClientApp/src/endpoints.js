@@ -1,10 +1,10 @@
 ﻿const apiBaseUrl = 'https://localhost:7043'
 export const endpoints = {
-    loadTaskGroups: () => `${apiBaseUrl}/api/taskGroups`,
+    loadTaskGroups: (semesterId) => `${apiBaseUrl}/api/taskGroups/${semesterId}`,
     getTaskGroupName: (taskGroupId) => `${apiBaseUrl}/api/taskGroup/${taskGroupId}`,
     deleteTaskGroup: (taskGroupId) => `${apiBaseUrl}/api/delete/taskGroup/${taskGroupId}`,
     editTaskGroup: (taskGroupId) => `${apiBaseUrl}/api/edit/taskGroup/${taskGroupId}`,
-    createTaskGroup: () => `${apiBaseUrl}/api/create/taskGroup`,
+    createTaskGroup: (semesterId) => `${apiBaseUrl}/api/create/taskGroup/${semesterId}`,
 
     loadTaskItems: (taskGroupId) => `${apiBaseUrl}/api/taskItems/${taskGroupId}`,
     createTaskItem: (taskGroupId) => `${apiBaseUrl}/api/create/taskItem/${taskGroupId}`,
@@ -48,4 +48,11 @@ export const endpoints = {
 
     loadCourses: (specialityId) => `${apiBaseUrl}/api/courses/${specialityId}`,
     createCourse: (specialityId) => `${apiBaseUrl}/api/create/course/${specialityId}`,
+
+    loadSemesters: (courseId) => `${apiBaseUrl}/api/semesters/${courseId}`,
+    createSemester: (courseId) => `${apiBaseUrl}/api/create/semester/${courseId}`,
+
+    loadLiteratures: (taskGroupId) => `${apiBaseUrl}/api/literatures/${taskGroupId}`,
+    createLiterature: (taskGroupId) => `${apiBaseUrl}/api/create/literature/${taskGroupId}`,
+    deleteLiterature: (literatureId) => `${apiBaseUrl}/api/delete/literature/${literatureId}`,
 }

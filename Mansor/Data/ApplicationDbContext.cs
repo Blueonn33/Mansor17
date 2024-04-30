@@ -18,6 +18,7 @@ namespace Mansor.Data
 		public DbSet<Speciality> Specialities => Set<Speciality>();
 		public DbSet<Course> Courses => Set<Course>();
 		public DbSet<Semester> Semesters => Set<Semester>();
+		public DbSet<Literature> Literatures => Set<Literature>();
 
 		public ApplicationDbContext(DbContextOptions options, IOptions<OperationalStoreOptions> operationalStoreOptions)
             : base(options, operationalStoreOptions)
@@ -46,6 +47,7 @@ namespace Mansor.Data
 			builder.ApplyConfiguration(new SpecialityEntityConfiguration());
 			builder.ApplyConfiguration(new CourseEntityConfiguration());
 			builder.ApplyConfiguration(new SemesterEntityConfiguration());
+			builder.ApplyConfiguration(new LiteratureEntityConfiguration());
 
 			SeedInitialData(builder);
         }
@@ -58,8 +60,10 @@ namespace Mansor.Data
                 new Day { Id = 2, Name = "Вторник" },
                 new Day { Id = 3, Name = "Сряда" },
                 new Day { Id = 4, Name = "Четвъртък" },
-                new Day { Id = 5, Name = "Петък" }
-                );
+                new Day { Id = 5, Name = "Петък" },
+				new Day { Id = 6, Name = "Събота" },
+				new Day { Id = 7, Name = "Неделя" }
+				);
         }
     }
 }

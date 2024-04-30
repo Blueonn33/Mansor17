@@ -11,7 +11,7 @@ export default class CoursesContainer extends Component {
                 </div>
                 <div className='useCoursesButtonWrapper ml-auto'>
                     <button className='useCourseButton'>
-                        Преглед
+                        <a href={`https://localhost:44414/semesters/${this.props.courseData.id}`} className='useButtonText'>Преглед</a>
                     </button>
                 </div>
             </div>

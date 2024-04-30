@@ -82,7 +82,7 @@ export default class StudentComponent extends Component {
                 <div className='studentsContainer'>
                     <div className='studentsContent'>
                         <div className='deleteSpecialityButtonWrapper ml-auto'>
-                            <button className='deleteButton' onClick={this.deleteSpeciality}>Изтрий</button>
+                            <button className='deleteStudentButton' onClick={this.deleteSpeciality}>Изтрий</button>
                             <button className='editButton'>
                                 <a href={`https://localhost:44414/editSpeciality/${this.state.specialityId}`} id="edit-text">Редактирай</a>
                             </button>

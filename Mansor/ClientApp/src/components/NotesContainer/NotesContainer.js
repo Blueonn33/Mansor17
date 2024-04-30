@@ -35,7 +35,7 @@ export default class NotesContainer extends Component {
                         <span className='noteContent pageText'> {this.props.noteData.content} </span>
                     </div>
                     <div className='deleteNoteButtonWrapper ml-auto'>
-                        <button className='deleteButton' onClick={() => this.deleteNote(this.props.noteData.id)}>
+                        <button className='deleteNoteButton' onClick={() => this.deleteNote(this.props.noteData.id)}>
                             Изтрий
                         </button>
                     </div>

@@ -110,7 +110,7 @@ export class AddSpeciality extends Component {
                                                 <p style={{ color: this.state.textColor }}>
                                                     {this.state.errorMessage}</p>
                                             </div>
-                                            <Link to='/schedule' id='close' onClick={this.close}>Назад</Link>
+                                            <Link to='/specialities' id='close' onClick={this.close}>Назад</Link>
                                             <button type="submit" id="submit" method="post" className="btn"
                                                 name="addSpeciality">Добави</button>
                                         </div>
