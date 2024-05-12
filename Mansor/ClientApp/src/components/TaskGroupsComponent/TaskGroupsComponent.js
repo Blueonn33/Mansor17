@@ -3,7 +3,7 @@ import { endpoints } from '../../endpoints';
 import { AddTaskGroup } from '../AddTaskGroup/AddTaskGroup.js';
 import '../TaskGroupsComponent/TaskGroupsComponent.css';
 import TaskGroupsContainer from '../TaskGroupsContainer/TaskGroupsContainer';
-import { FaBars, FaCalendarDay, FaRegStickyNote, FaTable } from "react-icons/fa";
+import { FaBars, FaCalendarDay, FaRegStickyNote, FaTable, FaPeopleArrows } from "react-icons/fa";
 import authService from '../api-authorization/AuthorizeService';
 
 export default class TaskGroupsComponent extends Component {
@@ -60,6 +60,13 @@ export default class TaskGroupsComponent extends Component {
                         <button className='timeTableBtn'>
                             <a href={`https://localhost:44414/timeTable`} className='timeTableBtnText'>Програма</a>
                         </button> 
+                        <hr id="line"></hr>
+                    </div>
+                    <div className="offcanvas-body text-white">
+                        <FaPeopleArrows className='informationIcon' />
+                        <button className='informationBtn'>
+                            <a href={`https://localhost:44414/schedule`} className='informationBtnText'>Информация</a>
+                        </button>
                         <hr id="line"></hr>
                     </div>
                 </div>

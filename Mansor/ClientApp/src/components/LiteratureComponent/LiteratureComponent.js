@@ -5,20 +5,24 @@ import { AddLiterature } from '../AddLiterature/AddLiterature';
 import LiteratureContainer from '../LiteratureContainer/LiteratureContainer';
 import authService from '../api-authorization/AuthorizeService';
 import { endpoints } from '../../endpoints';
+import { Link } from "react-router-dom";
+import { IoChevronBackCircle } from "react-icons/io5";
 
 export class LiteratureComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
             literatures: [],
-            taskGroupId: '',
+            taskGroupId: undefined,
             taskGroupData: undefined,
             literatureData: undefined,
+            taskItemId: undefined
         }
         this.loadLiteratures = this.loadLiteratures.bind(this);
     }
     async componentDidMount() {
         this.loadLiteratures();
+        this.historyBack();
     }
 
     async loadLiteratures(taskGroupId) {
@@ -34,11 +38,20 @@ export class LiteratureComponent extends Component {
             .catch(error => console.error(error));
     }
 
+    historyBack() {
+        let splittedURL = window.location.pathname.split('/')
+        let routeId = splittedURL[splittedURL.length - 1]
+        this.setState({ taskItemId: routeId });
+    }
+
     render() {
         return (
             <div className="literatureContainer">
                 <div className="literatureHeader">
-                    <h3 className="literatureHeaderContent">Литература</h3>
+                    <h3 className="literatureHeaderContent">Учебни ресурси</h3>
+                </div>
+                <div className="literatureBackBtnContainer">
+                    <a href={`https://localhost:44414/taskItems/${this.state.taskItemId}`} className="literaturesBackBtn"><IoChevronBackCircle /></a>
                 </div>
                 <div className="literatureContent">
                     <AddLiterature />

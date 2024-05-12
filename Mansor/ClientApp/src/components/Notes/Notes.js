@@ -47,7 +47,7 @@ export default class Notes extends Component {
                     <div className="offcanvas-body text-white">
                         <FaListAlt className="specialityIcon" />
                         <button className='specialitiesBtn'>
-                            <a href={`https://localhost:44414/specialities`} className='specialitesBtnText'>Специалности</a>
+                            <a href={`https://localhost:44414/specialities`} className='specialitiesBtnText'>Специалности</a>
                         </button>
                         <hr id="line"></hr>
                     </div>

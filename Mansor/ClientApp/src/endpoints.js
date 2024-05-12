@@ -38,14 +38,6 @@ export const endpoints = {
     removeStudent: (studentId) => `${apiBaseUrl}/api/delete/student/${studentId}`,
     editStudent: (studentId) => `${apiBaseUrl}/api/edit/student/${studentId}`,
 
-    loadTypeOfGrades: (studentId) => `${apiBaseUrl}/api/typeOfGrades/${studentId}`,
-    getTypeOfGradeName: (typeOfGradeId) => `${apiBaseUrl}/api/typeOfGrade/${typeOfGradeId}`,
-    deleteTypeOfGrade: (typeOfGradeId) => `${apiBaseUrl}/api/delete/typeOfGrade/${typeOfGradeId}`,
-    createTypeOfGrade: (studentId) => `${apiBaseUrl}/api/create/typeOfGrade/${studentId}`,
-
-    loadGrades: (typeOfGradeId) => `${apiBaseUrl}/api/grades/${typeOfGradeId}`,
-    createGrade: (typeOfGradeId) => `${apiBaseUrl}/api/create/grade/${typeOfGradeId}`,
-
     loadCourses: (specialityId) => `${apiBaseUrl}/api/courses/${specialityId}`,
     createCourse: (specialityId) => `${apiBaseUrl}/api/create/course/${specialityId}`,
 
@@ -55,4 +47,7 @@ export const endpoints = {
     loadLiteratures: (taskGroupId) => `${apiBaseUrl}/api/literatures/${taskGroupId}`,
     createLiterature: (taskGroupId) => `${apiBaseUrl}/api/create/literature/${taskGroupId}`,
     deleteLiterature: (literatureId) => `${apiBaseUrl}/api/delete/literature/${literatureId}`,
+
+    loadGrades: (taskGroupId) => `${apiBaseUrl}/api/grades/${taskGroupId}`,
+    createGrade: (taskGroupId) => `${apiBaseUrl}/api/create/grade/${taskGroupId}`,
 }

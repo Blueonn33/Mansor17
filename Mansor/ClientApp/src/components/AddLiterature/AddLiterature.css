@@ -15,15 +15,15 @@
 }
 .addLiteratureBtn:hover{
     cursor: pointer;
+    text-decoration: underline;
 }
-.literatureValue{
+.literatureValue {
     width: 300px;
     margin-right: 20px;
     background-color: #424242;
     border: 3px solid #d9d9d9;
     color: white;
     height: 40px;
-    margin-bottom: 40px;
 }
 .literatureKeyword {
     width: 300px;
@@ -32,13 +32,17 @@
     border: 3px solid #d9d9d9;
     color: white;
     height: 40px;
+    margin-bottom: 40px;
+    margin-top: -30px;
 }
-.literatureInputContent{
+.literatureInputContent {
+    margin-left: 29%;
+    margin-top: -30px;
+    color: white;
     margin-top: 30px;
     color: white;
 }
 .literatureInputKeyword {
-    margin-left: 29%;
-    margin-top: -30px;
+    margin-bottom: -50px;
     color: white;
 }

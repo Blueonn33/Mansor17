@@ -132,6 +132,10 @@ const AppRoutes = [
         path: '/literatures/:id',
         element: <LiteratureComponent />
     },
+    {
+        path: '/grades/:id',
+        element: <GradesComponent />
+    },
   {
     path: '/counter',
     element: <Counter />

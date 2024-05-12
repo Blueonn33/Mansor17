@@ -11,6 +11,7 @@ namespace Mansor.Data.Models
             Name = Guid.NewGuid().ToString();
             TaskItems = new List<TaskItem>();
 			Literatures = new List<Literature>();
+			Grades = new List<Grade>();
 		}
         public TaskGroup(Semester? semester, string name) : this()
         {
@@ -25,5 +26,6 @@ namespace Mansor.Data.Models
         public Semester Semester;
         public ICollection<TaskItem> TaskItems { get; set; }
 		public ICollection<Literature> Literatures { get; set; }
+		public ICollection<Grade> Grades { get; set; }
 	}
 }

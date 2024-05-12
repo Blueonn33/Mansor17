@@ -34,11 +34,16 @@ export default class LiteratureContainer extends Component {
                     <div className='literatureContentWrapper'>
                         <span className='literatureContent pageText'> {this.props.literatureData.value} </span>
                     </div>
-                    <div className='deleteLiteratureButtonWrapper ml-auto'>
-                        <button className='deleteLiteratureButton' onClick={() => this.deleteLiterature(this.props.literatureData.id)}>
-                            Изтрий
-                        </button>
-                    </div>
+                </div>
+                <div className='opernLiteratureButtonWrapper ml-auto'>
+                    <button className='openLiteratureButton'>
+                        <a className="openLiteratureText" target="_blank" rel="noreferrer" href={this.props.literatureData.value}>Отвори</a>
+                    </button>
+                </div>
+                <div className='deleteLiteratureButtonWrapper ml-auto'>
+                    <button className='deleteLiteratureButton' onClick={() => this.deleteLiterature(this.props.literatureData.id)}>
+                        Изтрий
+                    </button>
                 </div>
             </div>
         )

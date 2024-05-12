@@ -17,10 +17,11 @@
     border: 3px #b3b3b3 solid;
     color: white;
     border-radius: 10px;
-    margin-left: 950px;
+    margin-left: 964px;
     margin-top: -300px;
     font-size: 20px;
     padding: 5px 17px 5px 17px;
+    margin-bottom: 40px;
 }
 
 #createTaskGroup:hover {
@@ -28,7 +29,7 @@
     border: 3px white solid;
 }
 
-#name {
+#taskGroupNameInput {
     margin-left: 100px !important;
     margin-top: -35px;
     border-radius: 10px;
@@ -43,9 +44,10 @@
 }
 
 #errorTaskGroup {
-    margin-top: -63px;
-    margin-right: -357px;
+    margin-top: 63px;
+    margin-right: 257px;
     font-size: 15px;
+    margin-bottom: 20px;
 }
 
 .title {
@@ -155,10 +157,29 @@
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
+.taskGroupsModalBackBtn{
+    margin-top: -12px;
+    background-color: #b3b3b3;
+    border: none;
+    text-decoration: none;
+}
+.taskGroupsModalBackBtn:hover{
+    text-decoration: underline;
+    color: black;
+}
+.taskGroupsModalBackBtnText {
+    text-decoration: none;
+    color: black;
+}
+.taskGroupsModalBackBtnText:hover {
+    text-decoration: underline;
+    color: black;
+}
+
 @-webkit-keyframes fadein {
     from {
-        bottom: 0;
-        opacity: 0;
+    bottom: 0;
+    opacity: 0;
     }
 
     to {

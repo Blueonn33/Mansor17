@@ -19,6 +19,7 @@ namespace Mansor.Data
 		public DbSet<Course> Courses => Set<Course>();
 		public DbSet<Semester> Semesters => Set<Semester>();
 		public DbSet<Literature> Literatures => Set<Literature>();
+		public DbSet<Grade> Grades => Set<Grade>();
 
 		public ApplicationDbContext(DbContextOptions options, IOptions<OperationalStoreOptions> operationalStoreOptions)
             : base(options, operationalStoreOptions)
@@ -48,6 +49,7 @@ namespace Mansor.Data
 			builder.ApplyConfiguration(new CourseEntityConfiguration());
 			builder.ApplyConfiguration(new SemesterEntityConfiguration());
 			builder.ApplyConfiguration(new LiteratureEntityConfiguration());
+			builder.ApplyConfiguration(new GradeEntityConfiguration());
 
 			SeedInitialData(builder);
         }

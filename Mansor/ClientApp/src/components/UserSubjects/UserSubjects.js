@@ -41,7 +41,7 @@ export default class UserSubjects extends Component {
                 <div className='subjectsContainer'>
                     <div className='subjectsContent'>
                         <div className='subjectsListHeaderWrapper d-flex'>
-                            <h4 className='subjectsListHeader'>Предмети</h4>
+                            <h4 className='subjectsListHeader'>Програма</h4>
                         </div>
                         <button className='subjectsBackBtn'>
                             <a href={`https://localhost:44414/timeTable`} className='subjectsBackBtnText'>Назад</a>

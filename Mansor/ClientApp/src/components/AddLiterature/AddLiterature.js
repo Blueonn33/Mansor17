@@ -77,17 +77,17 @@ export class AddLiterature extends Component {
             <div>
                 <div className="addLiteratureContainer">
                     <div className="literatureInputText">
-                        <h5 className="literatureInputContent">Стойност</h5>
                         <h5 className="literatureInputKeyword">Ключова дума</h5>
+                        <h5 className="literatureInputContent">Стойност</h5>
                     </div>
                     <div className="literatureInputContainer">
-                        <input type="text" className="literatureValue"
-                            value={this.state.value}
-                            onChange={(e) => this.setState({ 'value': e.target.value })}
-                        />
                         <input type="text" className="literatureKeyword"
                             keyword={this.state.keyword}
                             onChange={(e) => this.setState({ 'keyword': e.target.value })}
+                        />
+                        <input type="text" className="literatureValue"
+                            value={this.state.value}
+                            onChange={(e) => this.setState({ 'value': e.target.value })}
                         />
                     </div>
                     <div className="addLiteratureBtnContainer">

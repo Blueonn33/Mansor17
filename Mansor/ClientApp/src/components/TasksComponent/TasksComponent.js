@@ -60,7 +60,7 @@ export default class TasksComponent extends Component {
             .catch(error => {
                 console.error('There was a problem deleting the resource:', error);
             });
-        window.location.pathname = '/taskGroups'
+        window.location.pathname = '/specialities'
     }
 
     async loadTaskItems(taskGroupId) {
@@ -82,13 +82,15 @@ export default class TasksComponent extends Component {
                 <div className='taskItemsContainer'>
                     <div className='taskItemsContent'>
                         <div className='deleteTaskGroupButtonWrapper ml-auto'>
+                          
                             <button className='literatureButton'>
-                                <a href={`https://localhost:44414/literatures/${this.state.taskGroupId}`} id="edit-text">Литература</a>
+                                <a href={`https://localhost:44414/literatures/${this.state.taskGroupId}`} id="edit-text">Учебни ресурси</a>
                             </button>
                             <button className='editButton'>
                                 <a href={`https://localhost:44414/editTaskGroup/${this.state.taskGroupId}`} id="edit-text">Редактирай</a>
                             </button>
                             <button className='deleteTaskGroupButton' onClick={this.deleteTaskGroup}>Изтрий</button>
+                         
                         </div>
                         <div className='taskItemsListHeaderWrapper d-flex'>
                             <h4 className='taskItemsListHeader'>{this.state.taskGroupHeaderName}</h4>

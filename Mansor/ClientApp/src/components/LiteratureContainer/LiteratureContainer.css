@@ -1,13 +1,29 @@
 ﻿.literatureElement{
-    border: 15px solid white;
+    border: 10px solid white;
     padding: 10px;
+    margin-bottom: 20px;
+    width: 700px;
+    height: max-content;
+    word-break: break-word;
 }
 .literatureTitle{
+    color: white;
     margin-top: -10px;
     font-size: 30px;
 }
+.literatureContent {
+    color: white;
+}
+.openLiteratureButton {
+    margin-left: 100px;
+    background-color: #424242;
+    border: 2px solid #d9d9d9;
+    padding: 5px;
+    font-size: 15px;
+    margin-right: 10px;
+}
 .deleteLiteratureButtonWrapper {
-    margin-left: 500px;
+    
 }
 .deleteLiteratureButton {
     background-color: #424242;
@@ -15,4 +31,19 @@
     border: 2px solid #d9d9d9;
     padding: 5px;
     font-size: 15px;
+}
+.deleteLiteratureButton:hover{
+    text-decoration: underline;
+}
+.openLiteratureButton:hover{
+    text-decoration: underline;
+    color: white;
+}
+.openLiteratureText{
+    color: white;
+    text-decoration: none;
+}
+.openLiteratureText:hover{
+    color: white;
+    text-decoration: underline;
 }

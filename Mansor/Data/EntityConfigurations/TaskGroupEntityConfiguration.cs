@@ -25,6 +25,9 @@ namespace Mansor.Data.EntityConfigurations
 				 .WithOne(ti => ti.TaskGroup)
 				 .HasForeignKey(ti => ti.TaskGroupId);
 
+			builder.HasMany(tg => tg.Grades)
+		         .WithOne(ti => ti.TaskGroup)
+		         .HasForeignKey(ti => ti.TaskGroupId);
 		}
     }
 }

@@ -26,7 +26,7 @@
     font-size: 20px;
     margin-right: 5px;
     border: 3px solid #424242;
-    width: 1080px;
+    width: 880px;
     height: min-content;
 }
 
@@ -71,4 +71,20 @@
 .useButtonText:hover {
     color: white;
     text-decoration: none;
+}
+
+.gradeTaskGroupButton {
+    font-family: sans-serif;
+    background-color: #424242;
+    border: 3px #b3b3b3 solid;
+    color: white;
+    border-radius: 10px;
+    margin-top: 6.5px;
+    font-size: 15px;
+    padding: 2px 10px 2px 10px;
+}
+
+.gradeTaskGroupButton:hover {
+    background-color: #b3b3b3;
+    border: 3px white solid;
 }

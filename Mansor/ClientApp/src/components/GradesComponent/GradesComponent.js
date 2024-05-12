@@ -10,24 +10,22 @@ export default class GradesComponent extends Component {
         super(props)
         this.state = {
             grades: [],
-            typeOfGradeId: '',
-            typeOfGradeData: undefined,
-            typeOfGradeHeaderName: '',
-            gradeData: undefined,
-            currentGradeValue: '',
+            //sum: '',
+            //counter: ''
         }
         this.loadGrades = this.loadGrades.bind(this);
     }
 
     async componentDidMount() {
         this.loadGrades();
+        //this.getAverage();
     }
 
-    async loadGrades(typeOfGradeId) {
+    async loadGrades() {
         const token = await authService.getAccessToken();
-        let splittedURL = window.location.pathname.split('/')
-        typeOfGradeId = splittedURL[splittedURL.length - 1]
-        let url = `https://localhost:7043/api/grades/${typeOfGradeId}`;
+        //let splittedURL = window.location.pathname.split('/')
+        //taskGroupId = splittedURL[splittedURL.length - 1]
+        let url = `https://localhost:7043/api/grades`;
         fetch(url, {
             headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
         })
@@ -36,13 +34,30 @@ export default class GradesComponent extends Component {
             .catch(error => console.error(error));
     }
 
+    //getAverage() {
+    //    this.setState({ sum: 0 });
+    //    this.setState({ counter: 0 });
+
+    //    let temp = this.state.sum;
+    //    let count = this.state.counter;
+    //    let value = this.state.grades.value;
+
+    //    while (value !== '') {
+    //        temp += value + 1;
+    //        count++;
+    //    }
+
+    //    this.setState({ sum: temp / count });
+    //    console.log(this.state.sum);
+    ////}
+
     render() {
         return (
             <div className='gradesListWrapper d-flex justify-content-center align-items-center'>
                 <div className='gradesContainer'>
                     <div className='gradesContent'>
                         <div className='gradesListHeaderWrapper d-flex'>
-                            <h4 className='gradesListHeader'>{this.state.typeOfGradeHeaderName}</h4>
+                            <h4 className='gradesListHeader'>Оценки</h4>
                         </div>
                         <div className='createNewGradeItemButtonWrapper'>
                             <AddGrade onGradeAdded={this.loadGrades} />
@@ -54,9 +69,13 @@ export default class GradesComponent extends Component {
                                 )
                             })}
                         </div>
+                        {/*<div className='gradeAverageValueWrapper'>*/}
+                        {/*    <span className='gradeAverageValue pageText' > {this.state.sum} </span>*/}
+                        {/*</div>*/}
                     </div>
-                </div>
-                <div id="snackbar">Въведете текст в полето</div>
+                    
+                    <div id="snackbar">Въведете текст в полето</div>
+                 </div>
             </div>
         );
     }
