@@ -3,7 +3,7 @@
     position: absolute;
     width: 500px;
     height: 250px;
-    margin-left: 32%;
+    margin-left: 29%;
     top: 50px;
     background: #B3B3B3;
     border: 3px solid #b3b3b3;
@@ -57,11 +57,11 @@
     margin-bottom: 30px;
 }
 
-#specialityTitle {
+#specialityModalTitle {
     color: #FFFFFF;
     font-weight: 700;
     font-size: 24px;
-    margin-left: 43%;
+    margin-left: 39%;
     margin-top: 80px;
 }
 
@@ -89,11 +89,11 @@
     text-decoration-line: underline;
 }
 
-#close {
+#closeSpeciality {
     width: 160px;
     height: 47px;
     font-size: 20px;
-    margin-left: 44%;
+    margin-right: 15%;
     border: none;
     background-color: #b3b3b3;
     margin-right: -20%;
@@ -101,7 +101,7 @@
     color: black !important;
 }
 
-#close:hover {
+#closeSpeciality:hover {
     text-decoration-line: underline;
 }
 

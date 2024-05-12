@@ -22,9 +22,9 @@ namespace Mansor.Business.Services
 			return await _gradesRepository.AddAsync(grade);
 		}
 
-		public async Task<IEnumerable<Grade>> GetAllGrades(int typeOfGradeId)
+		public async Task<IEnumerable<Grade>> GetAllGrades(int taskGroupId)
 		{
-			return await _gradesRepository.GetAllGradesAsync(typeOfGradeId);
+			return await _gradesRepository.GetAllGradesAsync(taskGroupId);
 		}
 
 		public async Task<IEnumerable<Grade>> GetGradesAsync() => await _gradesRepository.GetAllGrades();

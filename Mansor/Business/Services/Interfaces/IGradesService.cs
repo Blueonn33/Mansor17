@@ -4,7 +4,7 @@ namespace Mansor.Business.Services.Interfaces
 {
 	public interface IGradesService
 	{
-		Task<IEnumerable<Grade>> GetAllGrades(int typeOfGradeId);
+		Task<IEnumerable<Grade>> GetAllGrades(int taskGroupId);
 		Task<Grade> CreateGrade(Grade grade);
 		Task<IEnumerable<Grade>> GetGradesAsync();
 		Task<Grade?> GetGradeById(int id);
@@ -13,3 +13,4 @@ namespace Mansor.Business.Services.Interfaces
 		Task UpdateGradeAsync(Grade grade);
 	}
 }
+

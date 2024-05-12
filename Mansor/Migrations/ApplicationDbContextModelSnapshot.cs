@@ -163,6 +163,29 @@ namespace Mansor.Migrations
                     b.ToTable("PersistedGrants", (string)null);
                 });
 
+            modelBuilder.Entity("Mansor.Data.Models.Course", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("SpecialityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SpecialityId");
+
+                    b.ToTable("Courses", (string)null);
+                });
+
             modelBuilder.Entity("Mansor.Data.Models.Day", b =>
                 {
                     b.Property<int>("Id")
@@ -205,6 +228,16 @@ namespace Mansor.Migrations
                         {
                             Id = 5,
                             Name = "Петък"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Събота"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Неделя"
                         });
                 });
 
@@ -216,7 +249,7 @@ namespace Mansor.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("TypeOfGradeId")
+                    b.Property<int>("TaskGroupId")
                         .HasColumnType("int");
 
                     b.Property<string>("Value")
@@ -226,9 +259,37 @@ namespace Mansor.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TypeOfGradeId");
+                    b.HasIndex("TaskGroupId");
 
                     b.ToTable("Grades", (string)null);
+                });
+
+            modelBuilder.Entity("Mansor.Data.Models.Literature", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Keyword")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<int>("TaskGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TaskGroupId");
+
+                    b.ToTable("Literatures", (string)null);
                 });
 
             modelBuilder.Entity("Mansor.Data.Models.Note", b =>
@@ -259,6 +320,29 @@ namespace Mansor.Migrations
                     b.ToTable("Notes", (string)null);
                 });
 
+            modelBuilder.Entity("Mansor.Data.Models.Semester", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseId");
+
+                    b.ToTable("Semesters", (string)null);
+                });
+
             modelBuilder.Entity("Mansor.Data.Models.Speciality", b =>
                 {
                     b.Property<int>("Id")
@@ -280,29 +364,6 @@ namespace Mansor.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Specialities", (string)null);
-                });
-
-            modelBuilder.Entity("Mansor.Data.Models.Student", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<int>("SpecialityId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SpecialityId");
-
-                    b.ToTable("Students", (string)null);
                 });
 
             modelBuilder.Entity("Mansor.Data.Models.Subject", b =>
@@ -352,12 +413,12 @@ namespace Mansor.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("SemesterId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("SemesterId");
 
                     b.ToTable("TaskGroups", (string)null);
                 });
@@ -388,28 +449,6 @@ namespace Mansor.Migrations
                     b.HasIndex("TaskGroupId");
 
                     b.ToTable("TaskItems", (string)null);
-                });
-
-            modelBuilder.Entity("Mansor.Data.Models.TypeOfGrade", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("StudentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StudentId");
-
-                    b.ToTable("TypeOfGrades");
                 });
 
             modelBuilder.Entity("Mansor.Data.User", b =>
@@ -619,15 +658,37 @@ namespace Mansor.Migrations
                     b.ToTable("UserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Mansor.Data.Models.Grade", b =>
+            modelBuilder.Entity("Mansor.Data.Models.Course", b =>
                 {
-                    b.HasOne("Mansor.Data.Models.TypeOfGrade", "TypeOfGrade")
-                        .WithMany("Grades")
-                        .HasForeignKey("TypeOfGradeId")
+                    b.HasOne("Mansor.Data.Models.Speciality", "Speciality")
+                        .WithMany("Courses")
+                        .HasForeignKey("SpecialityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("TypeOfGrade");
+                    b.Navigation("Speciality");
+                });
+
+            modelBuilder.Entity("Mansor.Data.Models.Grade", b =>
+                {
+                    b.HasOne("Mansor.Data.Models.TaskGroup", "TaskGroup")
+                        .WithMany("Grades")
+                        .HasForeignKey("TaskGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TaskGroup");
+                });
+
+            modelBuilder.Entity("Mansor.Data.Models.Literature", b =>
+                {
+                    b.HasOne("Mansor.Data.Models.TaskGroup", "TaskGroup")
+                        .WithMany("Literatures")
+                        .HasForeignKey("TaskGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TaskGroup");
                 });
 
             modelBuilder.Entity("Mansor.Data.Models.Note", b =>
@@ -639,6 +700,17 @@ namespace Mansor.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Mansor.Data.Models.Semester", b =>
+                {
+                    b.HasOne("Mansor.Data.Models.Course", "Course")
+                        .WithMany("Semesters")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Course");
+                });
+
             modelBuilder.Entity("Mansor.Data.Models.Speciality", b =>
                 {
                     b.HasOne("Mansor.Data.User", "User")
@@ -646,17 +718,6 @@ namespace Mansor.Migrations
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Mansor.Data.Models.Student", b =>
-                {
-                    b.HasOne("Mansor.Data.Models.Speciality", "Speciality")
-                        .WithMany("Students")
-                        .HasForeignKey("SpecialityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Speciality");
                 });
 
             modelBuilder.Entity("Mansor.Data.Models.Subject", b =>
@@ -680,11 +741,11 @@ namespace Mansor.Migrations
 
             modelBuilder.Entity("Mansor.Data.Models.TaskGroup", b =>
                 {
-                    b.HasOne("Mansor.Data.User", "User")
+                    b.HasOne("Mansor.Data.Models.Semester", "Semester")
                         .WithMany("TaskGroups")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("SemesterId");
 
-                    b.Navigation("User");
+                    b.Navigation("Semester");
                 });
 
             modelBuilder.Entity("Mansor.Data.Models.TaskItem", b =>
@@ -696,15 +757,6 @@ namespace Mansor.Migrations
                         .IsRequired();
 
                     b.Navigation("TaskGroup");
-                });
-
-            modelBuilder.Entity("Mansor.Data.Models.TypeOfGrade", b =>
-                {
-                    b.HasOne("Mansor.Data.Models.Student", "Student")
-                        .WithMany("TypeOfGrades")
-                        .HasForeignKey("StudentId");
-
-                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -758,29 +810,33 @@ namespace Mansor.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Mansor.Data.Models.Course", b =>
+                {
+                    b.Navigation("Semesters");
+                });
+
             modelBuilder.Entity("Mansor.Data.Models.Day", b =>
                 {
                     b.Navigation("Subjects");
                 });
 
-            modelBuilder.Entity("Mansor.Data.Models.Speciality", b =>
+            modelBuilder.Entity("Mansor.Data.Models.Semester", b =>
                 {
-                    b.Navigation("Students");
+                    b.Navigation("TaskGroups");
                 });
 
-            modelBuilder.Entity("Mansor.Data.Models.Student", b =>
+            modelBuilder.Entity("Mansor.Data.Models.Speciality", b =>
                 {
-                    b.Navigation("TypeOfGrades");
+                    b.Navigation("Courses");
                 });
 
             modelBuilder.Entity("Mansor.Data.Models.TaskGroup", b =>
                 {
-                    b.Navigation("TaskItems");
-                });
-
-            modelBuilder.Entity("Mansor.Data.Models.TypeOfGrade", b =>
-                {
                     b.Navigation("Grades");
+
+                    b.Navigation("Literatures");
+
+                    b.Navigation("TaskItems");
                 });
 
             modelBuilder.Entity("Mansor.Data.User", b =>
@@ -790,8 +846,6 @@ namespace Mansor.Migrations
                     b.Navigation("Specialities");
 
                     b.Navigation("Subjects");
-
-                    b.Navigation("TaskGroups");
                 });
 #pragma warning restore 612, 618
         }

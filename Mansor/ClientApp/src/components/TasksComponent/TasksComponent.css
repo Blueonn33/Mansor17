@@ -19,7 +19,9 @@
     margin-top: 140px;
     margin-left: 4%;
     height: max-content;
-    margin-bottom: 50px;
+    margin-bottom: 80px;
+    width: 500px;
+    word-break: break-word;
 }
 
 .taskItemsListHeader {
@@ -57,7 +59,7 @@
     padding-bottom: 20vh;
 }
 
-.deleteButton {
+.literatureButton {
     font-family: sans-serif;
     font-size: 20px;
     background-color: #424242;
@@ -69,7 +71,7 @@
     font-size: 20px;
     padding: 5px 17px 5px 17px;
 }
-.deleteButton:hover {
+.literatureButton:hover {
     background-color: #b3b3b3;
     border: 3px white solid;
 }
@@ -95,4 +97,16 @@
 }
 #edit-text:hover{
     color: white;
+}
+.deleteTaskGroupButton{
+    font-family: sans-serif;
+    font-size: 20px;
+    background-color: #424242;
+    border: 3px #b3b3b3 solid;
+    color: white;
+    border-radius: 10px;
+    margin-left: 13px;
+    margin-top: 3%;
+    font-size: 20px;
+    padding: 5px 17px 5px 17px;
 }

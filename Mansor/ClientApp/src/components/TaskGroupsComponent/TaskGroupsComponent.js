@@ -3,7 +3,7 @@ import { endpoints } from '../../endpoints';
 import { AddTaskGroup } from '../AddTaskGroup/AddTaskGroup.js';
 import '../TaskGroupsComponent/TaskGroupsComponent.css';
 import TaskGroupsContainer from '../TaskGroupsContainer/TaskGroupsContainer';
-import { FaBars, FaCalendarDay, FaRegStickyNote, FaTable } from "react-icons/fa";
+import { FaBars, FaCalendarDay, FaRegStickyNote, FaTable, FaPeopleArrows } from "react-icons/fa";
 import authService from '../api-authorization/AuthorizeService';
 
 export default class TaskGroupsComponent extends Component {
@@ -11,20 +11,24 @@ export default class TaskGroupsComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            taskGroups: [],
+            taskGroup: [],
+            taskGroupData: undefined
         }
         this.loadTaskGroups = this.loadTaskGroups.bind(this);
     }
     async componentDidMount() {
         this.loadTaskGroups();
     }
-    async loadTaskGroups() {
+    async loadTaskGroups(semesterId) {
         const token = await authService.getAccessToken();
-        await fetch(endpoints.loadTaskGroups(), {
+        let splittedURL = window.location.pathname.split('/')
+        semesterId = splittedURL[splittedURL.length - 1]
+        let url = `https://localhost:7043/api/taskGroups/${semesterId}`;
+        fetch(url, {
             headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
         })
             .then((res) => res.json())
-            .then((res) => this.setState({ taskGroups: res }))
+            .then((res) => this.setState({ taskGroup: res }))
             .catch(error => console.error(error));
     }
 
@@ -58,6 +62,13 @@ export default class TaskGroupsComponent extends Component {
                         </button> 
                         <hr id="line"></hr>
                     </div>
+                    <div className="offcanvas-body text-white">
+                        <FaPeopleArrows className='informationIcon' />
+                        <button className='informationBtn'>
+                            <a href={`https://localhost:44414/schedule`} className='informationBtnText'>Информация</a>
+                        </button>
+                        <hr id="line"></hr>
+                    </div>
                 </div>
                 <div className='taskGroupsContainer'>
                     <div className='taskGroupsContent'>
@@ -71,7 +82,7 @@ export default class TaskGroupsComponent extends Component {
                             <AddTaskGroup onTaskGroupAdded={this.loadTaskGroups} />
                         </div>
                         <div className='taskGroupsContainers'>
-                            {this.state.taskGroups.map((taskGroup) => {
+                            {this.state.taskGroup.map((taskGroup) => {
                                 return (
                                     <TaskGroupsContainer taskGroupData={taskGroup} key={taskGroup.id} />
                                 )

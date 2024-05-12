@@ -9,7 +9,7 @@ namespace Mansor.Data.Models
 		public Speciality()
 		{
 			Name = Guid.NewGuid().ToString();
-			Students = new List<Student>();
+			Courses = new List<Course>();
 		}
 		public Speciality(User? user, string name) : this()
 		{
@@ -22,6 +22,6 @@ namespace Mansor.Data.Models
 		public User? _user;
 		public string? UserId { get; set; }
 		public User User;
-		public ICollection<Student> Students { get; set; }
+		public ICollection<Course> Courses { get; set; }
 	}
 }

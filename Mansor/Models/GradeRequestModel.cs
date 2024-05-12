@@ -5,15 +5,15 @@ namespace Mansor.Models
 	public class GradeRequestModel
 	{
 		public string Value { get; set; }
-		public int TypeOfGradeId { get; set; }
+		public int TaskGroupId { get; set; }
 
-		public Grade Grades(TypeOfGrade TypeOfGrade)
+		public Grade Grades(TaskGroup taskGroup)
 		{
 			return new Grade()
 			{
 				Value = Value,
-				TypeOfGradeId = TypeOfGrade.Id,
-				TypeOfGrade = TypeOfGrade
+				TaskGroupId = taskGroup.Id,
+				TaskGroup = taskGroup
 			};
 		}
 	}

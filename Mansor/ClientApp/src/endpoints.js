@@ -1,10 +1,10 @@
 ﻿const apiBaseUrl = 'https://localhost:7043'
 export const endpoints = {
-    loadTaskGroups: () => `${apiBaseUrl}/api/taskGroups`,
+    loadTaskGroups: (semesterId) => `${apiBaseUrl}/api/taskGroups/${semesterId}`,
     getTaskGroupName: (taskGroupId) => `${apiBaseUrl}/api/taskGroup/${taskGroupId}`,
     deleteTaskGroup: (taskGroupId) => `${apiBaseUrl}/api/delete/taskGroup/${taskGroupId}`,
     editTaskGroup: (taskGroupId) => `${apiBaseUrl}/api/edit/taskGroup/${taskGroupId}`,
-    createTaskGroup: () => `${apiBaseUrl}/api/create/taskGroup`,
+    createTaskGroup: (semesterId) => `${apiBaseUrl}/api/create/taskGroup/${semesterId}`,
 
     loadTaskItems: (taskGroupId) => `${apiBaseUrl}/api/taskItems/${taskGroupId}`,
     createTaskItem: (taskGroupId) => `${apiBaseUrl}/api/create/taskItem/${taskGroupId}`,
@@ -38,11 +38,16 @@ export const endpoints = {
     removeStudent: (studentId) => `${apiBaseUrl}/api/delete/student/${studentId}`,
     editStudent: (studentId) => `${apiBaseUrl}/api/edit/student/${studentId}`,
 
-    loadTypeOfGrades: (studentId) => `${apiBaseUrl}/api/typeOfGrades/${studentId}`,
-    getTypeOfGradeName: (typeOfGradeId) => `${apiBaseUrl}/api/typeOfGrade/${typeOfGradeId}`,
-    deleteTypeOfGrade: (typeOfGradeId) => `${apiBaseUrl}/api/delete/typeOfGrade/${typeOfGradeId}`,
-    createTypeOfGrade: (studentId) => `${apiBaseUrl}/api/create/typeOfGrade/${studentId}`,
+    loadCourses: (specialityId) => `${apiBaseUrl}/api/courses/${specialityId}`,
+    createCourse: (specialityId) => `${apiBaseUrl}/api/create/course/${specialityId}`,
 
-    loadGrades: (typeOfGradeId) => `${apiBaseUrl}/api/grades/${typeOfGradeId}`,
-    createGrade: (typeOfGradeId) => `${apiBaseUrl}/api/create/grade/${typeOfGradeId}`,
+    loadSemesters: (courseId) => `${apiBaseUrl}/api/semesters/${courseId}`,
+    createSemester: (courseId) => `${apiBaseUrl}/api/create/semester/${courseId}`,
+
+    loadLiteratures: (taskGroupId) => `${apiBaseUrl}/api/literatures/${taskGroupId}`,
+    createLiterature: (taskGroupId) => `${apiBaseUrl}/api/create/literature/${taskGroupId}`,
+    deleteLiterature: (literatureId) => `${apiBaseUrl}/api/delete/literature/${literatureId}`,
+
+    loadGrades: (taskGroupId) => `${apiBaseUrl}/api/grades/${taskGroupId}`,
+    createGrade: (taskGroupId) => `${apiBaseUrl}/api/create/grade/${taskGroupId}`,
 }

@@ -1,0 +1,27 @@
+﻿#input-semester {
+    color: white;
+    background-color: #424242;
+    border: 2px solid white;
+    border-radius: 10px;
+    height: 40px;
+    width: 300px;
+    margin-left: -55%;
+}
+
+.addSemesterBtn {
+    color: white;
+    background-color: #424242;
+    margin-left: 2%;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.addSemesterBtn:hover {
+    color: #424242;
+    background-color: white;
+}
+
+.addSemesterContainer {
+    margin-bottom: 10%;
+}

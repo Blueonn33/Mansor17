@@ -7,13 +7,14 @@
     {
         public string Name { get; set; }
 
-        public TaskGroup ToCreateTaskGroup(string userId)
+        public TaskGroup ToCreateTaskGroup(Semester Semester)
         {
             return new TaskGroup()
             {
                 Name = Name,
-                UserId = userId,
-            };
+				SemesterId = Semester.Id,
+				Semester = Semester
+			};
         }
     }
 }

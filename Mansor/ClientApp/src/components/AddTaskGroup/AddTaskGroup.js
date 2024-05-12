@@ -11,6 +11,7 @@ export class AddTaskGroup extends Component {
             value: '',
             errorMessage: '',
             textColor: '',
+            routeId: ''
         }
         this.createTaskGroup = this.createTaskGroup.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -21,10 +22,10 @@ export class AddTaskGroup extends Component {
         var input = this.state.value;
 
         const errors = {
-            success: "Добавихте успешно нова дисциплина.",
-            minLength: "Името е твърде кратко.",
-            maxLength: "Името е твърде дълго.",
-            existingTaskGroup: "Дисциплината вече съществува."
+            success: "",    // "Успешно добавихте нова дисциплина."
+            minLength: "",  // "Името е твърде кратко."
+            maxLength: "",  // "Името е твърде дълго."
+            existingTaskGroup: "" // "Дисциплината вече съществува."
         }
         const color = {
             error: "red",
@@ -41,14 +42,17 @@ export class AddTaskGroup extends Component {
         }
         else {
             const token = await authService.getAccessToken();
-            await fetch(endpoints.createTaskGroup(), {
+            let splittedURL = window.location.pathname.split('/')
+            let semesterId = splittedURL[splittedURL.length - 1]
+            await fetch(endpoints.createTaskGroup(semesterId), {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
-                    name: input
+                    name: input,
+                    semesterId: semesterId,
                 })
             })
                 .then((response) => {
@@ -72,6 +76,12 @@ export class AddTaskGroup extends Component {
     }
     componentDidMount() {
         this.render();
+        this.historyBack();
+    }
+    historyBack() {
+        let splittedURL = window.location.pathname.split('/')
+        let semesterId = splittedURL[splittedURL.length - 1]
+        this.setState({ routeId: semesterId });
     }
     close() {
         this.setState({ 'value': '' });
@@ -101,7 +111,7 @@ export class AddTaskGroup extends Component {
                                 <div id="myForm">
                                     <form onSubmit={this.createTaskGroup}>
                                         <label htmlFor="taskGroupNameField" id="label-text">Име:</label>
-                                        <input type="text" name="taskGroupNameField" className="form-control" id="name"
+                                        <input type="text" name="taskGroupNameField" className="form-control" id="taskGroupNameInput"
                                             onChange={(e) => this.setState({ 'value': e.target.value })}
                                             style={{ borderBottomColor: this.state.textColor }}
                                         />
@@ -110,7 +120,9 @@ export class AddTaskGroup extends Component {
                                                 <p style={{ color: this.state.textColor}}>
                                                     {this.state.errorMessage}</p>
                                             </div>
-                                            <Link to='/taskGroups' id='close' onClick={this.close}>Назад</Link>
+                                            <button className='taskGroupsModalBackBtn' onClick={this.close}>
+                                                <a href={`https://localhost:44414/taskGroups/${this.state.routeId}`} className="taskGroupsModalBackBtnText">Назад</a>
+                                            </button>
                                             <button type="submit" id="submit" method="post" className="btn" name="addTaskGroup">Добави</button>
                                         </div>
                                     </form>

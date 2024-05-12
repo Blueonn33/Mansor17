@@ -13,9 +13,9 @@ namespace Mansor.Data.EntityConfigurations
 			builder.HasKey(t => t.Id);
 			builder.Property(t => t.Value).HasMaxLength(255);
 
-			builder.HasOne(r => r.TypeOfGrade)
+			builder.HasOne(r => r.TaskGroup)
 				.WithMany(ti => ti.Grades)
-				.HasForeignKey(r => r.TypeOfGradeId);
+				.HasForeignKey(r => r.TaskGroupId);
 		}
 	}
 }

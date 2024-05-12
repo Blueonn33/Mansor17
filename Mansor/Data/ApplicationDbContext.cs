@@ -16,9 +16,10 @@ namespace Mansor.Data
         public DbSet<Day> Days => Set<Day>();
         public DbSet<Subject> Subjects => Set<Subject>();
 		public DbSet<Speciality> Specialities => Set<Speciality>();
-		public DbSet<Student> Students => Set<Student>();
+		public DbSet<Course> Courses => Set<Course>();
+		public DbSet<Semester> Semesters => Set<Semester>();
+		public DbSet<Literature> Literatures => Set<Literature>();
 		public DbSet<Grade> Grades => Set<Grade>();
-		public DbSet<TypeOfGrade> TypeOfGrades => Set<TypeOfGrade>();
 
 		public ApplicationDbContext(DbContextOptions options, IOptions<OperationalStoreOptions> operationalStoreOptions)
             : base(options, operationalStoreOptions)
@@ -45,9 +46,10 @@ namespace Mansor.Data
             builder.ApplyConfiguration(new DayEntityConfiguration());
             builder.ApplyConfiguration(new SubjectEntityConfiguration());
 			builder.ApplyConfiguration(new SpecialityEntityConfiguration());
-			builder.ApplyConfiguration(new StudentEntityConfiguration());
+			builder.ApplyConfiguration(new CourseEntityConfiguration());
+			builder.ApplyConfiguration(new SemesterEntityConfiguration());
+			builder.ApplyConfiguration(new LiteratureEntityConfiguration());
 			builder.ApplyConfiguration(new GradeEntityConfiguration());
-			builder.ApplyConfiguration(new TypeOfGradeEntityConfiguration());
 
 			SeedInitialData(builder);
         }
@@ -60,8 +62,10 @@ namespace Mansor.Data
                 new Day { Id = 2, Name = "Вторник" },
                 new Day { Id = 3, Name = "Сряда" },
                 new Day { Id = 4, Name = "Четвъртък" },
-                new Day { Id = 5, Name = "Петък" }
-                );
+                new Day { Id = 5, Name = "Петък" },
+				new Day { Id = 6, Name = "Събота" },
+				new Day { Id = 7, Name = "Неделя" }
+				);
         }
     }
 }

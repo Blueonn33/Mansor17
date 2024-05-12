@@ -49,14 +49,17 @@ builder.Services.AddScoped<ISubjectsService, SubjectsService>();
 builder.Services.AddScoped<ISpecialitiesRepository, SpecialitiesRepository>();
 builder.Services.AddScoped<ISpecialitiesService, SpecialitiesService>();
 
-builder.Services.AddScoped<IStudentsRepository, StudentsRepository>();
-builder.Services.AddScoped<IStudentsService, StudentsService>();
+builder.Services.AddScoped<ICoursesRepository, CoursesRepository>();
+builder.Services.AddScoped<ICoursesService, CoursesService>();
+
+builder.Services.AddScoped<ISemestersRepository, SemestersRepository>();
+builder.Services.AddScoped<ISemestersService, SemestersService>();
+
+builder.Services.AddScoped<ILiteraturesRepository, LiteraturesRepository>();
+builder.Services.AddScoped<ILiteraturesService, LiteraturesService>();
 
 builder.Services.AddScoped<IGradesRepository, GradesRepository>();
 builder.Services.AddScoped<IGradesService, GradesService>();
-
-builder.Services.AddScoped<ITypeOfGradesRepository, TypeOfGradesRepository>();
-builder.Services.AddScoped<ITypeOfGradesService, TypeOfGradesService>();
 
 builder.Services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.MaxDepth = 64);
 

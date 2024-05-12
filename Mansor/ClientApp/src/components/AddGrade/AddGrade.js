@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
-import { endpoints } from '../../endpoints';
 import './AddGrade.css';
+import { endpoints } from "../../endpoints";
+import { Link } from "react-router-dom";
 import authService from '../api-authorization/AuthorizeService';
 
 export class AddGrade extends Component {
@@ -8,78 +9,114 @@ export class AddGrade extends Component {
         super(props);
         this.state = {
             value: '',
-            typeOfGradeId: '',
+            taskGroupId: undefined,
+            errorMessage: '',
+            textColor: '',
         }
         this.createGrade = this.createGrade.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
-
-    handleChange(event) {
-        this.setState({ value: event.target.value });
-    }
-
-    invalidInput() {
-        var msg = document.getElementById("snackbar");
-        msg.className = "show";
-        setTimeout(function () { msg.className = msg.className.replace("show", ""); }, 3000);
-    }
-
-    componentDidMount() {
-        this.render();
-    }
-
-    async createGrade(typeOfGradeId) {
+    async createGrade(event) {
+        event.preventDefault();
         console.log(this.state.value);
         var input = this.state.value;
 
-        if (input === '') {
-            this.invalidInput();
+        const errors = {
+            success: "Добавихте оценка",
+            existinGrade: "Вече е добавена оценка"
         }
-        else {
-            const token = await authService.getAccessToken();
-            let splittedURL = window.location.pathname.split('/')
-            typeOfGradeId = splittedURL[splittedURL.length - 1]
-            await fetch(endpoints.createGrade(typeOfGradeId), {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({
-                    value: input,
-                    typeOfGradeId: typeOfGradeId,
-                })
+        const color = {
+            error: "red",
+            success: "green"
+        }
+
+        const token = await authService.getAccessToken();
+        let splittedURL = window.location.pathname.split('/')
+        let taskGroupId = splittedURL[splittedURL.length - 1]
+        await fetch(endpoints.createGrade(taskGroupId), {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                value: input,
+                taskGroupId: taskGroupId,
             })
-                .then((response) => {
-                    if (!response.ok) {
-                        console.log("invalid input")
-
-                    }
-                    else {
-                        this.props.onGradeAdded(this.props.value);
-                        this.state.value = '';
-                    }
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        }
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    console.log("invalid input")
+                    this.setState({ errorMessage: errors.existingGrade });
+                    this.setState({ textColor: color.error });
+                }
+                else {
+                    this.props.onGradeAdded(this.props.value);
+                    this.state.value = '';
+                    this.setState({ errorMessage: errors.success });
+                    this.setState({ textColor: color.success });
+                }
+            })
+            .catch(error => {
+               
+                console.error(error);
+            });
     }
-
+    historyBack() {
+        let splittedURL = window.location.pathname.split('/')
+        let routeId = splittedURL[splittedURL.length - 1]
+        this.setState({ taskGroupId: routeId });
+    }
+    handleChange(event) {
+        this.setState({ value: event.target.value });
+    }
+    componentDidMount() {
+        this.render();
+        this.historyBack();
+    }
+    close() {
+        this.setState({ 'value': '' });
+        this.setState({ errorMessage: '' });
+        this.setState({ textColor: 'gray' })
+    }
     render() {
         return (
-            <div>
-                <div className="containerGrade">
-                    <div className="container">
-                        <input type="text" id="input-grade"
-                            placeholder="Оценка"
-                            value={this.state.value}
-                            onChange={(e) => this.setState({ 'value': e.target.value })}
-                        />
-                        <span className="addGradeBtn" onClick={this.createGrade}>Добави</span>
+            <div className="container">
+                <div className="container" id="modal">
+                    <button type="button" className="createGrade" data-bs-toggle="modal" data-bs-target="#addGradeModal">
+                        Оценка
+                    </button>
+                </div>
+                <div className="modal fade" id="addGradeModal" role="dialog">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header border-0">
+                                <button type="button" className="close" data-bs-dismiss="modal">&times;</button>
+                            </div>
+                            <div className="modal-body">
+                                <div id="myForm">
+                                    <form onSubmit={this.createGrade}>
+                                        <label htmlFor="gradeNameField" className="gradeLabelText">Оценка:</label>
+                                        <input type="text" name="gradeNameField" className="form-control" id="gradeInputModal"
+                                            onChange={(e) => this.setState({ 'value': e.target.value })}
+                                            style={{ borderBottomColor: this.state.textColor }}
+                                        />
+                                        <div className="modal-footer border-0">
+                                            <div id="errorGrade">
+                                                <p style={{ color: this.state.textColor }}>
+                                                    {this.state.errorMessage}</p>
+                                            </div>
+                                            <button className='gradesModalBackBtn' onClick={this.close}>
+                                                <a href={`https://localhost:44414/grades/${this.state.taskGroupId}`} className="gradesModalBackBtnText">Назад</a>
+                                            </button>
+                                            <button type="submit" method="post" className="addGradeModalBtn" name="addGrade">Добави</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div id="snackbar">Въведете текст в полето</div>
             </div>
         );
     }

@@ -11,7 +11,7 @@ export default class SpecialityContainer extends Component {
                 </div>
                 <div className='useSpecialityButtonWrapper ml-auto'>
                     <button className='useButton'>
-                        <a href={`https://localhost:44414/students/${this.props.specialityData.id}`} className='useButtonText'>Преглед</a>
+                        <a href={`https://localhost:44414/courses/${this.props.specialityData.id}`} className='useButtonText'>Преглед</a>
                     </button>
                 </div>
             </div>

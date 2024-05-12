@@ -13,3 +13,173 @@ code {
   border: none;
   text-align: center;
 }
+
+.calendarBtn {
+    font-family: sans-serif;
+    background-color: #424242;
+    border: 3px #b3b3b3 solid;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 2px 10px 2px 10px;
+    margin-top: -1%;
+    margin-left: 4%;
+    height: max-content;
+}
+
+.calendarBtn:hover {
+    background-color: #b3b3b3;
+    border: 3px white solid;
+    color: white;
+}
+
+.calendarBtnText {
+    color: white;
+    text-decoration: none;
+}
+
+.calendarBtnText:hover {
+    color: white;
+}
+
+.notesBtn {
+    font-family: sans-serif;
+    background-color: #424242;
+    border: 3px #b3b3b3 solid;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 2px 10px 2px 10px;
+    margin-top: -1%;
+    margin-left: 4%;
+    height: max-content;
+}
+
+.notesBtn:hover {
+    background-color: #b3b3b3;
+    border: 3px white solid;
+    color: white;
+}
+
+.notesBtnText {
+    color: white;
+    text-decoration: none;
+}
+
+.notesBtnText:hover {
+    color: white;
+}
+
+.specialitiesBtn {
+    font-family: sans-serif;
+    background-color: #424242;
+    border: 3px #b3b3b3 solid;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 2px 10px 2px 10px;
+    margin-top: -1%;
+    margin-left: 4%;
+    height: max-content;
+}
+
+.specialitiesBtn:hover {
+    background-color: #b3b3b3;
+    border: 3px white solid;
+    color: white;
+}
+
+.specialitiesBtnText {
+    color: white;
+    text-decoration: none;
+}
+
+.specialitiesBtnText:hover {
+    color: white;
+}
+
+.timeTableBtn {
+    font-family: sans-serif;
+    background-color: #424242;
+    border: 3px #b3b3b3 solid;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 2px 10px 2px 10px;
+    margin-top: -1%;
+    margin-left: 4%;
+    height: max-content;
+}
+
+.timeTableBtn:hover {
+    background-color: #b3b3b3;
+    border: 3px white solid;
+    color: white;
+}
+
+.timeTableBtnText {
+    color: white;
+    text-decoration: none;
+}
+
+.timeTableBtnText:hover {
+    color: white;
+}
+
+.informationBtn {
+    font-family: sans-serif;
+    background-color: #424242;
+    border: 3px #b3b3b3 solid;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 2px 10px 2px 10px;
+    margin-top: -1%;
+    margin-left: 4%;
+    height: max-content;
+}
+
+.informationBtn:hover {
+    background-color: #b3b3b3;
+    border: 3px white solid;
+    color: white;
+}
+
+.informationBtnText {
+    color: white;
+    text-decoration: none;
+}
+
+.informationBtnText:hover {
+    color: white;
+}
+
+.calendarIcon {
+    margin-top: -2%;
+    height: 60px;
+    width: 60px;
+}
+
+.notesIcon {
+    margin-top: -2%;
+    height: 60px;
+    width: 60px;
+}
+
+.timeTableIcon {
+    margin-top: -2%;
+    height: 60px;
+    width: 60px;
+}
+
+.informationIcon {
+    margin-top: -2%;
+    height: 60px;
+    width: 60px;
+}
+
+.specialityIcon {
+    margin-top: -2%;
+    height: 60px;
+    width: 60px;
+}

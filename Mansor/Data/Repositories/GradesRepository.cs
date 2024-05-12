@@ -10,17 +10,17 @@ namespace Mansor.Data.Repositories
 		{
 		}
 
-		public async Task<IEnumerable<Grade>> GetAllGradesAsync(int typeOfGradeId)
+		public async Task<IEnumerable<Grade>> GetAllGradesAsync(int taskGroupId)
 		{
-			return await Entities.AsNoTracking().Include(t => t.TypeOfGrade.Student)
-				.Where(t => t.TypeOfGradeId == typeOfGradeId)
-				.ToListAsync();
+			return await Entities.AsNoTracking().Include(t => t.TaskGroup.Semester)
+				.Where(t => t.TaskGroupId == taskGroupId)
+				.OrderBy(t => t.Id).ToListAsync();
 		}
 		public async Task<IEnumerable<Grade>> GetAllGrades() => await Entities.ToListAsync();
 
 		public async Task<Grade?> FindGrade(int id)
 		{
-			return await Entities.Include(t => t.TypeOfGrade).FirstOrDefaultAsync(t => t.Id == id);
+			return await Entities.Include(t => t.TaskGroup).FirstOrDefaultAsync(t => t.Id == id);
 		}
 	}
 }

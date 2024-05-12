@@ -12,7 +12,6 @@ namespace Mansor.Data
         public User()
         {
             Name = string.Empty;
-            TaskGroups = new List<TaskGroup>();
 			Specialities = new List<Speciality>();
 			Notes = new List<Note>();
             Subjects = new List<Subject>();
@@ -24,7 +23,6 @@ namespace Mansor.Data
         }
 
         public string Name { get; set; } = null!;
-        public ICollection<TaskGroup> TaskGroups { get; set; } = null!;
 		public ICollection<Speciality> Specialities { get; set; } = null!;
 		public ICollection<Note> Notes { get; set; } = null!;
         public ICollection<Subject> Subjects { get; set; } = null!;

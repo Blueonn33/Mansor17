@@ -15,8 +15,10 @@ export class EditTaskGroupName extends Component {
             newName: '',
             errorMessage: '',
             textColor: '',
+            taskGroupId: undefined
         }
     }
+
     renamedTaskGroup() {
         var msg = document.getElementById("snackbar");
         msg.className = "show";
@@ -35,6 +37,13 @@ export class EditTaskGroupName extends Component {
                 this.setState({ currentName: data.name });
             });
         this.render();
+        this.historyBack();
+    }
+
+    historyBack() {
+        let splittedURL = window.location.pathname.split('/')
+        let routeId = splittedURL[splittedURL.length - 1]
+        this.setState({ taskGroupId: routeId });
     }
 
     handleNameChange = event => {
@@ -111,10 +120,10 @@ export class EditTaskGroupName extends Component {
                             <p style={{ color: this.state.textColor }}>
                                 {this.state.errorMessage}</p>
                         </div>
-                            <button id='editBack' onClick={this.close}>
-                                <a href={`https://localhost:44414/taskGroups`} id="editBack-text">Назад</a>
-                            </button>
-                            <button type="submit" id="editSubmit" method="post" className="btn" name="editTaskGroup">Промени</button>
+                        <button id='editBack' onClick={this.close}>
+                            <a href={`https://localhost:44414/taskItems/${this.state.taskGroupId}`} id="editBack-text">Назад</a>
+                        </button>
+                        <button type="submit" id="editSubmit" method="post" className="btn" name="editTaskGroup">Промени</button>
                     </form>
                 </div>
                 <div id="snackbar">Успешно променихте името</div>

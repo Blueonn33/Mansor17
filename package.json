@@ -5,6 +5,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "devextreme": "22.2.4",
     "devextreme-react": "22.2.4",
-    "react-icons": "^4.8.0"
+    "react-icons": "^4.8.0",
+    "react-router-dom": "^6.23.0"
   }
 }

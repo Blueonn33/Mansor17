@@ -1,4 +1,5 @@
-﻿using Mansor.Business.Services.Interfaces;
+﻿using Mansor.Business.Services;
+using Mansor.Business.Services.Interfaces;
 using Mansor.Data.Models;
 using Mansor.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -11,11 +12,11 @@ namespace Mansor.Controllers
 	public class GradesController : ControllerBase
 	{
 		private readonly IGradesService _gradesService;
-		private readonly ITypeOfGradesService _typeOfGradesService;
-		public GradesController(IGradesService gradesService, ITypeOfGradesService typeOfGradesService)
+		private readonly ITaskGroupsService _taskGroupsService;
+		public GradesController(IGradesService gradesService, ITaskGroupsService taskGroupsService)
 		{
 			_gradesService = gradesService;
-			_typeOfGradesService = typeOfGradesService;
+			_taskGroupsService = taskGroupsService;
 		}
 
 		[HttpGet]
@@ -27,17 +28,17 @@ namespace Mansor.Controllers
 		}
 
 		[HttpGet]
-		[Route("api/grades/{typeOfGradeId}")]
-		public async Task<IActionResult> GetAllGrades([FromRoute] int typeOfGradeId)
+		[Route("api/grades/{taskGroupId}")]
+		public async Task<IActionResult> GetAllGrades([FromRoute] int taskGroupId)
 		{
 			Response.Headers.Add("Access-Control-Allow-Origin", "*");
-			var grades = await _gradesService.GetAllGrades(typeOfGradeId);
+			var grade = await _gradesService.GetAllGrades(taskGroupId);
 
-			if (!grades.Any())
+			if (!grade.Any())
 			{
 				return BadRequest("No existing grades!");
 			}
-			return Ok(grades);
+			return Ok(grade);
 		}
 
 		[HttpGet]
@@ -53,11 +54,11 @@ namespace Mansor.Controllers
 		}
 
 		[HttpPost]
-		[Route("api/create/grade/{typeOfGradeId}")]
-		public async Task<IActionResult> CreateGrades([FromRoute] int typeOfGradeId, [FromBody] GradeRequestModel gradesRequestModel)
+		[Route("api/create/grade/{taskGroupId}")]
+		public async Task<IActionResult> CreateGrades([FromRoute] int taskGroupId, [FromBody] GradeRequestModel gradesRequestModel)
 		{
-			var typeOfGrade = await _typeOfGradesService.GetTypeOfGradeById(typeOfGradeId);
-			var grade = gradesRequestModel.Grades(typeOfGrade);
+			var taskGroup = await _taskGroupsService.GetTaskGroupById(taskGroupId);
+			var grade = gradesRequestModel.Grades(taskGroup);
 
 			var result = await _gradesService.CreateGrade(grade);
 
@@ -77,7 +78,5 @@ namespace Mansor.Controllers
 
 			return Ok(targetGrade);
 		}
-
-
 	}
 }

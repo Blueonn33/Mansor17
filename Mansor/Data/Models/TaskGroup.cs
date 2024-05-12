@@ -10,18 +10,22 @@ namespace Mansor.Data.Models
         {
             Name = Guid.NewGuid().ToString();
             TaskItems = new List<TaskItem>();
-        }
-        public TaskGroup(User? user, string name) : this()
+			Literatures = new List<Literature>();
+			Grades = new List<Grade>();
+		}
+        public TaskGroup(Semester? semester, string name) : this()
         {
-            _user = user;
+            _semester = semester;
             Name = name ?? throw new ArgumentNullException(nameof(name));
         }
         public int Id { get; set; }
 
         public string Name { get; set; }
-        public User? _user;
-        public string? UserId { get; set; }
-        public User User;
+        public Semester? _semester;
+        public int? SemesterId { get; set; }
+        public Semester Semester;
         public ICollection<TaskItem> TaskItems { get; set; }
-    }
+		public ICollection<Literature> Literatures { get; set; }
+		public ICollection<Grade> Grades { get; set; }
+	}
 }

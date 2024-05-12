@@ -1,0 +1,27 @@
+﻿.specialityInfoContent {
+    text-align: center;
+}
+ul.jobs {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 100px;
+}
+.specialitiesBackBtn{
+    font-size:40px;
+    margin-left: -5px;
+    color: white;
+}
+.specialitiesBackBtn:hover{
+    color:#d9d9d9;
+}
+.specialityTitle{
+    margin-top: 40px;
+}
+#specialityTitle {
+    color: white;
+    font-size: 40px;
+}
+.specialityInfoContent{
+    color: white;
+    text-align: left;
+}

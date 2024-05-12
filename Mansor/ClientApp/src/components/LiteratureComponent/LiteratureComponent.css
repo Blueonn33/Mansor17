@@ -1,0 +1,13 @@
+﻿.literatureHeaderContent{
+    font-size: 40px;
+    color: white;
+    margin-left: 38%;
+    margin-bottom: 40px;
+}
+.literaturesBackBtn {
+    font-size: 40px;
+    color: white;
+}
+.literaturesBackBtn:hover {
+    color: #d9d9d9;
+}
