@@ -2,7 +2,7 @@
 import { endpoints } from '../../endpoints';
 import '../TimeTablesComponent/TimeTablesComponent.css';
 import TimeTablesContainer from '../TimeTablesContainer/TimeTablesContainer';
-import { FaBars, FaCalendarDay, FaListAlt, FaRegStickyNote } from "react-icons/fa";
+import { FaBars, FaCalendarDay, FaListAlt, FaRegStickyNote, FaPeopleArrows } from "react-icons/fa";
 import authService from '../api-authorization/AuthorizeService';
 
 export default class TimeTablesComponent extends Component {
@@ -52,7 +52,14 @@ export default class TimeTablesComponent extends Component {
                     <div className="offcanvas-body text-white">
                         <FaListAlt className='groupsIcon' />
                         <button className='groupsBtn'>
-                            <a href={`https://localhost:44414/taskGroups`} className='groupsBtnText'>Дисциплини</a>
+                            <a href={`https://localhost:44414/specialites`} className='groupsBtnText'>Специалности</a>
+                        </button>
+                        <hr id="line"></hr>
+                    </div>
+                    <div className="offcanvas-body text-white">
+                        <FaPeopleArrows className='informationIcon' />
+                        <button className='informationBtn'>
+                            <a href={`https://localhost:44414/schedule`} className='informationBtnText'>Информация</a>
                         </button>
                         <hr id="line"></hr>
                     </div>

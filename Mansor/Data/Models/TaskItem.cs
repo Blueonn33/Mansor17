@@ -6,7 +6,7 @@ namespace Mansor.Data.Models
     {
         public TaskItem()
         {
-            Value = Guid.NewGuid().ToString();
+            Value = string.Empty;
             Color = string.Empty;
         }
 

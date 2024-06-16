@@ -8,7 +8,7 @@ namespace Mansor.Data.Models
 	{
 		public Speciality()
 		{
-			Name = Guid.NewGuid().ToString();
+			Name = string.Empty;
 			Courses = new List<Course>();
 		}
 		public Speciality(User? user, string name) : this()

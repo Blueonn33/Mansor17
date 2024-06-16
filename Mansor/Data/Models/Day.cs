@@ -4,7 +4,7 @@
     {
         public Day()
         {
-            Name = Guid.NewGuid().ToString();
+            Name = string.Empty;
             Subjects = new List<Subject>();
         }
         public Day(string name) : this()

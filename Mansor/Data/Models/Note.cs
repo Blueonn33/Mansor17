@@ -4,7 +4,7 @@
     {
         public Note()
         {
-            Title = Guid.NewGuid().ToString();
+            Title = string.Empty;
             Content = string.Empty;
         }
 

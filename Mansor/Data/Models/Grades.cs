@@ -6,7 +6,7 @@ namespace Mansor.Data.Models
 	{
 		public Grade()
 		{
-			Value = Guid.NewGuid().ToString();
+			Value = string.Empty;
 		}
 
 		public Grade(TaskGroup? taskGroup, string value) : this()

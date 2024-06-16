@@ -6,8 +6,8 @@ namespace Mansor.Data.Models
 	{
 		public Literature()
 		{
-			Value = Guid.NewGuid().ToString();
-			Keyword = Guid.NewGuid().ToString();
+			Value = string.Empty;
+			Keyword = string.Empty;
 		}
 
 		public Literature(TaskGroup? taskGroup, string value, string keyword) : this()

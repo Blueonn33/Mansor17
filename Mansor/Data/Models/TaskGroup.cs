@@ -8,7 +8,7 @@ namespace Mansor.Data.Models
     {
         public TaskGroup()
         {
-            Name = Guid.NewGuid().ToString();
+            Name = string.Empty;
             TaskItems = new List<TaskItem>();
 			Literatures = new List<Literature>();
 			Grades = new List<Grade>();

@@ -6,7 +6,7 @@ namespace Mansor.Data.Models
     {
         public Subject()
         {
-            Name = Guid.NewGuid().ToString();
+            Name = string.Empty;
             Duration = string.Empty;
         }
 

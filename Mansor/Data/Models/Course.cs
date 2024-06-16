@@ -6,7 +6,7 @@ namespace Mansor.Data.Models
 	{
 		public Course()
 		{
-			Value = Guid.NewGuid().ToString();
+			Value = string.Empty;
 			Semesters = new List<Semester>();
 		}
 
