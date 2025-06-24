@@ -60,7 +60,7 @@
   - Имейл
   - Парола
 <img width="1280" alt="image" src="https://github.com/user-attachments/assets/0ee8f8be-83d2-4c13-a688-36446c0c0366" />
-- Забравена парола
+## Забравена парола
   - Потребителят може да нулира паролата си за вход и да използва нова, ако е забравил сегашната си
 <img width="1279" alt="image" src="https://github.com/user-attachments/assets/8d34b09b-20b6-4186-ac38-9642c600631e" />
 
