@@ -47,3 +47,5 @@
 - Да изтегли информацията си
 <img width="1280" alt="image" src="https://github.com/user-attachments/assets/5eb6a57f-6039-4a25-9b4d-f4f9072200f6" />
 
+## 🗝️ Регистрация
+
