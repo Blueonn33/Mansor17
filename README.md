@@ -143,3 +143,4 @@
   - Информация
 <img width="1280" alt="image" src="https://github.com/user-attachments/assets/04a62ab0-cd6d-4410-8f2c-240ed40f4ee9" />
 
+## 🗒️ Бележки
