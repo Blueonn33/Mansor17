@@ -23,3 +23,8 @@
 - Навигация, ако потребителят не е регистриран
 <img width="1266" alt="image" src="https://github.com/user-attachments/assets/a2fdf52f-b2e6-451b-9126-0d914a3ed294" />
 
+## 🔽 Долен колонтитул
+- Съдържа името ми: Мартин Маринов
+- Линк към Instagram профила ми: https://www.instagram.com/m.marinov33/
+- Линк към YouTube канала ми: https://www.youtube.com/channel/UCdOH10Te0taKiNJA8GJHhvw
+
