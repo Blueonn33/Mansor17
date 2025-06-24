@@ -27,4 +27,5 @@
 - Съдържа името ми: Мартин Маринов
 - Линк към Instagram профила ми: https://www.instagram.com/m.marinov33/
 - Линк към YouTube канала ми: https://www.youtube.com/channel/UCdOH10Te0taKiNJA8GJHhvw
+<img width="1270" alt="image" src="https://github.com/user-attachments/assets/7e091448-4168-489f-bcc2-087cc1c202a8" />
 
