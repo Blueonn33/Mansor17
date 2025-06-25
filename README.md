@@ -174,4 +174,13 @@
 - След това се избира дадена специалност и се отива на тази страница
 <img width="1280" alt="image" src="https://github.com/user-attachments/assets/d436e33a-521d-400e-83f4-f373d4483f9d" />
 
-
+## 🧩 Използвани технологии
+- ASP.NET with React
+- HTML
+- CSS
+- JavaScript
+- React
+- jQuery
+- C#
+- Microsoft SQL Server Management Studio
+- Figma
