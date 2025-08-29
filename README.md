@@ -37,7 +37,8 @@
   - Учебна програма
   - Бележки
 - В менюто се показва снимка, както и кратко описание. Това помага на потребителите да разберат как да използват приложението
-<img width="1280" alt="image" src="https://github.com/user-attachments/assets/1cae4357-6363-4c2e-8523-993df8bde305" />
+<img width="1270" height="676" alt="image" src="https://github.com/user-attachments/assets/e56341fc-19a3-451c-a8ba-8150b5c874a6" />
+<img width="1270" height="677" alt="image" src="https://github.com/user-attachments/assets/8ba0ca73-6c95-4eae-8d42-8e6042c82c90" />
 
 ## 👤 Профил
 - В тази страница потребителят може да види информацията си, както и да я променя.
